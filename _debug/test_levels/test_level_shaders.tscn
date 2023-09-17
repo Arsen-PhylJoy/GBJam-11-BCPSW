@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1lio4aktlym0"]
+
+[ext_resource type="Texture2D" uid="uid://bot888nwa5sin" path="res://assets/graphic/projectiles/temporary_meteorite.png" id="1_hxt8j"]
+[ext_resource type="Shader" path="res://shaders/postprocess_shaders/pixelation_shader.gdshader" id="2_82bja"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eoa0p"]
+shader = ExtResource("2_82bja")
+shader_parameter/pixel_size = 8
+
+[node name="test_level_shaders" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(80, 67)
+scale = Vector2(0.143153, 0.120702)
+texture = ExtResource("1_hxt8j")
+
+[node name="postprocess_plane" type="CanvasLayer" parent="."]
+
+[node name="plane" type="ColorRect" parent="postprocess_plane"]
+material = SubResource("ShaderMaterial_eoa0p")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
