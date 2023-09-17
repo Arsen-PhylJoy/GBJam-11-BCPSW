@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6en1kjbe11nn"]
+
+[ext_resource type="Script" path="res://Menu_System/pause_screen.gd" id="1_u1atu"]
+
+[node name="Pause Screen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_u1atu")
+
+[node name="Resume Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 32.0
+offset_right = 112.0
+offset_bottom = 64.0
+text = "GO"
+
+[node name="Exit Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 84.0
+offset_right = 112.0
+offset_bottom = 116.0
+text = "EXIT"
+
+[node name="PauseTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
