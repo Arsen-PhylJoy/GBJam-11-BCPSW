@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvea1xmo3oxhf"]
+
+[ext_resource type="PackedScene" uid="uid://b65pojpx24hdm" path="res://scenes/projectiles/projectile_spawner.tscn" id="1_d1uwf"]
+[ext_resource type="Script" path="res://_debug/test_levels/test_level_1.gd" id="1_pkjml"]
+[ext_resource type="PackedScene" uid="uid://cubs0v07ul4y8" path="res://scenes/projectiles/meteorite/meteorite.tscn" id="3_k8le2"]
+
+[node name="test_level_1" type="Node2D"]
+script = ExtResource("1_pkjml")
+
+[node name="projectile_spawner" parent="." instance=ExtResource("1_d1uwf")]
+projectile = ExtResource("3_k8le2")
+spawner_width = 300.0
+meteortirs_per_second = 4.0
+gravity_scale = 0.1
+min_initial_speed = 1.0
+max_initial_speed = 1.0
+max_angular_velocity = 200.0
+
+[node name="test_camera" type="Camera2D" parent="."]
+position = Vector2(107, 35)
+zoom = Vector2(0.365, 0.365)
+
+[connection signal="projectile_spawned" from="projectile_spawner" to="." method="_on_projectile_spawner_projectile_spawned"]
