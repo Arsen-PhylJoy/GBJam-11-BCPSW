@@ -44,3 +44,5 @@ script = ExtResource("2_d3l2h")
 layout_mode = 2
 text = "QUIT GAME"
 script = ExtResource("2_d3l2h")
+
+[connection signal="pressed" from="VBoxContainer/Play Button" to="." method="_on_play_button_pressed"]

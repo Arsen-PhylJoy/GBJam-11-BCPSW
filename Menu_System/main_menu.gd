@@ -1,5 +1,8 @@
 extends Control
 
+signal game_started(level)
+
+@export var start_level: PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,3 +17,9 @@ func _process(delta):
 
 func on_QuitButton_pressed():
 	get_tree().quit()
+
+
+
+
+func _on_play_button_pressed() -> void:
+	emit_signal("game_started",start_level)
