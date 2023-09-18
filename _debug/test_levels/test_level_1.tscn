@@ -11,15 +11,10 @@ script = ExtResource("1_pkjml")
 projectile = ExtResource("3_k8le2")
 spawner_width = 300.0
 meteortirs_per_second = 4.0
-gravity_scale = 0.002
-min_initial_speed = 0.0
-max_initial_speed = 900.0
-min_angular_velocity = 0.0
-max_angular_velocity = 0.0
-min_scale = 0.8
-max_scale = 1.4
-left_deviation = 40.0
-right_deviation = 40.0
+gravity_scale = 0.1
+min_initial_speed = 1.0
+max_initial_speed = 1.0
+max_angular_velocity = 200.0
 
 [node name="test_camera" type="Camera2D" parent="."]
 position = Vector2(107, 35)
