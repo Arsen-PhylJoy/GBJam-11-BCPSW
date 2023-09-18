@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://cp4a7u1857uiy"]
+
+[ext_resource type="Script" path="res://Menu_System/Scripts/test_scene.gd" id="1_ccvan"]
+[ext_resource type="TileSet" uid="uid://dwgrtmsbgrehe" path="res://Menu_System/Sprites/coins-chests.tres" id="1_k1jy6"]
+[ext_resource type="PackedScene" uid="uid://ga08fi1u5kdl" path="res://Menu_System/player.tscn" id="2_n321m"]
+[ext_resource type="PackedScene" uid="uid://b6en1kjbe11nn" path="res://Menu_System/pause_screen.tscn" id="4_raabd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_crnto"]
+size = Vector2(162, 48)
+
+[node name="Test Scene" type="Node"]
+script = ExtResource("1_ccvan")
+
+[node name="Floor" type="TileMap" parent="."]
+tile_set = ExtResource("1_k1jy6")
+format = 2
+layer_0/tile_data = PackedInt32Array(393216, 1376256, 34, 393217, 1376256, 34, 393218, 1376256, 34, 393219, 1376256, 34, 393220, 1376256, 34, 393221, 1376256, 34, 393222, 1376256, 34, 393223, 1376256, 34, 393224, 1376256, 34, 393225, 1376256, 34, 458761, 1376256, 34, 458760, 1376256, 34, 458759, 1376256, 34, 458758, 1376256, 34, 458757, 1376256, 34, 458756, 1376256, 34, 458755, 1376256, 34, 458754, 1376256, 34, 458753, 1376256, 34, 458752, 1376256, 34, 327680, 1376256, 34, 327681, 1376256, 34, 327682, 1376256, 34, 327683, 1376256, 34, 327684, 1376256, 34, 327685, 1376256, 34, 327686, 1376256, 34, 327687, 1376256, 34, 327688, 1376256, 34, 327689, 1376256, 34)
+
+[node name="RigidBody2D" type="RigidBody2D" parent="Floor"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/RigidBody2D"]
+position = Vector2(79, 104)
+shape = SubResource("RectangleShape2D_crnto")
+
+[node name="Player" parent="." instance=ExtResource("2_n321m")]
+position = Vector2(32, 24)
+
+[node name="Pause Screen" parent="." instance=ExtResource("4_raabd")]
+offset_left = 1.0
+offset_right = 41.0
+
+[node name="PauseTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="unpause" from="Pause Screen" to="." method="_on_pause_screen_unpause"]

@@ -2,18 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-
-uid="uid://xxj6n3pxtf10"
-
-path="res://.godot/imported/moon.png-623513fb22519261018bcbadc808dd11.ctex"
+uid="uid://bgucwyiymadga"
+path="res://.godot/imported/coins-chests-etc-2-0.png-1fd6b040e474a10cd678dc7705dc2fab.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphic/environment/env_01/background/objects/moon.png"
-dest_files=["res://.godot/imported/moon.png-623513fb22519261018bcbadc808dd11.ctex"]
+source_file="res://Menu_System/Sprites/coins-chests-etc-2-0.png"
+dest_files=["res://.godot/imported/coins-chests-etc-2-0.png-1fd6b040e474a10cd678dc7705dc2fab.ctex"]
 
 [params]
 
