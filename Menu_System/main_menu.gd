@@ -1,6 +1,6 @@
 extends Control
 
-signal game_started(level)
+signal game_started(start_level)
 
 @export var start_level: PackedScene
 
