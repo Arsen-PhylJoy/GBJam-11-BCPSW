@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Menu_System/Scripts/test_scene.gd" id="1_ccvan"]
 [ext_resource type="TileSet" uid="uid://dwgrtmsbgrehe" path="res://Menu_System/Sprites/coins-chests.tres" id="1_k1jy6"]
-[ext_resource type="PackedScene" uid="uid://ga08fi1u5kdl" path="res://Menu_System/player.tscn" id="2_n321m"]
-[ext_resource type="PackedScene" uid="uid://b6en1kjbe11nn" path="res://Menu_System/pause_screen.tscn" id="4_raabd"]
+[ext_resource type="PackedScene" uid="uid://ga08fi1u5kdl" path="res://Menu_System/Scenes/player.tscn" id="2_n321m"]
+[ext_resource type="PackedScene" uid="uid://b6en1kjbe11nn" path="res://Menu_System/Scenes/pause_screen.tscn" id="4_raabd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_crnto"]
 size = Vector2(162, 48)
@@ -30,7 +30,7 @@ offset_left = 1.0
 offset_right = 41.0
 
 [node name="PauseTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.3
 one_shot = true
 
 [connection signal="unpause" from="Pause Screen" to="." method="_on_pause_screen_unpause"]
