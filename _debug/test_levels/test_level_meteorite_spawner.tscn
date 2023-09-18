@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dvea1xmo3oxhf"]
 
 [ext_resource type="PackedScene" uid="uid://b65pojpx24hdm" path="res://scenes/projectiles/projectile_spawner.tscn" id="1_d1uwf"]
-[ext_resource type="Script" path="res://_debug/test_levels/test_level_1.gd" id="1_pkjml"]
+[ext_resource type="Script" path="res://_debug/test_levels/test_level_meteorite_spawner.gd" id="1_pkjml"]
 [ext_resource type="PackedScene" uid="uid://cubs0v07ul4y8" path="res://scenes/projectiles/meteorite/meteorite.tscn" id="3_k8le2"]
 
 [node name="test_level_1" type="Node2D"]
