@@ -3,7 +3,8 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+		get_tree().root.size = Vector2(1000,900)
+		get_tree().root.position = Vector2(100,100)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

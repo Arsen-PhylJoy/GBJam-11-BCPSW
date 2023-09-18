@@ -2,11 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://b1ue4b71tf3un" path="res://scenes/main.tscn" id="1_xb8j2"]
 [ext_resource type="PackedScene" uid="uid://updxlsecf8xr" path="res://Menu_System/main_menu.tscn" id="2_78sh5"]
-[ext_resource type="PackedScene" uid="uid://dvea1xmo3oxhf" path="res://_debug/test_levels/test_level_1.tscn" id="3_3pt1q"]
+[ext_resource type="PackedScene" uid="uid://duivdh4a5que7" path="res://game/levels/level_1_alpha_test.tscn" id="3_v7cej"]
 
 [node name="main" instance=ExtResource("1_xb8j2")]
 
 [node name="Main Menu" parent="." index="0" instance=ExtResource("2_78sh5")]
-start_level = ExtResource("3_3pt1q")
+start_level = ExtResource("3_v7cej")
 
 [connection signal="game_started" from="Main Menu" to="." method="_on_main_menu_game_started"]

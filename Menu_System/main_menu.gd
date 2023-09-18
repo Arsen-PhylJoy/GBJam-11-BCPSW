@@ -18,8 +18,5 @@ func _process(delta):
 func on_QuitButton_pressed():
 	get_tree().quit()
 
-
-
-
 func _on_play_button_pressed() -> void:
 	emit_signal("game_started",start_level)
