@@ -1,23 +1,17 @@
 extends Control
 
-signal game_started(start_level)
+signal play_pressed()
 
-@export var start_level: PackedScene
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	var quitButton = $"VBoxContainer/Quit Button"
+	var playButton = $"VBoxContainer/Play Button"
+	playButton.connect("pressed",self.play_button_pressed)
 
-	quitButton.pressed.connect(self.on_QuitButton_pressed)
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
+func _input(event):
+	if event.is_action_pressed("start"):
+		emit_signal("play_pressed")
 
-func on_QuitButton_pressed():
-	get_tree().quit()
-
-func _on_play_button_pressed() -> void:
-	emit_signal("game_started",start_level)
+func play_button_pressed() -> void:
+	emit_signal("play_pressed")

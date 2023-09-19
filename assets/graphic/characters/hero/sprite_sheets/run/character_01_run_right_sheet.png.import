@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dno0eyu4d7hcx"
-path="res://.godot/imported/character_01_run_sheet.png-5f7ae962ba842e67a5d7eed062bdef75.ctex"
+path="res://.godot/imported/character_01_run_right_sheet.png-1402099523cd4817145bf39f98372492.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphic/characters/hero/sprite_sheets/run/character_01_run_sheet.png"
-dest_files=["res://.godot/imported/character_01_run_sheet.png-5f7ae962ba842e67a5d7eed062bdef75.ctex"]
+source_file="res://assets/graphic/characters/hero/sprite_sheets/run/character_01_run_right_sheet.png"
+dest_files=["res://.godot/imported/character_01_run_right_sheet.png-1402099523cd4817145bf39f98372492.ctex"]
 
 [params]
 
