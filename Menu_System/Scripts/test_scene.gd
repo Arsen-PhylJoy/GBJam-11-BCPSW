@@ -25,6 +25,7 @@ func on_pause_button_pressed():
 	get_tree().paused = true
 	$"Pause Screen".show()
 	$"Pause Screen/PauseTimer".start()
+	$"Pause Screen/Resume Button".grab_focus()
 
 func on_resume_button_pressed():
 	$"Pause Screen".hide()

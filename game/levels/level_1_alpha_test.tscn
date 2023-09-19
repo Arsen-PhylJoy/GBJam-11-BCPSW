@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://duivdh4a5que7"]
 
 [ext_resource type="Script" path="res://game/levels/level_1_alpha_test.gd" id="1_4novl"]
-[ext_resource type="PackedScene" uid="uid://ga08fi1u5kdl" path="res://Menu_System/player.tscn" id="1_gcv57"]
+[ext_resource type="PackedScene" uid="uid://ga08fi1u5kdl" path="res://Menu_System/Scenes/player.tscn" id="1_gcv57"]
 [ext_resource type="PackedScene" uid="uid://b65pojpx24hdm" path="res://scenes/projectiles/projectile_spawner.tscn" id="2_bvut5"]
 [ext_resource type="PackedScene" uid="uid://cubs0v07ul4y8" path="res://scenes/projectiles/meteorite/meteorite.tscn" id="3_shdic"]
 
