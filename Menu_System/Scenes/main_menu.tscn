@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://updxlsecf8xr"]
+[gd_scene load_steps=5 format=3 uid="uid://updxlsecf8xr"]
 
 [ext_resource type="Script" path="res://Menu_System/Scripts/main_menu.gd" id="1_2fjw2"]
 [ext_resource type="Script" path="res://Menu_System/Scripts/play_button.gd" id="2_bqwm6"]
+[ext_resource type="Theme" uid="uid://g175br3gjr52" path="res://ui/main-menu/main_menu.tres" id="2_rsrfe"]
+[ext_resource type="Texture2D" uid="uid://mnfm8t54ub5m" path="res://assets/graphic/intro_animation/intro_animation_spritesheet.png" id="4_jx8uq"]
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
@@ -15,31 +17,33 @@ script = ExtResource("1_2fjw2")
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.072
-anchor_top = 0.175
-anchor_right = 1.203
-anchor_bottom = 0.75
-offset_left = 1.968
-offset_top = -12.0
-offset_right = 1.993
-offset_bottom = -9.0
+offset_left = -17.0
+offset_top = 10.0
+offset_right = 97.0
+offset_bottom = 27.0
+theme = ExtResource("2_rsrfe")
 text = "Main Menu"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.25
-anchor_bottom = 0.25
-offset_left = -8.0
-offset_top = 36.0
-offset_right = 89.0
-offset_bottom = 106.0
+layout_mode = 0
+offset_left = -21.0
+offset_top = 43.0
+offset_right = 101.0
+offset_bottom = 65.0
 metadata/_edit_group_ = true
 
 [node name="Play Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_rsrfe")
 text = "PLAY GAME"
 script = ExtResource("2_bqwm6")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(40, 57)
+texture = ExtResource("4_jx8uq")
+hframes = 8
+vframes = 8
+frame = 63
 
 [connection signal="pressed" from="VBoxContainer/Play Button" to="." method="_on_play_button_pressed"]
