@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://btm6156s3b7bb"]
+[gd_scene load_steps=5 format=3 uid="uid://btm6156s3b7bb"]
 
 [ext_resource type="PackedScene" uid="uid://b1ue4b71tf3un" path="res://scenes/main.tscn" id="1_xb8j2"]
+[ext_resource type="PackedScene" uid="uid://updxlsecf8xr" path="res://Menu_System/Scenes/main_menu.tscn" id="2_78sh5"]
 [ext_resource type="PackedScene" uid="uid://c1n0exhontfwp" path="res://Menu_System/Scenes/intro_scene.tscn" id="2_qbyxx"]
+[ext_resource type="PackedScene" uid="uid://duivdh4a5que7" path="res://game/levels/level_1_alpha_test.tscn" id="3_v7cej"]
 
 [node name="the_game" instance=ExtResource("1_xb8j2")]
 intro_scene = ExtResource("2_qbyxx")
+main_scene = ExtResource("2_78sh5")
+level1 = ExtResource("3_v7cej")

@@ -1,12 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dciaqxr4rkeqc"]
+[gd_scene load_steps=3 format=3 uid="uid://dciaqxr4rkeqc"]
 
 [ext_resource type="PackedScene" uid="uid://b1ue4b71tf3un" path="res://scenes/main.tscn" id="1_4ccpp"]
-[ext_resource type="PackedScene" uid="uid://updxlsecf8xr" path="res://Menu_System/main_menu.tscn" id="2_6yler"]
-[ext_resource type="PackedScene" uid="uid://dvea1xmo3oxhf" path="res://_debug/test_levels/test_level_meteorite_spawner.tscn" id="3_ovvjr"]
+[ext_resource type="PackedScene" uid="uid://updxlsecf8xr" path="res://Menu_System/Scenes/main_menu.tscn" id="2_6yler"]
 
 [node name="main" instance=ExtResource("1_4ccpp")]
 
 [node name="Main Menu" parent="." index="0" instance=ExtResource("2_6yler")]
-start_level = ExtResource("3_ovvjr")
-
-[connection signal="game_started" from="Main Menu" to="." method="_on_main_menu_game_started"]
