@@ -1,11 +1,12 @@
 extends Node
-
+@export var intro_scene: PackedScene
+@export var main_scene: PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-		get_tree().root.size = Vector2(1000,900)
-		get_tree().root.position = Vector2(100,100)
-
+	get_tree().root.size = Vector2(1000,900)
+	get_tree().root.position = Vector2(100,100)
+	load_scene(intro_scene)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -18,8 +19,6 @@ func load_scene(scene: PackedScene)->void:
 func remove_scene(node_path : NodePath)->void:
 	remove_scene(node_path)
 	get_node(node_path).queue_free()
-
-
 
 func _on_main_menu_game_started(level) -> void:
 	remove_child($"Main Menu")
