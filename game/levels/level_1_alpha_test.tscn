@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b65pojpx24hdm" path="res://scenes/projectiles/projectile_spawner.tscn" id="2_bvut5"]
 [ext_resource type="PackedScene" uid="uid://cubs0v07ul4y8" path="res://scenes/projectiles/meteorite/meteorite.tscn" id="3_shdic"]
 [ext_resource type="PackedScene" uid="uid://b6en1kjbe11nn" path="res://Menu_System/Scenes/pause_screen.tscn" id="5_7att2"]
+[ext_resource type="PackedScene" uid="uid://curqbovuaop8h" path="res://scenes/environment/env_01/parallax_background.tscn" id="5_yo880"]
 
 [sub_resource type="Gradient" id="Gradient_cn1pe"]
 colors = PackedColorArray(0, 1, 0, 1, 0, 1, 1, 1)
@@ -19,23 +20,22 @@ size = Vector2(30, 20)
 [node name="level_1_alpha_test" type="Node"]
 script = ExtResource("1_4novl")
 
-[node name="projectile_spawner" parent="." instance=ExtResource("2_bvut5")]
-position = Vector2(-799, -18)
-projectile = ExtResource("3_shdic")
-spawner_width = 1000.0
-meteortirs_per_second = 16.0
-gravity_scale = 0.002
-min_initial_speed = 30.0
-max_initial_speed = 80.0
-min_angular_velocity = 5.0
-max_angular_velocity = 25.0
-
 [node name="Player" parent="." instance=ExtResource("1_gcv57")]
 position = Vector2(54, 85)
 collision_mask = 6
 speed = 400
 
 [node name="player_camera" type="Camera2D" parent="Player"]
+
+[node name="projectile_spawner" parent="Player" instance=ExtResource("2_bvut5")]
+position = Vector2(-853, -103)
+projectile = ExtResource("3_shdic")
+spawner_width = 1000.0
+gravity_scale = 0.002
+min_initial_speed = 30.0
+max_initial_speed = 80.0
+min_angular_velocity = 5.0
+max_angular_velocity = 25.0
 
 [node name="ground_temporary" type="StaticBody2D" parent="." groups=["Ground"]]
 position = Vector2(84, 115)
@@ -61,3 +61,7 @@ one_shot = true
 
 [connection signal="projectile_spawned" from="projectile_spawner" to="." method="_on_projectile_spawner_projectile_spawned"]
 [connection signal="unpause" from="Pause Screen" to="." method="_on_pause_screen_unpause"]
+
+[node name="parallax_background" parent="." instance=ExtResource("5_yo880")]
+
+[connection signal="projectile_spawned" from="Player/projectile_spawner" to="." method="_on_projectile_spawner_projectile_spawned"]
