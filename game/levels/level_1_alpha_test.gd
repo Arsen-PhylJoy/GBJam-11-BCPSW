@@ -13,11 +13,16 @@ func _ready() -> void:
 	get_node("Pause Screen/Exit Button").pressed.connect(self.on_exit_button_pressed)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _process(_delta: float) -> void:
 	if $"Pause Timer".is_stopped() == true:
 		if Input.is_action_pressed("pause"):
 			print("P pressed during unpaused")
 			on_pause_button_pressed()
+	
+	#Pause screen follows player to that it's always in the screen when the player pauses
+	#80 is the offset so that it stays in the center (half of 160, the screen size)
+	get_node("Pause Screen").position.x = get_node("Player").position.x - 80
 	pass
 
 

@@ -20,9 +20,9 @@ signal projectile_spawned(pos,new_scale,init_speed,angular_velocity,direction_ve
 ##[color=red]Doesn't work.[/color].
 @export_subgroup("scale")
 ##[color=red]Doesn't work.[/color].
-@export var min_scale: float = 1
+@export var min_scale: float = 0.5
 ##[color=red]Doesn't work.[/color].
-@export var max_scale: float = 1
+@export var max_scale: float = 0.5
 @export_subgroup("Direction vector")
 ##Deviation from the default direction vector in degrees. Default direction vector is (0,1) pointing down.
 ##[color=red]Doesn't work.[/color].
@@ -43,7 +43,7 @@ func _exit_tree() -> void:
 func _on_timer_timeout() -> void:
 	var angle:float = deg_to_rad(rand.randf_range(left_deviation,right_deviation))
 	emit_signal("projectile_spawned",
-			rand.randf_range(0,spawner_width),
+			rand.randf_range(self.global_position.x,spawner_width + self.global_position.x),
 			rand.randf_range(min_scale,max_scale),
 			rand.randf_range(min_initial_speed,max_initial_speed),
 			rand.randf_range(min_angular_velocity,max_angular_velocity),
