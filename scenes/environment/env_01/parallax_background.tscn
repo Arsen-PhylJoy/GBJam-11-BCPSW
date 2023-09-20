@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://curqbovuaop8h"]
+
+[ext_resource type="Texture2D" uid="uid://c3dvcaclktrqx" path="res://assets/graphic/environment/env_01/foreground/ground_plane/tileset/env_01_ground_tileset.png" id="1_sod0w"]
+[ext_resource type="Texture2D" uid="uid://xxj6n3pxtf10" path="res://assets/graphic/environment/env_01/background/objects/moon.png" id="2_mli03"]
+
+[node name="parallax_background" type="CanvasLayer"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="PlanetLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.12, 0.12)
+motion_mirroring = Vector2(1280, 0)
+
+[node name="Planet" type="Sprite2D" parent="ParallaxBackground/PlanetLayer"]
+position = Vector2(0, 72)
+texture = ExtResource("1_sod0w")
+
+[node name="Moon" type="Sprite2D" parent="."]
+z_index = -100
+position = Vector2(136, 27)
+texture = ExtResource("2_mli03")
