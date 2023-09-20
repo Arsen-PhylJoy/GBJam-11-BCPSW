@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bj08btic8c155"]
+
+[ext_resource type="Shader" path="res://shaders/postprocess_shaders/warp_shader/flat_to_circular_1.gdshader" id="1_r5134"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_adu6v"]
+shader = ExtResource("1_r5134")
+shader_parameter/param1 = -1.275
+shader_parameter/param2 = -0.96
+shader_parameter/y_translate = 1.295
+
+[node name="wrap_to_circle" type="CanvasLayer"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_adu6v")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
