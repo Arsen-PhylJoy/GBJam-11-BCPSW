@@ -6,6 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://duivdh4a5que7" path="res://game/levels/level_1_alpha_test.tscn" id="3_v7cej"]
 
 [node name="the_game" instance=ExtResource("1_xb8j2")]
-intro_scene = ExtResource("2_qbyxx")
-main_scene = ExtResource("2_78sh5")
-level1 = ExtResource("3_v7cej")
+intro_scene_pk = ExtResource("2_qbyxx")
+main_menu_scene_pk = ExtResource("2_78sh5")
+level_1_scene_pk = ExtResource("3_v7cej")

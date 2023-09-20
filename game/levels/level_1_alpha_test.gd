@@ -13,8 +13,8 @@ func _ready() -> void:
 	get_node("Pause Screen/Exit Button").pressed.connect(self.on_exit_button_pressed)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	
+
+func _process(_delta: float) -> void:
 	if $"Pause Timer".is_stopped() == true:
 		if Input.is_action_pressed("pause"):
 			print("P pressed during unpaused")
