@@ -43,7 +43,7 @@ func _exit_tree() -> void:
 func _on_timer_timeout() -> void:
 	var angle:float = deg_to_rad(rand.randf_range(left_deviation,right_deviation))
 	emit_signal("projectile_spawned",
-			rand.randf_range(0,spawner_width),
+			rand.randf_range(self.global_position.x,spawner_width + self.global_position.x),
 			rand.randf_range(min_scale,max_scale),
 			rand.randf_range(min_initial_speed,max_initial_speed),
 			rand.randf_range(min_angular_velocity,max_angular_velocity),
