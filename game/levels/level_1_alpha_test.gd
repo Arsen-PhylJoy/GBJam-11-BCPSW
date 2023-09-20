@@ -11,7 +11,7 @@ func _process(delta: float) -> void:
 
 
 func _on_projectile_spawner_projectile_spawned(pos, new_scale, init_speed, angular_velocity, direction_vector, gravity_scale) -> void:
-	var meteor_instance: RigidBody2D =  $projectile_spawner.projectile.instantiate() as RigidBody2D
+	var meteor_instance: RigidBody2D =  $Player/projectile_spawner.projectile.instantiate() as RigidBody2D
 	add_child(meteor_instance)
 	meteor_instance.global_position.x = pos
 	meteor_instance.global_scale = Vector2(new_scale,new_scale)
