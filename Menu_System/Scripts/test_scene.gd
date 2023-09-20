@@ -1,8 +1,10 @@
 extends Node
+# make a field for position
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	process_mode = Node.PROCESS_MODE_PAUSABLE
+	print("enters the pause scene")
 	
 	var pause_screen = $"Pause Screen"
 	pause_screen.hide()
@@ -12,10 +14,11 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	
+func _process(_delta):
+	print("process the pause scene")
 	if $"PauseTimer".is_stopped() == true:
 		if Input.is_action_pressed("pause"):
+			# store position and set positions to zero
 			print("P pressed during unpaused")
 			on_pause_button_pressed()
 		
@@ -33,5 +36,6 @@ func on_resume_button_pressed():
 
 
 func _on_pause_screen_unpause():
+	# reapply stash
 	print("unpaused by pressing pause button")
 	$PauseTimer.start()
