@@ -30,3 +30,9 @@ func load_menu() ->void:
 func load_level1()->void:
 	remove_scene(menus_string)
 	load_scene(level1,level1_string)
+	get_node(level1_string).connect("exit_game", self.load_level1_from_pause)
+	
+func load_level1_from_pause() -> void:
+	remove_scene(level1_string)
+	load_scene(main_scene, menus_string)
+	get_node(menus_string).connect("play_pressed",self.load_level1)

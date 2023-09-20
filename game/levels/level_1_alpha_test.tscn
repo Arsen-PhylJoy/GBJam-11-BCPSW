@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://duivdh4a5que7"]
+[gd_scene load_steps=9 format=3 uid="uid://duivdh4a5que7"]
 
 [ext_resource type="Script" path="res://game/levels/level_1_alpha_test.gd" id="1_4novl"]
 [ext_resource type="PackedScene" uid="uid://ga08fi1u5kdl" path="res://Menu_System/Scenes/player.tscn" id="1_gcv57"]
 [ext_resource type="PackedScene" uid="uid://b65pojpx24hdm" path="res://scenes/projectiles/projectile_spawner.tscn" id="2_bvut5"]
 [ext_resource type="PackedScene" uid="uid://cubs0v07ul4y8" path="res://scenes/projectiles/meteorite/meteorite.tscn" id="3_shdic"]
+[ext_resource type="PackedScene" uid="uid://b6en1kjbe11nn" path="res://Menu_System/Scenes/pause_screen.tscn" id="5_7att2"]
 
 [sub_resource type="Gradient" id="Gradient_cn1pe"]
 colors = PackedColorArray(0, 1, 0, 1, 0, 1, 1, 1)
@@ -52,4 +53,11 @@ position = Vector2(-5, 0)
 scale = Vector2(1.3, 0.98)
 shape = SubResource("RectangleShape2D_dnu3l")
 
+[node name="Pause Screen" parent="." instance=ExtResource("5_7att2")]
+
+[node name="Pause Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="projectile_spawned" from="projectile_spawner" to="." method="_on_projectile_spawner_projectile_spawned"]
+[connection signal="unpause" from="Pause Screen" to="." method="_on_pause_screen_unpause"]
