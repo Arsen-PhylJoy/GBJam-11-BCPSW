@@ -12,13 +12,16 @@ size = Vector2(162, 48)
 script = ExtResource("1_ccvan")
 
 [node name="Floor" type="TileMap" parent="."]
+visible = false
 tile_set = ExtResource("1_k1jy6")
 format = 2
 layer_0/tile_data = PackedInt32Array(393216, 1376256, 34, 393217, 1376256, 34, 393218, 1376256, 34, 393219, 1376256, 34, 393220, 1376256, 34, 393221, 1376256, 34, 393222, 1376256, 34, 393223, 1376256, 34, 393224, 1376256, 34, 393225, 1376256, 34, 458761, 1376256, 34, 458760, 1376256, 34, 458759, 1376256, 34, 458758, 1376256, 34, 458757, 1376256, 34, 458756, 1376256, 34, 458755, 1376256, 34, 458754, 1376256, 34, 458753, 1376256, 34, 458752, 1376256, 34, 327680, 1376256, 34, 327681, 1376256, 34, 327682, 1376256, 34, 327683, 1376256, 34, 327684, 1376256, 34, 327685, 1376256, 34, 327686, 1376256, 34, 327687, 1376256, 34, 327688, 1376256, 34, 327689, 1376256, 34)
 
 [node name="RigidBody2D" type="RigidBody2D" parent="Floor"]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/RigidBody2D"]
+visible = false
 position = Vector2(79, 104)
 shape = SubResource("RectangleShape2D_crnto")
 
