@@ -20,9 +20,9 @@ signal projectile_spawned(pos,new_scale,init_speed,angular_velocity,direction_ve
 ##[color=red]Doesn't work.[/color].
 @export_subgroup("scale")
 ##[color=red]Doesn't work.[/color].
-@export var min_scale: float = 1
+@export var min_scale: float = 0.5
 ##[color=red]Doesn't work.[/color].
-@export var max_scale: float = 1
+@export var max_scale: float = 0.5
 @export_subgroup("Direction vector")
 ##Deviation from the default direction vector in degrees. Default direction vector is (0,1) pointing down.
 ##[color=red]Doesn't work.[/color].
