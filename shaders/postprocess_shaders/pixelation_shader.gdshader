@@ -2,7 +2,6 @@ shader_type canvas_item;
 render_mode unshaded;
 
 uniform int pixel_size = 2;
-uniform vec4 color: hint;
 uniform sampler2D screen : hint_screen_texture, repeat_enable, filter_nearest_mipmap;
 
 void fragment() {

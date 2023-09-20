@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmy418indsabt"]
+
+[ext_resource type="Script" path="res://scripts/others/transition_scanline.gd" id="1_mxavf"]
+[ext_resource type="Shader" path="res://shaders/postprocess_shaders/scanline_effect.gdshader" id="2_ovsf0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lngs8"]
+shader = ExtResource("2_ovsf0")
+shader_parameter/background_color = null
+shader_parameter/speed = 32.0
+
+[node name="transition_scanline" type="CanvasLayer"]
+script = ExtResource("1_mxavf")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_lngs8")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
