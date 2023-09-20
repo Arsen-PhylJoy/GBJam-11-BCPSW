@@ -1,6 +1,7 @@
 extends Node
 
 signal exit_game
+signal defeat
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,7 +13,10 @@ func _ready() -> void:
 	get_node("Pause Screen/Resume Button").pressed.connect(self.on_resume_button_pressed)
 	
 	get_node("Pause Screen/Exit Button").pressed.connect(self.on_exit_button_pressed)
-
+	$Player.connect("defeated", self.on_defeat)
+	$Player/projectile_spawner.position.x = 0
+	$Player/projectile_spawner.position.y = 0
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
 func _process(_delta: float) -> void:
@@ -55,3 +59,7 @@ func _on_pause_screen_unpause() -> void:
 	print("unpaused by pressing pause button")
 	$"Pause Timer".start()
 	
+func on_defeat() -> void:
+	print("You dieded")
+	await get_tree().create_timer(2.0).timeout
+	emit_signal("defeat")
