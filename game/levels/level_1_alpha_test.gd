@@ -5,6 +5,7 @@ signal exit_game
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_PAUSABLE
+	get_node("Pause Screen").position.y -= 30
 	
 	get_node("Pause Screen").hide()
 	
@@ -23,7 +24,6 @@ func _process(_delta: float) -> void:
 	#Pause screen follows player to that it's always in the screen when the player pauses
 	#80 is the offset so that it stays in the center (half of 160, the screen size)
 	get_node("Pause Screen").position.x = get_node("Player").position.x - 80
-	pass
 
 
 func _on_projectile_spawner_projectile_spawned(pos, new_scale, init_speed, angular_velocity, direction_vector, gravity_scale) -> void:
