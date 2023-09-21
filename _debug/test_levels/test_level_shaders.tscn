@@ -1,15 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1lio4aktlym0"]
+[gd_scene load_steps=6 format=3 uid="uid://d1lio4aktlym0"]
 
 [ext_resource type="Texture2D" uid="uid://bot888nwa5sin" path="res://assets/graphic/projectiles/temporary_meteorite.png" id="1_hxt8j"]
-[ext_resource type="Shader" path="res://shaders/postprocess_shaders/pixelation_shader.gdshader" id="2_82bja"]
+[ext_resource type="Shader" path="res://shaders/postprocess_shaders/scanline_effect.gdshader" id="2_l4jcb"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hrlt8"]
-shader = ExtResource("2_82bja")
-shader_parameter/pixel_size = 4
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b80ar"]
+render_priority = 0
+shader = ExtResource("2_l4jcb")
+
+[sub_resource type="Gradient" id="Gradient_plbqw"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_njw7f"]
+gradient = SubResource("Gradient_plbqw")
 
 [node name="test_level_shaders" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="meteor" type="Sprite2D" parent="."]
 position = Vector2(80, 67)
 scale = Vector2(0.143153, 0.120702)
 texture = ExtResource("1_hxt8j")
@@ -17,9 +22,15 @@ texture = ExtResource("1_hxt8j")
 [node name="postprocess_plane" type="CanvasLayer" parent="."]
 
 [node name="plane" type="ColorRect" parent="postprocess_plane"]
-material = SubResource("ShaderMaterial_hrlt8")
+material = SubResource("ShaderMaterial_b80ar")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="background" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(81, 72)
+scale = Vector2(2.51563, 2.25)
+texture = SubResource("GradientTexture2D_njw7f")
