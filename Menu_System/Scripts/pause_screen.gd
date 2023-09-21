@@ -17,3 +17,9 @@ func _process(_delta):
 			get_tree().paused = false
 			self.hide()
 			emit_signal("unpause")
+
+func play_resume_audio():
+	$"resume-button-audio".play()
+	
+func play_pause_audio():
+	$"pause-button-audio".play()

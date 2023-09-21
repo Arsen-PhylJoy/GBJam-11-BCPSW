@@ -48,6 +48,7 @@ func _on_projectile_spawner_projectile_spawned(pos, new_scale, init_speed, angul
 func on_pause_button_pressed() -> void:
 	get_tree().paused = true
 	$"Pause Screen".show()
+	$"Pause Screen".play_pause_audio()
 	$"Pause Screen/PauseTimer".start()
 	$"Pause Screen/Resume Button".grab_focus()
 	
@@ -62,6 +63,7 @@ func on_exit_button_pressed() -> void:
 
 func _on_pause_screen_unpause() -> void:
 	print("unpaused by pressing pause button")
+	$"Pause Screen".play_resume_audio()
 	$"Pause Timer".start()
 	
 func _on_defeat() -> void:
