@@ -34,14 +34,12 @@ func _process(_delta: float) -> void:
 	get_node("Pause Screen").position.x = get_node("Player").position.x - 80
 
 
-func _on_projectile_spawner_projectile_spawned(pos, new_scale, init_speed, angular_velocity, direction_vector, gravity_scale) -> void:
+func _on_projectile_spawner_projectile_spawned(pos, init_speed, gravity_scale) -> void:
 	var meteor_instance: RigidBody2D =  $Player/projectile_spawner.projectile.instantiate() as RigidBody2D
 	add_child(meteor_instance)
 	meteor_instance.global_position.x = pos
 	meteorite_pool.append(MeteoriteBlock.new(meteor_instance, pos))
-	meteor_instance.global_scale = Vector2(new_scale,new_scale)
-	meteor_instance.linear_velocity = init_speed * direction_vector
-	meteor_instance.angular_velocity = angular_velocity
+	meteor_instance.linear_velocity = init_speed * Vector2(0,1)
 	meteor_instance.gravity_scale = gravity_scale
 	meteor_instance.connect("on_meteor_deleted", self._on_meteor_deleted)
 	
