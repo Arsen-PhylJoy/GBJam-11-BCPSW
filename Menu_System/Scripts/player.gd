@@ -1,5 +1,7 @@
 extends Area2D
 
+signal defeated()
+
 @export var speed = 50
 @export var idle_tex = preload("res://assets/graphic/characters/hero/sprite_sheets/idle/character_01_idle_sheet.png")
 @export var run_right_tex = preload("res://assets/graphic/characters/hero/sprite_sheets/run/character_01_run_right_sheet.png")
@@ -34,8 +36,4 @@ func _on_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("Meteorite")):
 		alive = false
 		$"hero_mesh".texture = defeat_tex
-		await get_tree().create_timer(2.0).timeout
-		$"hero_mesh".queue_free()
-		self.queue_free()
-		
-		get_tree().quit()
+		emit_signal("defeated")
