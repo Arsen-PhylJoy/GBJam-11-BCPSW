@@ -1,5 +1,7 @@
 extends Node
 
+var game_window_scale = 1
+
 var scenes: SceneControl = SceneControl.new()
 var scene_names = {GameScene.INTRO: "intro", GameScene.MAIN_MENU: "main_menu", GameScene.LEVEL_1: "level_1"}
 enum GameScene {
@@ -25,12 +27,24 @@ func _create_scenes_info() -> void:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_main_preprocesses()
-	get_tree().root.size = Vector2(160*2,144*2)
-	get_tree().root.position = Vector2(100,100)
+	get_tree().root.size = Vector2(160,144)
 	
 	var intro_scene = self.scenes.get_scene_by_name(scene_names[GameScene.INTRO])
 	load_scene(intro_scene)
 	get_node(intro_scene.name).connect("intro_ended", self.load_menu)
+
+func _process(_delta) -> void:
+	if Input.is_action_just_released("ui_page_up"):
+		game_window_scale += 1
+		self._set_game_window_size()
+
+	elif Input.is_action_just_released("ui_page_down"):
+		game_window_scale -= 1
+		self._set_game_window_size()
+
+func _set_game_window_size():
+	get_tree().root.size = Vector2(160 * self.game_window_scale, 144 * self.game_window_scale)
+	await get_tree().create_timer(1).timeout
 
 func load_scene(scene: SceneInfo)->void:
 	var current_scene = self.scenes.get_current()
