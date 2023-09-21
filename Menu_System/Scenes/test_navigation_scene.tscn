@@ -1,9 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cen5irmx0v5j1"]
+[gd_scene load_steps=2 format=3 uid="uid://cen5irmx0v5j1"]
 
 [ext_resource type="PackedScene" uid="uid://updxlsecf8xr" path="res://Menu_System/Scenes/main_menu.tscn" id="1_qaydb"]
-[ext_resource type="Script" path="res://Menu_System/Scripts/test_navigation_scene.gd" id="1_vu5jx"]
 
 [node name="Test Navigation Scene" type="Node"]
-script = ExtResource("1_vu5jx")
 
 [node name="Main Menu" parent="." instance=ExtResource("1_qaydb")]

@@ -53,11 +53,5 @@ func load_level1()->void:
 	var level_1_scene = scenes.get_scene_by_name(scene_names[GameScene.LEVEL_1])
 	load_scene(level_1_scene)
 	var level_1_node = get_node(level_1_scene.name)
-	level_1_node.connect("exit_game", self.load_level1_from_pause)
+	level_1_node.connect("exit_game", self.load_menu)
 	level_1_node.connect("defeat", self.load_menu)
-	
-func load_level1_from_pause() -> void:
-	print("load level 1 from pause")
-#	remove_scene(level1_string)
-#	load_scene(main_scene, menus_string)
-#	get_node(menus_string).connect("play_pressed",self.load_level1)
