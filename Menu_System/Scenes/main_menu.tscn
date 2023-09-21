@@ -38,7 +38,7 @@ theme = ExtResource("2_rsrfe")
 text = "PLAY GAME"
 script = ExtResource("2_bqwm6")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="background" type="Sprite2D" parent="."]
 z_index = -1
 position = Vector2(40, 57)
 texture = ExtResource("4_jx8uq")
