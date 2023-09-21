@@ -10,7 +10,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	pass
+	if Input.is_anything_pressed():
+		emit_signal("intro_ended")
 
 func _on_intro_scene_ended(_message):
 	emit_signal("intro_ended")
