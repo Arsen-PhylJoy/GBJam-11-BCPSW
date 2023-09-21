@@ -12,5 +12,5 @@ func _ready():
 func _process(_delta):
 	pass
 
-func _on_intro_scene_ended(message):
+func _on_intro_scene_ended(_message):
 	emit_signal("intro_ended")

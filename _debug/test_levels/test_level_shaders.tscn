@@ -4,9 +4,8 @@
 [ext_resource type="Shader" path="res://shaders/postprocess_shaders/scanline_effect.gdshader" id="2_l4jcb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b80ar"]
+render_priority = 0
 shader = ExtResource("2_l4jcb")
-shader_parameter/background_color = null
-shader_parameter/speed = 20.0
 
 [sub_resource type="Gradient" id="Gradient_plbqw"]
 

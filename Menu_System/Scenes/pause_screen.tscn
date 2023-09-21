@@ -31,5 +31,5 @@ theme = ExtResource("2_w3fyu")
 text = "EXIT"
 
 [node name="PauseTimer" type="Timer" parent="."]
-wait_time = 0.3
+wait_time = 0.5
 one_shot = true

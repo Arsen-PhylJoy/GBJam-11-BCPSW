@@ -1,6 +1,7 @@
 extends Control
 
 signal unpause
+#signal exit
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -9,8 +10,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	
+func _process(_delta):
 	if $PauseTimer.is_stopped() == true:
 		if Input.is_action_pressed("pause"):
 			print("P pressed during pause screen")

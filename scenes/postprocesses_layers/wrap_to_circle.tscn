@@ -1,14 +1,50 @@
-[gd_scene load_steps=3 format=3 uid="uid://bj08btic8c155"]
+[gd_scene load_steps=8 format=3 uid="uid://bj08btic8c155"]
 
+[ext_resource type="Texture2D" uid="uid://cf1ga27t3wa0c" path="res://scenes/postprocesses_layers/standard-grid.jpg" id="1_jda0g"]
 [ext_resource type="Shader" path="res://shaders/postprocess_shaders/warp_shader/flat_to_circular_1.gdshader" id="1_r5134"]
+
+[sub_resource type="Gradient" id="Gradient_fih70"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_do6yg"]
+gradient = SubResource("Gradient_fih70")
+width = 160
+height = 144
+fill = 2
+fill_from = Vector2(0.5, 1)
+fill_to = Vector2(0.5, 0)
+metadata/_snap_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_qttpt"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8mha4"]
+gradient = SubResource("Gradient_qttpt")
+width = 160
+height = 144
+fill = 1
+fill_from = Vector2(0.519231, 1)
+fill_to = Vector2(0.530769, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_adu6v"]
 shader = ExtResource("1_r5134")
-shader_parameter/param1 = -1.275
-shader_parameter/param2 = -0.96
-shader_parameter/y_translate = 1.295
+shader_parameter/factor1 = 1.085
+shader_parameter/factor2 = -0.01
+shader_parameter/factor3 = 0.515
+shader_parameter/factor4 = -3.065
+shader_parameter/factor5 = -0.315
+shader_parameter/factor6 = -0.735
+shader_parameter/factor7 = 0.99
+shader_parameter/factor8 = 0.04
+shader_parameter/gradient = SubResource("GradientTexture2D_do6yg")
+shader_parameter/gradient2 = SubResource("GradientTexture2D_8mha4")
 
 [node name="wrap_to_circle" type="CanvasLayer"]
+
+[node name="Standard-grid" type="Sprite2D" parent="."]
+position = Vector2(82, 73)
+scale = Vector2(0.14, 0.14)
+texture = ExtResource("1_jda0g")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_adu6v")

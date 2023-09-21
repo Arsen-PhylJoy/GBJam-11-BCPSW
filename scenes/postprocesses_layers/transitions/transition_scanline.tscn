@@ -9,8 +9,7 @@ shader_parameter/background_color = Color(0, 0, 0, 1)
 shader_parameter/start = false
 shader_parameter/frame = 0.0
 
-[sub_resource type="Animation" id="Animation_i8l02"]
-resource_name = "fade_in"
+[sub_resource type="Animation" id="Animation_ggy3a"]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -25,7 +24,8 @@ tracks/0/keys = {
 "values": [0.0, 75.0]
 }
 
-[sub_resource type="Animation" id="Animation_ggy3a"]
+[sub_resource type="Animation" id="Animation_i8l02"]
+resource_name = "fade_in"
 length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false

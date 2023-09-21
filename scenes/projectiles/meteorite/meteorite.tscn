@@ -8,7 +8,7 @@ radius = 22.0227
 
 [node name="Meteorite" type="RigidBody2D" groups=["Meteorite"]]
 collision_layer = 2
-collision_mask = 7
+collision_mask = 5
 max_contacts_reported = 1
 contact_monitor = true
 linear_damp_mode = 1
