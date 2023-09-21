@@ -3,7 +3,7 @@ extends Control
 signal play_pressed()
 
 func _ready():
-	pass
+	$"main-menu-music".play()
 
 func _process(_delta):
 	pass

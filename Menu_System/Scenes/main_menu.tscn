@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://updxlsecf8xr"]
+[gd_scene load_steps=6 format=3 uid="uid://updxlsecf8xr"]
 
 [ext_resource type="Script" path="res://Menu_System/Scripts/main_menu.gd" id="1_2fjw2"]
 [ext_resource type="Script" path="res://Menu_System/Scripts/play_button.gd" id="2_bqwm6"]
 [ext_resource type="Theme" uid="uid://g175br3gjr52" path="res://ui/main-menu/main_menu.tres" id="2_rsrfe"]
 [ext_resource type="Texture2D" uid="uid://mnfm8t54ub5m" path="res://assets/graphic/intro_animation/intro_animation_spritesheet.png" id="4_jx8uq"]
+[ext_resource type="AudioStream" uid="uid://ba13tw6pi0ktv" path="res://assets/audio/music/main-menu/main-menu.mp3" id="6_s3jd5"]
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
@@ -45,5 +46,8 @@ texture = ExtResource("4_jx8uq")
 hframes = 8
 vframes = 8
 frame = 63
+
+[node name="main-menu-music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_s3jd5")
 
 [connection signal="pressed" from="VBoxContainer/Play Button" to="." method="_on_play_button_pressed"]
