@@ -4,7 +4,6 @@
 
 [node name="projectile_spawner" type="Node2D"]
 script = ExtResource("1_c54bo")
-spawner_width = 500.0
 min_angular_velocity = 1.0
 max_angular_velocity = 5.0
 

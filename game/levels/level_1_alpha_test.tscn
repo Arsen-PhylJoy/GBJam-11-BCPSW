@@ -30,9 +30,7 @@ position = Vector2(0, -23)
 offset = Vector2(0, -17.835)
 
 [node name="projectile_spawner" parent="Player" instance=ExtResource("2_bvut5")]
-position = Vector2(-854, -103)
 projectile = ExtResource("3_shdic")
-spawner_width = 100.0
 gravity_scale = 0.002
 min_initial_speed = 30.0
 max_initial_speed = 80.0
