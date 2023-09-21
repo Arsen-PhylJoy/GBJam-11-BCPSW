@@ -60,6 +60,5 @@ func _on_pause_screen_unpause() -> void:
 	$"Pause Timer".start()
 	
 func on_defeat() -> void:
-	print("You dieded")
 	await get_tree().create_timer(2.0).timeout
 	emit_signal("defeat")
