@@ -70,5 +70,4 @@ one_shot = true
 
 [node name="parallax_background" parent="." instance=ExtResource("5_yo880")]
 
-[connection signal="projectile_spawned" from="Player/projectile_spawner" to="." method="_on_projectile_spawner_projectile_spawned"]
 [connection signal="unpause" from="Pause Screen" to="." method="_on_pause_screen_unpause"]
