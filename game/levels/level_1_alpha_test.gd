@@ -78,14 +78,12 @@ func _on_player_move(_position) -> void:
 		else:
 			to_preserve.push_back(met)
 	for met in to_delete:
-		if met:
+		if met.meteorite:
 			met.meteorite.queue_free()
 	meteorite_pool = to_preserve
 		
 func _on_meteor_deleted(meteor):
-	print(len(meteorite_pool))
 	meteorite_pool.erase(meteor)
-	print(len(meteorite_pool))
 	meteor.queue_free()
 	
 class MeteoriteBlock:
