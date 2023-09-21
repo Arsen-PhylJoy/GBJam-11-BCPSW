@@ -1,53 +1,40 @@
-[gd_scene load_steps=8 format=3 uid="uid://bj08btic8c155"]
+[gd_scene load_steps=6 format=3 uid="uid://bj08btic8c155"]
 
 [ext_resource type="Texture2D" uid="uid://cf1ga27t3wa0c" path="res://scenes/postprocesses_layers/standard-grid.jpg" id="1_jda0g"]
 [ext_resource type="Shader" path="res://shaders/postprocess_shaders/warp_shader/flat_to_circular_1.gdshader" id="1_r5134"]
 
-[sub_resource type="Gradient" id="Gradient_fih70"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+[sub_resource type="Gradient" id="Gradient_ycnlp"]
+offsets = PackedFloat32Array(0.0144928, 1)
+colors = PackedColorArray(0.629675, 0.629675, 0.629675, 1, 0.143112, 0.143112, 0.143112, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_do6yg"]
-gradient = SubResource("Gradient_fih70")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3ihxk"]
+gradient = SubResource("Gradient_ycnlp")
 width = 160
 height = 144
-fill = 2
+fill = 1
 fill_from = Vector2(0.5, 1)
 fill_to = Vector2(0.5, 0)
 metadata/_snap_enabled = true
 
-[sub_resource type="Gradient" id="Gradient_qttpt"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_8mha4"]
-gradient = SubResource("Gradient_qttpt")
-width = 160
-height = 144
-fill = 1
-fill_from = Vector2(0.519231, 1)
-fill_to = Vector2(0.530769, 0)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_adu6v"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b0kpn"]
 shader = ExtResource("1_r5134")
-shader_parameter/factor1 = 1.085
-shader_parameter/factor2 = -0.01
-shader_parameter/factor3 = 0.515
-shader_parameter/factor4 = -3.065
-shader_parameter/factor5 = -0.315
-shader_parameter/factor6 = -0.735
-shader_parameter/factor7 = 0.99
-shader_parameter/factor8 = 0.04
-shader_parameter/gradient = SubResource("GradientTexture2D_do6yg")
-shader_parameter/gradient2 = SubResource("GradientTexture2D_8mha4")
+shader_parameter/translate_screen_uv = 0.9
+shader_parameter/stretch_screen_uv = 0.59
+shader_parameter/translate_position_grad_uv = -1.355
+shader_parameter/stretch_position_grad_uv = 0.145
+shader_parameter/gradient = SubResource("GradientTexture2D_3ihxk")
 
 [node name="wrap_to_circle" type="CanvasLayer"]
+layer = -1
 
 [node name="Standard-grid" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(82, 73)
 scale = Vector2(0.14, 0.14)
 texture = ExtResource("1_jda0g")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_adu6v")
+material = SubResource("ShaderMaterial_b0kpn")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

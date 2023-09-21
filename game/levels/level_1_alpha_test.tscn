@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://duivdh4a5que7"]
+[gd_scene load_steps=10 format=3 uid="uid://duivdh4a5que7"]
 
 [ext_resource type="Script" path="res://game/levels/level_1_alpha_test.gd" id="1_4novl"]
 [ext_resource type="PackedScene" uid="uid://ga08fi1u5kdl" path="res://Menu_System/Scenes/player.tscn" id="1_gcv57"]
@@ -6,8 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://cubs0v07ul4y8" path="res://scenes/projectiles/meteorite/meteorite.tscn" id="3_shdic"]
 [ext_resource type="PackedScene" uid="uid://b6en1kjbe11nn" path="res://Menu_System/Scenes/pause_screen.tscn" id="5_7att2"]
 [ext_resource type="PackedScene" uid="uid://curqbovuaop8h" path="res://scenes/environment/env_01/parallax_background.tscn" id="5_yo880"]
-[ext_resource type="Shader" path="res://shaders/postprocess_shaders/warp_shader/flat_to_circular_1.gdshader" id="7_5orqt"]
-[ext_resource type="Texture2D" uid="uid://cf1ga27t3wa0c" path="res://scenes/postprocesses_layers/standard-grid.jpg" id="7_l1xcg"]
 
 [sub_resource type="Gradient" id="Gradient_cn1pe"]
 colors = PackedColorArray(0, 1, 0, 1, 0, 1, 1, 1)
@@ -18,42 +16,6 @@ width = 176
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dnu3l"]
 size = Vector2(30, 20)
-
-[sub_resource type="Gradient" id="Gradient_fih70"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_do6yg"]
-gradient = SubResource("Gradient_fih70")
-width = 160
-height = 144
-fill = 2
-fill_from = Vector2(0.5, 1)
-fill_to = Vector2(0.5, 0)
-metadata/_snap_enabled = true
-
-[sub_resource type="Gradient" id="Gradient_qttpt"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_8mha4"]
-gradient = SubResource("Gradient_qttpt")
-width = 160
-height = 144
-fill = 1
-fill_from = Vector2(0.573077, 1)
-fill_to = Vector2(0.530769, 0)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_adu6v"]
-shader = ExtResource("7_5orqt")
-shader_parameter/factor1 = 1.0
-shader_parameter/factor2 = 1.0
-shader_parameter/factor3 = 0.0
-shader_parameter/factor4 = 0.0
-shader_parameter/factor5 = 0.0
-shader_parameter/factor6 = 0.0
-shader_parameter/factor7 = 1.0
-shader_parameter/factor8 = 0.0
-shader_parameter/gradient = SubResource("GradientTexture2D_do6yg")
-shader_parameter/gradient2 = SubResource("GradientTexture2D_8mha4")
 
 [node name="level_1_alpha_test" type="Node"]
 script = ExtResource("1_4novl")
@@ -68,9 +30,7 @@ position = Vector2(0, -23)
 offset = Vector2(0, -17.835)
 
 [node name="projectile_spawner" parent="Player" instance=ExtResource("2_bvut5")]
-position = Vector2(-854, -103)
 projectile = ExtResource("3_shdic")
-spawner_width = 100.0
 gravity_scale = 0.002
 min_initial_speed = 30.0
 max_initial_speed = 80.0
@@ -109,23 +69,6 @@ wait_time = 0.5
 one_shot = true
 
 [node name="parallax_background" parent="." instance=ExtResource("5_yo880")]
-
-[node name="wrap_to_circle" type="CanvasLayer" parent="."]
-layer = -1
-
-[node name="Standard-grid" type="Sprite2D" parent="wrap_to_circle"]
-visible = false
-position = Vector2(82, 73)
-scale = Vector2(0.14, 0.14)
-texture = ExtResource("7_l1xcg")
-
-[node name="ColorRect" type="ColorRect" parent="wrap_to_circle"]
-material = SubResource("ShaderMaterial_adu6v")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [connection signal="projectile_spawned" from="Player/projectile_spawner" to="." method="_on_projectile_spawner_projectile_spawned"]
 [connection signal="unpause" from="Pause Screen" to="." method="_on_pause_screen_unpause"]
