@@ -19,6 +19,7 @@ func _ready():
 func _process(delta):
 	var velocity = Vector2.ZERO
 	var update_position = false
+	var player_run_sfx = $player_sfx as AudioStreamPlayer	
 	
 	if alive:
 		if Input.is_action_pressed("dpad_right"):
@@ -31,12 +32,15 @@ func _process(delta):
 			update_position = true
 		else:
 			$"hero_mesh".texture = idle_tex
-		
+			player_run_sfx.stop()
+			
 	velocity = velocity.normalized() * speed
 	position += velocity * delta
 	
 	if update_position:
 		emit_signal("player_update_position", $".".global_position)
+		if not player_run_sfx.playing:
+			player_run_sfx.play()
 	
 
 func _on_body_entered(body: Node2D) -> void:

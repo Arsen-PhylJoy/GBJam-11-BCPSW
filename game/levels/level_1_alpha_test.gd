@@ -46,6 +46,7 @@ func _on_projectile_spawner_projectile_spawned(pos, init_speed, gravity_scale) -
 func on_pause_button_pressed() -> void:
 	get_tree().paused = true
 	$"Pause Screen".show()
+	$"Pause Screen".play_pause_audio()
 	$"Pause Screen/PauseTimer".start()
 	$"Pause Screen/Resume Button".grab_focus()
 	
@@ -60,6 +61,7 @@ func on_exit_button_pressed() -> void:
 
 func _on_pause_screen_unpause() -> void:
 	print("unpaused by pressing pause button")
+	$"Pause Screen".play_resume_audio()
 	$"Pause Timer".start()
 	
 func _on_defeat() -> void:
@@ -67,7 +69,7 @@ func _on_defeat() -> void:
 	emit_signal("defeat")
 	
 func _on_player_move(_position) -> void:
-	var offset = (160/2)*1.05
+	var offset = int((160.0/2.0)*1.05)
 	var to_delete: Array[MeteoriteBlock] = []
 	var to_preserve: Array[MeteoriteBlock] = []
 	for met in meteorite_pool:
@@ -81,12 +83,17 @@ func _on_player_move(_position) -> void:
 	meteorite_pool = to_preserve
 		
 func _on_meteor_deleted(meteor):
-	meteorite_pool.erase(meteor)
-	meteor.queue_free()
+	if is_instance_valid(meteor):
+		meteor.queue_free()
+		var to_preserve: Array[MeteoriteBlock] = []
+		for meteorite_block in meteorite_pool:
+			if meteorite_block.meteorite != meteor:
+				to_preserve.push_back(meteorite_block)
+		meteorite_pool = to_preserve
 	
 class MeteoriteBlock:
 	var meteorite: RigidBody2D
 	var offset: int
-	func _init(meteorite: RigidBody2D, offset: int):
-		self.meteorite = meteorite
-		self.offset = offset
+	func _init(_meteorite: RigidBody2D, _offset: int):
+		self.meteorite = _meteorite
+		self.offset = _offset

@@ -1,6 +1,7 @@
 extends CanvasLayer
 ##Load this node and prompt start_fade_in or start_fade_out
 ##after animation this node deletes itself
+signal finished()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,19 +13,17 @@ func _process(delta: float) -> void:
 
 
 func start_fade_in() -> void:
-	$Fade_In_Out.show()
-	var tween = get_tree().create_tween()
 	get_tree().paused = true
-	$AnimationPlayer.play_backwards("fade_in")
-	await get_tree().create_timer(2).timeout
+	$AnimationPlayer.play("fade_in")
+	await $AnimationPlayer.animation_finished
+	emit_signal("finished")
 	get_tree().paused = false
 	self.queue_free()
 	
 func start_fade_out() -> void:
-	$Fade_In_Out.show()
-	var tween = get_tree().create_tween()
 	get_tree().paused = true
-	$AnimationPlayer.play("fade_in")
-	await get_tree().create_timer(2).timeout
+	$AnimationPlayer.play("fade_out")
+	await $AnimationPlayer.animation_finished
+	emit_signal("finished")
 	get_tree().paused = false
 	self.queue_free()

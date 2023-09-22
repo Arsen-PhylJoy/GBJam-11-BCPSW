@@ -1,11 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://duivdh4a5que7"]
+[gd_scene load_steps=14 format=3 uid="uid://duivdh4a5que7"]
 
 [ext_resource type="Script" path="res://game/levels/level_1_alpha_test.gd" id="1_4novl"]
 [ext_resource type="PackedScene" uid="uid://ga08fi1u5kdl" path="res://Menu_System/Scenes/player.tscn" id="1_gcv57"]
 [ext_resource type="PackedScene" uid="uid://b65pojpx24hdm" path="res://scenes/projectiles/projectile_spawner.tscn" id="2_bvut5"]
 [ext_resource type="PackedScene" uid="uid://cubs0v07ul4y8" path="res://scenes/projectiles/meteorite/meteorite.tscn" id="3_shdic"]
 [ext_resource type="PackedScene" uid="uid://b6en1kjbe11nn" path="res://Menu_System/Scenes/pause_screen.tscn" id="5_7att2"]
+[ext_resource type="AudioStream" uid="uid://wycpmwt87okm" path="res://assets/audio/sfx/characters/hero/sounds/run/run.mp3" id="5_xrsal"]
 [ext_resource type="PackedScene" uid="uid://curqbovuaop8h" path="res://scenes/environment/env_01/parallax_background.tscn" id="5_yo880"]
+[ext_resource type="AudioStream" uid="uid://b5358xumoanqi" path="res://assets/audio/music/pause-menu/pause-menu.mp3" id="6_7fkxr"]
+[ext_resource type="AudioStream" uid="uid://o6v8xjv4sk33" path="res://assets/audio/music/environment/env_01/ambient/env_01_ambient.mp3" id="7_r3uri"]
+[ext_resource type="AudioStream" uid="uid://cl3i7svr4j82y" path="res://assets/audio/music/menu-actions/click.mp3" id="7_tpnfv"]
 
 [sub_resource type="Gradient" id="Gradient_cn1pe"]
 colors = PackedColorArray(0, 1, 0, 1, 0, 1, 1, 1)
@@ -35,6 +39,9 @@ gravity_scale = 0.002
 min_initial_speed = 30.0
 max_initial_speed = 80.0
 
+[node name="player_sfx" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource("5_xrsal")
+
 [node name="ground_temporary" type="StaticBody2D" parent="." groups=["Ground"]]
 visible = false
 position = Vector2(84, 115)
@@ -62,10 +69,20 @@ offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="pause-button-audio" type="AudioStreamPlayer" parent="Pause Screen"]
+stream = ExtResource("6_7fkxr")
+
+[node name="resume-button-audio" type="AudioStreamPlayer" parent="Pause Screen"]
+stream = ExtResource("7_tpnfv")
+
 [node name="Pause Timer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
 
 [node name="parallax_background" parent="." instance=ExtResource("5_yo880")]
+
+[node name="env_01_ambient" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_r3uri")
+autoplay = true
 
 [connection signal="unpause" from="Pause Screen" to="." method="_on_pause_screen_unpause"]
