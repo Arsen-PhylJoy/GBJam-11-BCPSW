@@ -3,7 +3,7 @@ extends Area2D
 signal defeated()
 signal player_update_position(position)
 
-@export var speed = 50
+@export var speed = 100
 @export var idle_tex = preload("res://assets/graphic/characters/hero/sprite_sheets/idle/character_01_idle_sheet.png")
 @export var run_right_tex = preload("res://assets/graphic/characters/hero/sprite_sheets/run/character_01_run_right_sheet.png")
 @export var run_left_tex = preload("res://assets/graphic/characters/hero/sprite_sheets/run/character_01_run_left_sheet.png")
