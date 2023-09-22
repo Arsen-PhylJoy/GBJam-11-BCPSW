@@ -2,28 +2,15 @@ extends Object
 
 class_name SceneInfo
 
-enum Layer {
-	UI,
-	OVER,
-	FOREGROUND,
-	BACKGROUND,
-}
-
-enum Type {
-	MENU,
-	LEVEL,
-	ANIMATION,
-}
-
 # Properties
 var name: String
 var id: int
-var layer: Layer
-var type: Type
+var layer: Global.Layer
+var type: Global.Type
 var packed_scene: PackedScene
 
 # Constructor
-func _init(_name: String, _id: int, _layer: Layer, _type: Type, _packed_scene: PackedScene):
+func _init(_name: String, _id: int, _layer: Global.Layer, _type: Global.Type, _packed_scene: PackedScene):
 	self.name = _name
 	self.id = _id
 	self.layer = _layer

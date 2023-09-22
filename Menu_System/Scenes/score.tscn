@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjpc5tisr4oq5"]
+
+[ext_resource type="Script" path="res://Menu_System/Scenes/score.gd" id="1_v784n"]
+[ext_resource type="Theme" uid="uid://g175br3gjr52" path="res://ui/main-menu/main_menu.tres" id="2_1d2ba"]
+[ext_resource type="LabelSettings" uid="uid://irscd2nhiruy" path="res://ui/settings/score_label_settings.tres" id="3_hg0hy"]
+
+[node name="score" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_v784n")
+
+[node name="score_label" type="Label" parent="."]
+layout_mode = 0
+offset_left = -16.0
+offset_top = -24.0
+offset_right = 48.0
+offset_bottom = -1.0
+theme = ExtResource("2_1d2ba")
+text = "Score"
+label_settings = ExtResource("3_hg0hy")
+
+[node name="level_score_display" type="Label" parent="."]
+layout_mode = 0
+offset_left = -16.0
+offset_top = 8.0
+offset_right = 48.0
+offset_bottom = 31.0
+theme = ExtResource("2_1d2ba")
+
+[node name="score_display" type="Label" parent="."]
+layout_mode = 0
+offset_left = -16.0
+offset_top = -8.0
+offset_right = 48.0
+offset_bottom = 15.0
+theme = ExtResource("2_1d2ba")
