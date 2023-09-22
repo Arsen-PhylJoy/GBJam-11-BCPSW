@@ -26,7 +26,7 @@ func _exit_tree() -> void:
 	
 func _on_timer_timeout() -> void:
 	emit_signal("projectile_spawned",
-			rand.randf_range(self.global_position.x,spawner_width + self.global_position.x),
+			rand.randf_range(self.global_position.x - spawner_width,spawner_width + self.global_position.x),
 			rand.randf_range(min_initial_speed,max_initial_speed),
 			gravity_scale)
 
