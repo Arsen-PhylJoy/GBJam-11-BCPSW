@@ -38,8 +38,6 @@ projectile = ExtResource("3_shdic")
 gravity_scale = 0.002
 min_initial_speed = 30.0
 max_initial_speed = 80.0
-min_angular_velocity = 5.0
-max_angular_velocity = 25.0
 
 [node name="player_sfx" type="AudioStreamPlayer" parent="Player"]
 stream = ExtResource("5_xrsal")

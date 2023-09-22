@@ -79,8 +79,6 @@ func fade(fade_flag: bool) -> void:
 	var transition_screen = transition_pk.instantiate()
 	add_child(transition_screen)
 	if(fade_flag):
-		transition_screen.start_fade_in()
-		await transition_screen.finished
+		await transition_screen.start_fade_in()
 	else:
-		transition_screen.start_fade_out()
-		await transition_screen.finished
+		await transition_screen.start_fade_out()
