@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://game/levels/level_1_alpha_test.gd" id="1_4novl"]
 [ext_resource type="PackedScene" uid="uid://ga08fi1u5kdl" path="res://Menu_System/Scenes/player.tscn" id="1_gcv57"]
 [ext_resource type="PackedScene" uid="uid://b65pojpx24hdm" path="res://scenes/projectiles/projectile_spawner.tscn" id="2_bvut5"]
+[ext_resource type="PackedScene" uid="uid://cjpc5tisr4oq5" path="res://Menu_System/Scenes/score.tscn" id="3_8xfgu"]
 [ext_resource type="PackedScene" uid="uid://cubs0v07ul4y8" path="res://scenes/projectiles/meteorite/meteorite.tscn" id="3_shdic"]
 [ext_resource type="PackedScene" uid="uid://b6en1kjbe11nn" path="res://Menu_System/Scenes/pause_screen.tscn" id="5_7att2"]
 [ext_resource type="AudioStream" uid="uid://wycpmwt87okm" path="res://assets/audio/sfx/characters/hero/sounds/run/run.mp3" id="5_xrsal"]
@@ -10,7 +11,6 @@
 [ext_resource type="AudioStream" uid="uid://b5358xumoanqi" path="res://assets/audio/music/pause-menu/pause-menu.mp3" id="6_7fkxr"]
 [ext_resource type="AudioStream" uid="uid://o6v8xjv4sk33" path="res://assets/audio/music/environment/env_01/ambient/env_01_ambient.mp3" id="7_r3uri"]
 [ext_resource type="AudioStream" uid="uid://cl3i7svr4j82y" path="res://assets/audio/music/menu-actions/click.mp3" id="7_tpnfv"]
-[ext_resource type="PackedScene" uid="uid://cjpc5tisr4oq5" path="res://Menu_System/Scenes/score.tscn" id="11_hwtak"]
 
 [sub_resource type="Gradient" id="Gradient_cn1pe"]
 colors = PackedColorArray(0, 1, 0, 1, 0, 1, 1, 1)
@@ -33,6 +33,8 @@ speed = 100
 [node name="player_camera" type="Camera2D" parent="Player"]
 position = Vector2(0, -23)
 offset = Vector2(0, -17.835)
+
+[node name="score" parent="Player/player_camera" instance=ExtResource("3_8xfgu")]
 
 [node name="projectile_spawner" parent="Player" instance=ExtResource("2_bvut5")]
 projectile = ExtResource("3_shdic")

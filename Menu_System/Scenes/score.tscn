@@ -26,6 +26,7 @@ text = "Score"
 label_settings = ExtResource("3_hg0hy")
 
 [node name="level_score_display" type="Label" parent="."]
+layout_mode = 0
 offset_left = -16.0
 offset_top = 8.0
 offset_right = 48.0

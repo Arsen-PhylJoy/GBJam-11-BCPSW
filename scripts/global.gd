@@ -16,10 +16,10 @@ func print_score_data() -> void:
 	print("level: " + LevelName[score.levels[0].level])
 	print("level_score: " + str(score.levels[0].score))
 
-func update_score_by_move(score: int) -> void:
-	if self.score.current_score < score:
-		self.score.set_current(score)
-		emit_signal("score_update", str(score))
+func update_score_by_move(_score: int) -> void:
+	if self.score.current_score < _score:
+		self.score.set_current(_score)
+		emit_signal("score_update", str(_score))
 
 func emit_current_score() -> void:
 	var _current_score = 0
