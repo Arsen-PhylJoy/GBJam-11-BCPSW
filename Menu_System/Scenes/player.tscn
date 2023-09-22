@@ -44,7 +44,7 @@ _data = {
 "hero": SubResource("Animation_4fci8")
 }
 
-[node name="Player" type="Area2D"]
+[node name="Player" type="Area2D" groups=["Player"]]
 script = ExtResource("1_umu53")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -2,6 +2,7 @@ extends Node
 
 signal exit_game
 signal defeat
+signal win
 
 var meteorite_pool: Array[MeteoriteBlock] = []
 
@@ -16,8 +17,12 @@ func _ready() -> void:
 	
 	$Player.connect("defeated", self._on_defeat)
 	$Player.connect("player_update_position", self._on_player_move)
+	$Areas/Threshhold_1_easy.connect("area_entered",self._on_player_reach_difficlty_area_1)
+	$Areas/Threshhold_2_medium.connect("area_entered",self._on_player_reach_difficlty_area_2)
+	$Areas/Threshhold_3_hard.connect("area_entered",self._on_player_reach_difficlty_area_3)
+	$Areas/Threshhold_4_very_hard.connect("area_entered",self._on_player_reach_difficlty_area_4)
+	$Areas/Shelter.connect("area_entered",self._on_player_win)
 	$Player.position.x = 0
-	
 	var projectile_node = $Player/projectile_spawner
 	projectile_node.position.x = 0
 	projectile_node.position.y = 0
@@ -107,7 +112,26 @@ func _on_meteor_deleted(meteor):
 			if meteorite_block.meteorite != meteor:
 				to_preserve.push_back(meteorite_block)
 		meteorite_pool = to_preserve
-	
+
+func _on_player_reach_difficlty_area_1(area: Area2D)->void:
+	if(area.is_in_group("Player")):
+		$Player/projectile_spawner.set_difficulty_level(1);
+
+func _on_player_reach_difficlty_area_2(area: Area2D)->void:
+	if(area.is_in_group("Player")):
+		$Player/projectile_spawner.set_difficulty_level(2);
+
+func _on_player_reach_difficlty_area_3(area: Area2D)->void:
+	if(area.is_in_group("Player")):
+		$Player/projectile_spawner.set_difficulty_level(3);
+
+func _on_player_reach_difficlty_area_4(area: Area2D)->void:
+	if(area.is_in_group("Player")):
+		$Player/projectile_spawner.set_difficulty_level(4);
+
+func _on_player_win()->void:
+	emit_signal("win")
+
 class MeteoriteBlock:
 	var meteorite: RigidBody2D
 	var offset: int
