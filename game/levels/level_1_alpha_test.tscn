@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://duivdh4a5que7"]
+[gd_scene load_steps=15 format=3 uid="uid://duivdh4a5que7"]
 
 [ext_resource type="Script" path="res://game/levels/level_1_alpha_test.gd" id="1_4novl"]
 [ext_resource type="PackedScene" uid="uid://ga08fi1u5kdl" path="res://Menu_System/Scenes/player.tscn" id="1_gcv57"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://b5358xumoanqi" path="res://assets/audio/music/pause-menu/pause-menu.mp3" id="6_7fkxr"]
 [ext_resource type="AudioStream" uid="uid://o6v8xjv4sk33" path="res://assets/audio/music/environment/env_01/ambient/env_01_ambient.mp3" id="7_r3uri"]
 [ext_resource type="AudioStream" uid="uid://cl3i7svr4j82y" path="res://assets/audio/music/menu-actions/click.mp3" id="7_tpnfv"]
+[ext_resource type="PackedScene" uid="uid://cjpc5tisr4oq5" path="res://Menu_System/Scenes/score.tscn" id="11_hwtak"]
 
 [sub_resource type="Gradient" id="Gradient_cn1pe"]
 colors = PackedColorArray(0, 1, 0, 1, 0, 1, 1, 1)
@@ -54,7 +55,7 @@ position = Vector2(-4.72, -1)
 scale = Vector2(0.2194, 17.16)
 texture = SubResource("GradientTexture1D_j78pu")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ground_temporary"]
+[node name="ground_collider" type="CollisionShape2D" parent="ground_temporary"]
 position = Vector2(-5, 0)
 scale = Vector2(1.3, 0.98)
 shape = SubResource("RectangleShape2D_dnu3l")

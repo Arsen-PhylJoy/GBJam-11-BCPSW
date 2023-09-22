@@ -5,7 +5,6 @@ signal defeat
 
 var meteorite_pool: Array[MeteoriteBlock] = []
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_PAUSABLE
 	get_node("Pause Screen").position.y -= 30
@@ -20,13 +19,16 @@ func _ready() -> void:
 	projectile_node.position.x = 0
 	projectile_node.position.y = 0
 	projectile_node.connect("projectile_spawned", self._on_projectile_spawner_projectile_spawned)
-		
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+	
+	$Player/player_camera/score.position = Vector2(-60,-60)
+	Global.emit_current_score()
+	Global.emit_level_score(Global.Level.LEVEL_1)
 
 func _process(_delta: float) -> void:
 	if $"Pause Timer".is_stopped() == true:
 		if Input.is_action_pressed("pause"):
 			print("P pressed during unpaused")
+			Global.print_score_data()
 			on_pause_button_pressed()
 	
 	#Pause screen follows player to that it's always in the screen when the player pauses
@@ -45,12 +47,14 @@ func _on_projectile_spawner_projectile_spawned(pos, init_speed, gravity_scale) -
 	
 func on_pause_button_pressed() -> void:
 	get_tree().paused = true
+	$Player/player_camera/score.hide()
 	$"Pause Screen".show()
 	$"Pause Screen".play_pause_audio()
 	$"Pause Screen/PauseTimer".start()
 	$"Pause Screen/Resume Button".grab_focus()
 	
 func on_resume_button_pressed() -> void:
+	$Player/player_camera/score.show()	
 	$"Pause Screen".hide()
 	get_tree().paused = false
 
@@ -61,14 +65,18 @@ func on_exit_button_pressed() -> void:
 
 func _on_pause_screen_unpause() -> void:
 	print("unpaused by pressing pause button")
+	$Player/player_camera/score.show()		
 	$"Pause Screen".play_resume_audio()
 	$"Pause Timer".start()
 	
 func _on_defeat() -> void:
+	Global.score.set_score_by_level(Global.Level.LEVEL_1)
+	Global.score.set_current(0)
 	await get_tree().create_timer(2.0).timeout
 	emit_signal("defeat")
 	
 func _on_player_move(_position) -> void:
+	Global.update_score_by_move(_position.x)
 	var offset = int((160.0/2.0)*1.05)
 	var to_delete: Array[MeteoriteBlock] = []
 	var to_preserve: Array[MeteoriteBlock] = []

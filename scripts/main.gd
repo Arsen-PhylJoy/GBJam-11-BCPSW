@@ -3,13 +3,7 @@ extends Node
 var game_window_scale = 1
 
 var scenes: SceneControl = SceneControl.new()
-var scene_names = {GameScene.INTRO: "intro", GameScene.MAIN_MENU: "main_menu", GameScene.LEVEL_1: "level_1"}
-enum GameScene {
-	INTRO,
-	MAIN_MENU,
-	LEVEL_1
-}
-
+	
 @export var intro_scene_pk: PackedScene
 @export var main_menu_scene_pk: PackedScene
 @export var level_1_scene_pk: PackedScene
@@ -17,13 +11,13 @@ enum GameScene {
 @export var transition_pk: PackedScene
 
 func _main_preprocesses() -> void:
+	Global.init_score_data()
 	_create_scenes_info()
 
 func _create_scenes_info() -> void:
-
-	var intro_scene = SceneInfo.new(scene_names[GameScene.INTRO], 0, SceneInfo.Layer.OVER, SceneInfo.Type.ANIMATION, intro_scene_pk)
-	var main_menu_scene = SceneInfo.new(scene_names[GameScene.MAIN_MENU], 1, SceneInfo.Layer.UI, SceneInfo.Type.MENU, main_menu_scene_pk)
-	var level_1_scene = SceneInfo.new(scene_names[GameScene.LEVEL_1], 2, SceneInfo.Layer.OVER, SceneInfo.Type.LEVEL, level_1_scene_pk)
+	var intro_scene = SceneInfo.new(Global.SceneName[Global.Scene.INTRO], 0, Global.Layer.OVER, Global.Type.ANIMATION, intro_scene_pk)
+	var main_menu_scene = SceneInfo.new(Global.SceneName[Global.Scene.MAIN_MENU], 1, Global.Layer.UI, Global.Type.MENU, main_menu_scene_pk)
+	var level_1_scene = SceneInfo.new(Global.SceneName[Global.Scene.LEVEL_1], 2, Global.Layer.OVER, Global.Type.LEVEL, level_1_scene_pk)
 	scenes.add_scenes([intro_scene, main_menu_scene, level_1_scene])
 
 # Called when the node enters the scene tree for the first time.
@@ -31,7 +25,7 @@ func _ready() -> void:
 	_main_preprocesses()
 	get_tree().root.size = Vector2(160,144)
 	
-	var intro_scene = self.scenes.get_scene_by_name(scene_names[GameScene.INTRO])
+	var intro_scene = self.scenes.get_scene_by_name(Global.SceneName[Global.Scene.INTRO])
 	await load_scene(intro_scene)
 	get_node(intro_scene.name).connect("intro_ended", self.load_menu)
 
@@ -63,12 +57,13 @@ func remove_scene(scene: SceneInfo)->void:
 	get_node(scene.name).queue_free()
 
 func load_menu() ->void:
-	var main_menu_scene = scenes.get_scene_by_name(scene_names[GameScene.MAIN_MENU])
+	var main_menu_scene = scenes.get_scene_by_name(Global.SceneName[Global.Scene.MAIN_MENU])
 	await load_scene(main_menu_scene)
 	get_node(main_menu_scene.name).connect("play_pressed",self.load_level1)
 
 func load_level1()->void:
-	var level_1_scene = scenes.get_scene_by_name(scene_names[GameScene.LEVEL_1])
+	Global.score.add_levels([Global.Level.LEVEL_1])
+	var level_1_scene = scenes.get_scene_by_name(Global.SceneName[Global.Scene.LEVEL_1])
 	await load_scene(level_1_scene)
 	var level_1_node = get_node(level_1_scene.name)
 	level_1_node.connect("exit_game", self.load_menu)
