@@ -4,7 +4,7 @@ signal score_update
 signal level_score_update
 
 var score: PlayerScoreControl
-#var score_stream: Array = []
+var isDeafeated = false
 
 func init_score_data() -> void:
 	score = PlayerScoreControl.new("player_one")
@@ -32,28 +32,9 @@ func emit_level_score(_level: Global.Level) -> void:
 	if (_level_score > 0):
 		emit_signal("level_score_update", str(_level_score))
 
-#func print_score_stream(interval: int = 3) -> void:
-#	if len(self.score_stream) > interval:
-#		for data_index in range(interval):
-#			var data = self.score_stream[-data_index]
-#			if data:
-#				print(TagName[self.score_stream[-data_index].tag])
-#				print(LevelName[self.score_stream[-data_index].level])
-#				print(self.score_stream[-data_index].score)
-#	else:
-#		for data in score_stream:
-#			print(TagName[data.tag])
-#			print(LevelName[data.level])
-#			print(data.score)
-
-#class ScoreData:
-#	var tag: Tag = Tag.Score
-#	var level: Level
-#	var score: int
-#
-#	func _init(_level: Level, _score: int):
-#		self.level = _level
-#		self.score = _score
+func reset_current_level_score() -> void:
+	self.score.set_score_by_level(self.score.current_level.level, false, 0)
+	self.score.set_current_level(null)
 
 enum Scene {
 	INTRO,

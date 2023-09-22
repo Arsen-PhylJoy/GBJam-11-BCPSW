@@ -6,6 +6,7 @@ var player: String
 var current_score: int
 var display_score: int
 var levels: Array[ScoreBlock]
+var current_level: ScoreBlock
 
 func _init(_player: String, _levels: Array[Global.Level] = []):
 	self.player = _player
@@ -13,6 +14,7 @@ func _init(_player: String, _levels: Array[Global.Level] = []):
 	self.display_score = 0
 	if len(_levels) > 0:
 		self.levels = self._create_levels(_levels)
+	self.current_level = null
 
 func _create_levels(_levels: Array[Global.Level]) -> Array[ScoreBlock]:
 	var result: Array[ScoreBlock] = []
@@ -37,6 +39,20 @@ func delete_levels(_levels: Array[Global.Level]):
 			tmp.push_back(level_block)
 	self.levels = tmp
 	
+func get_level_block(_level: Global.Level) -> ScoreBlock:
+	var result: ScoreBlock = null
+	for level_block in self.levels:
+		if level_block.level == _level:
+			result = level_block
+			break
+	return result
+
+func set_current_level(_level: ScoreBlock) -> void:
+	self.current_level = _level
+	
+func get_current_level() -> ScoreBlock:
+	return self.current_level
+	
 func get_score_by_level(_level: Global.Level) -> int:
 	var result: int = -1
 	for level_block in self.levels:
@@ -45,22 +61,23 @@ func get_score_by_level(_level: Global.Level) -> int:
 			break
 	return result
 	
-func set_score_by_level(_level: Global.Level) -> void:
+func set_score_by_level(_level: Global.Level, persistent = false, _score: int = self.current_score) -> void:
 	for level_block in self.levels:
 		if level_block.level == _level:
-			level_block.score = self.current_score
+			if (persistent and level_block.score < _score) or not persistent:
+				level_block.score = _score
 			break
-	
+
 func set_current(score: int):
 	self.current_score = score
-	
+
 func get_current() -> int:
 	return self.current_score
-	
+
 class ScoreBlock:
 	var score: int
 	var level: Global.Level
-	
+
 	func _init(_level: Global.Level, _score: int = -1):
 		self.level = _level
 		self.score = _score

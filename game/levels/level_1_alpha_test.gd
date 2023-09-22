@@ -6,6 +6,8 @@ signal defeat
 var meteorite_pool: Array[MeteoriteBlock] = []
 
 func _ready() -> void:
+	Global.isDeafeated = false
+	
 	process_mode = Node.PROCESS_MODE_PAUSABLE
 	get_node("Pause Screen").position.y -= 30
 	get_node("Pause Screen").hide()
@@ -14,6 +16,7 @@ func _ready() -> void:
 	
 	$Player.connect("defeated", self._on_defeat)
 	$Player.connect("player_update_position", self._on_player_move)
+	$Player.position.x = 0
 	
 	var projectile_node = $Player/projectile_spawner
 	projectile_node.position.x = 0
@@ -21,6 +24,8 @@ func _ready() -> void:
 	projectile_node.connect("projectile_spawned", self._on_projectile_spawner_projectile_spawned)
 	
 	$Player/player_camera/score.position = Vector2(-60,-60)
+	var current_level_score_block = Global.score.get_level_block(Global.Level.LEVEL_1)
+	Global.score.set_current_level(current_level_score_block)
 	Global.emit_current_score()
 	Global.emit_level_score(Global.Level.LEVEL_1)
 
@@ -46,12 +51,13 @@ func _on_projectile_spawner_projectile_spawned(pos, init_speed, gravity_scale) -
 	meteor_instance.connect("on_meteor_deleted", self._on_meteor_deleted)
 	
 func on_pause_button_pressed() -> void:
-	get_tree().paused = true
-	$Player/player_camera/score.hide()
-	$"Pause Screen".show()
-	$"Pause Screen".play_pause_audio()
-	$"Pause Screen/PauseTimer".start()
-	$"Pause Screen/Resume Button".grab_focus()
+	if not Global.isDeafeated:
+		get_tree().paused = true
+		$Player/player_camera/score.hide()
+		$"Pause Screen".show()
+		$"Pause Screen".play_pause_audio()
+		$"Pause Screen/PauseTimer".start()
+		$"Pause Screen/Resume Button".grab_focus()
 	
 func on_resume_button_pressed() -> void:
 	$Player/player_camera/score.show()	
@@ -60,6 +66,8 @@ func on_resume_button_pressed() -> void:
 
 func on_exit_button_pressed() -> void:
 	print("Pressed exit button")
+	Global.score.set_current(0)
+	Global.reset_current_level_score()
 	get_tree().paused = false
 	emit_signal("exit_game")
 
@@ -70,7 +78,8 @@ func _on_pause_screen_unpause() -> void:
 	$"Pause Timer".start()
 	
 func _on_defeat() -> void:
-	Global.score.set_score_by_level(Global.Level.LEVEL_1)
+	Global.isDeafeated = true
+	Global.score.set_score_by_level(Global.Level.LEVEL_1, true)
 	Global.score.set_current(0)
 	await get_tree().create_timer(2.0).timeout
 	emit_signal("defeat")
