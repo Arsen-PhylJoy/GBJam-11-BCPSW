@@ -9,10 +9,12 @@ enum GameScene {
 	MAIN_MENU,
 	LEVEL_1
 }
-	
+
 @export var intro_scene_pk: PackedScene
 @export var main_menu_scene_pk: PackedScene
 @export var level_1_scene_pk: PackedScene
+
+@export var transition_pk: PackedScene
 
 func _main_preprocesses() -> void:
 	_create_scenes_info()
@@ -30,7 +32,7 @@ func _ready() -> void:
 	get_tree().root.size = Vector2(160,144)
 	
 	var intro_scene = self.scenes.get_scene_by_name(scene_names[GameScene.INTRO])
-	load_scene(intro_scene)
+	await load_scene(intro_scene)
 	get_node(intro_scene.name).connect("intro_ended", self.load_menu)
 
 func _process(_delta) -> void:
@@ -49,23 +51,34 @@ func _set_game_window_size():
 func load_scene(scene: SceneInfo)->void:
 	var current_scene = self.scenes.get_current()
 	if current_scene != null:
-		remove_scene(current_scene)
+		await remove_scene(current_scene)
 	self.scenes.set_current(scene)
 	var scene_instace = scene.packed_scene.instantiate()
 	scene_instace.name = scene.name
 	add_child(scene_instace)
+	await fade(false)
 	
 func remove_scene(scene: SceneInfo)->void:
+	await fade(true)
 	get_node(scene.name).queue_free()
 
 func load_menu() ->void:
 	var main_menu_scene = scenes.get_scene_by_name(scene_names[GameScene.MAIN_MENU])
-	load_scene(main_menu_scene)
+	await load_scene(main_menu_scene)
 	get_node(main_menu_scene.name).connect("play_pressed",self.load_level1)
 
 func load_level1()->void:
 	var level_1_scene = scenes.get_scene_by_name(scene_names[GameScene.LEVEL_1])
-	load_scene(level_1_scene)
+	await load_scene(level_1_scene)
 	var level_1_node = get_node(level_1_scene.name)
 	level_1_node.connect("exit_game", self.load_menu)
 	level_1_node.connect("defeat", self.load_menu)
+
+##If true->fade in else fade out
+func fade(fade_flag: bool) -> void:
+	var transition_screen = transition_pk.instantiate()
+	add_child(transition_screen)
+	if(fade_flag):
+		await transition_screen.start_fade_in()
+	else:
+		await transition_screen.start_fade_out()

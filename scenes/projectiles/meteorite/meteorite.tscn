@@ -52,13 +52,13 @@ contact_monitor = true
 linear_damp_mode = 1
 angular_damp_mode = 1
 script = ExtResource("1_r1rqi")
+meteorite_textures = Array[Texture]([ExtResource("2_csldx")])
 
 [node name="meteorite_sprite" type="Sprite2D" parent="."]
-texture = ExtResource("2_csldx")
 hframes = 12
 
 [node name="meteorite_collider" type="CollisionShape2D" parent="."]
-scale = Vector2(0.465, 0.447)
+scale = Vector2(0.271279, 0.752946)
 shape = SubResource("CircleShape2D_8uvon")
 
 [node name="meteorite_animation" type="AnimationPlayer" parent="."]
