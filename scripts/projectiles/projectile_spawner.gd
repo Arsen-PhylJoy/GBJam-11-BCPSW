@@ -3,6 +3,7 @@ extends Node2D
 signal projectile_spawned(pos,new_scale,init_speed,angular_velocity,direction_vector,gravity_scale)
 
 @export var projectile: PackedScene
+
 @export var spawner_width: float = 100
 @export var meteortirs_per_second: float  = 1
 ##Default is 9.8.
