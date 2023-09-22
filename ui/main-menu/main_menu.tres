@@ -1,8 +1,11 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://g175br3gjr52"]
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://g175br3gjr52"]
 
+[ext_resource type="FontFile" uid="uid://b0ufnsvy3dnrq" path="res://assets/ui/main-font_medium.fnt" id="1_m6ovn"]
 [ext_resource type="FontFile" uid="uid://dhw7i80xrj4im" path="res://assets/ui/main-font.fnt" id="1_oj1a3"]
+[ext_resource type="FontFile" uid="uid://bg08jbk1kxuys" path="res://assets/ui/main-font_small.fnt" id="2_n0c85"]
 
 [resource]
 default_font = ExtResource("1_oj1a3")
-default_font_size = 0
+Fonts/fonts/medium = ExtResource("1_m6ovn")
 Fonts/fonts/normal = ExtResource("1_oj1a3")
+Fonts/fonts/small = ExtResource("2_n0c85")
