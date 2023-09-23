@@ -1,10 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://updxlsecf8xr"]
+[gd_scene load_steps=8 format=3 uid="uid://updxlsecf8xr"]
 
 [ext_resource type="Script" path="res://Menu_System/Scripts/main_menu.gd" id="1_2fjw2"]
 [ext_resource type="Script" path="res://Menu_System/Scripts/play_button.gd" id="2_bqwm6"]
 [ext_resource type="Theme" uid="uid://g175br3gjr52" path="res://ui/main-menu/main_menu.tres" id="2_rsrfe"]
 [ext_resource type="Texture2D" uid="uid://mnfm8t54ub5m" path="res://assets/graphic/intro_animation/intro_animation_spritesheet.png" id="4_jx8uq"]
+[ext_resource type="Shader" path="res://scripts/postprocesses_layers/color_4_post_process.gdshader" id="6_ekvbl"]
 [ext_resource type="AudioStream" uid="uid://ba13tw6pi0ktv" path="res://assets/audio/music/main-menu/main-menu.mp3" id="6_s3jd5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mbmxm"]
+shader = ExtResource("6_ekvbl")
+shader_parameter/color1 = Color(0, 0, 0, 1)
+shader_parameter/color2 = Color(0.803922, 0.431373, 0.364706, 1)
+shader_parameter/color3 = Color(0.785156, 0.628906, 0.597656, 1)
+shader_parameter/color4 = Color(0.765625, 0.769531, 0.753906, 1)
+shader_parameter/simple_shading_mode = true
+shader_parameter/brightness_factor = 0.0
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
@@ -14,6 +24,17 @@ offset_top = 15.0
 offset_right = 109.0
 offset_bottom = 55.0
 script = ExtResource("1_2fjw2")
+
+[node name="color_4_post_process" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="color_4_post_process"]
+material = SubResource("ShaderMaterial_mbmxm")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
