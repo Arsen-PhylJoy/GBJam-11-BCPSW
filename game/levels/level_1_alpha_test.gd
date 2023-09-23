@@ -83,7 +83,6 @@ func _on_pause_screen_unpause() -> void:
 	$"Pause Timer".start()
 	
 func _on_defeat() -> void:
-	Global.isDeafeated = true
 	Global.score.set_score_by_level(Global.Level.LEVEL_1, true)
 	Global.score.set_current(0)
 	emit_signal("defeat")
