@@ -3,67 +3,52 @@ extends Area2D
 signal defeated()
 signal player_update_position(position)
 
+@export var dash_offset = 0.1
+@export var dash_speed = 400
 @export var speed = 100
 @export var defeat_tex = preload("res://assets/graphic/characters/hero/sprite_sheets/defeat/character_01_defeat_sheet.png")
 
-var can_dash = true
-var can_move = true
+var counter = 0.0
+var delta_deadend = 0
+var isDashing = false
 
 func _ready():
 	$hero_animations.play("idle")
 	self.set_defeat_animation(4)
-	
+
 func _process(delta):
+	counter += delta
+	var active_speed = speed
 	var velocity = Vector2.ZERO
 	var update_position = false
 	var player_run_sfx = $player_sfx as AudioStreamPlayer
 	
-	#var to hold initial speed value 
-	var temp_speed = speed
+	if isDashing and counter >= delta_deadend:
+		active_speed = speed
+		isDashing = false
+	elif isDashing and counter < delta_deadend:
+		active_speed = dash_speed
+	elif Input.is_action_just_pressed("a") and not isDashing:
+		active_speed = dash_speed
+		isDashing = true
+		delta_deadend = counter + dash_offset
+
 	
 	if not Global.isDeafeated:
 		if Input.is_action_pressed("dpad_right"):
 			$hero_animations.play("run_right")
 			velocity.x += 1
-			
-			#the Dash action
-			#after inputing the dash input, internals timers are made that temporatily increase speed
-			#and another timer that starts a dash cooldown
-			if Input.is_action_just_pressed("a") and can_dash:
-				print("pressed Dash button")
-				speed = speed * 4
-				can_dash = false
-				await get_tree().create_timer(0.2).timeout
-				speed = temp_speed
-				await get_tree().create_timer(0.5).timeout
-				can_dash = true
-				
 			update_position = true
-			
-			
 		elif Input.is_action_pressed("dpad_left"):
 			$hero_animations.play("run_left")
 			velocity.x -= 1
-			
-			#the Dash action
-			#after inputing the dash input, internals timers are made that temporatily increase speed
-			#and another timer that starts a dash cooldown
-			if Input.is_action_just_pressed("a") and can_dash:
-				print("pressed Dash button")
-				speed = speed * 4
-				can_dash = false
-				await get_tree().create_timer(0.2).timeout
-				speed = temp_speed
-				await get_tree().create_timer(0.5).timeout
-				can_dash = true
-			
 			update_position = true
 		else:
 			$hero_animations.play("idle")
 			player_run_sfx.stop()
+			isDashing = false
 			
-	velocity = velocity * speed
-	#velocity = velocity.normalized() * speed
+	velocity = velocity.normalized() * active_speed
 	position += velocity * delta
 	
 	if update_position:
