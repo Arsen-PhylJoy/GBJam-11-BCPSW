@@ -22,7 +22,7 @@ var rand: RandomNumberGenerator = RandomNumberGenerator.new()
 func _ready() -> void:
 	randomize()
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	$Timer.wait_time = 1/meteortirs_per_second
 
 func _exit_tree() -> void:
