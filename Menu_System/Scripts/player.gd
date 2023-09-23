@@ -4,12 +4,12 @@ signal defeated()
 signal player_update_position(position)
 
 @export var speed = 100
+@export var defeat_tex = preload("res://assets/graphic/characters/hero/sprite_sheets/defeat/character_01_defeat_sheet.png")
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	$hero_animations.play("idle")
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+	self.set_defeat_animation(4)
+	
 func _process(delta):
 	var velocity = Vector2.ZERO
 	var update_position = false
@@ -35,7 +35,6 @@ func _process(delta):
 		emit_signal("player_update_position", $".".global_position)
 		if not player_run_sfx.playing:
 			player_run_sfx.play()
-	
 
 func _on_body_entered(body: Node2D) -> void:
 	if not Global.isDeafeated and body.is_in_group("Meteorite"):
@@ -43,3 +42,22 @@ func _on_body_entered(body: Node2D) -> void:
 		$hero_animations.play("defeat")
 		await $hero_animations.animation_finished
 		emit_signal("defeated")
+
+func set_defeat_animation(times) -> void:
+	var defeat_animation = $hero_animations.get_animation("defeat") as Animation
+	defeat_animation.length = float(times * 0.4)
+	var track = defeat_animation.add_track(Animation.TYPE_VALUE, 0)
+	defeat_animation.track_set_enabled(track, true)
+	defeat_animation.track_set_path(track, "hero_mesh:frame")
+	for time in range(times):
+		for frame in range(4):
+			var key = frame + (4 * time)
+			var seconds = float(key/10.0) + 0.1
+			defeat_animation.track_insert_key(track, seconds, frame)
+			print("seconds: ", seconds)
+			print("frame: ", frame)
+
+	var tex_track = defeat_animation.add_track(Animation.TYPE_VALUE, 1)
+	defeat_animation.track_set_enabled(tex_track, true)
+	defeat_animation.track_set_path(tex_track, "hero_mesh:texture")
+	defeat_animation.track_insert_key(tex_track, 0.0, defeat_tex)
