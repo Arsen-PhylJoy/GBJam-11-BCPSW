@@ -1,11 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://c1n0exhontfwp"]
+[gd_scene load_steps=10 format=3 uid="uid://c1n0exhontfwp"]
 
 [ext_resource type="Script" path="res://Menu_System/Scripts/intro_scene.gd" id="1_5vhko"]
 [ext_resource type="Texture2D" uid="uid://mnfm8t54ub5m" path="res://assets/graphic/intro_animation/intro_animation_spritesheet.png" id="2_foxay"]
 [ext_resource type="Texture2D" uid="uid://c2nnqk32wefgo" path="res://assets/ui/game_logo.png" id="3_g560r"]
 [ext_resource type="Animation" uid="uid://b1yb5hf8hw5fp" path="res://scenes/ui/animations/title_animation.res" id="4_7iqfs"]
 [ext_resource type="AudioStream" uid="uid://depas4vjl8k8j" path="res://assets/audio/music/game-intro/intro.mp3" id="5_8ikoq"]
-[ext_resource type="PackedScene" uid="uid://c2xakack5y76v" path="res://scenes/postprocesses_layers/color_4_post_process.tscn" id="6_cypl3"]
+[ext_resource type="Shader" path="res://scripts/postprocesses_layers/color_4_post_process.gdshader" id="6_eurtj"]
 
 [sub_resource type="Animation" id="Animation_0gx4q"]
 length = 0.001
@@ -15,6 +15,15 @@ _data = {
 "RESET": SubResource("Animation_0gx4q"),
 "title_animation": ExtResource("4_7iqfs")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mbmxm"]
+shader = ExtResource("6_eurtj")
+shader_parameter/color1 = Color(0, 0, 0, 1)
+shader_parameter/color2 = Color(0.803922, 0.431373, 0.364706, 1)
+shader_parameter/color3 = Color(0.785156, 0.628906, 0.597656, 1)
+shader_parameter/color4 = Color(0.765625, 0.769531, 0.753906, 1)
+shader_parameter/simple_shading_mode = true
+shader_parameter/brightness_factor = 0.0
 
 [node name="Intro Scene" type="Node2D"]
 script = ExtResource("1_5vhko")
@@ -38,4 +47,12 @@ libraries = {
 [node name="intro-audio" type="AudioStreamPlayer" parent="intro_scene_animation"]
 stream = ExtResource("5_8ikoq")
 
-[node name="color_4_post_process" parent="." instance=ExtResource("6_cypl3")]
+[node name="color_4_post_process" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="color_4_post_process"]
+material = SubResource("ShaderMaterial_mbmxm")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

@@ -1,14 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://c2xakack5y76v"]
+[gd_scene load_steps=3 format=3 uid="uid://c2xakack5y76v"]
 
 [ext_resource type="Shader" path="res://scripts/postprocesses_layers/color_4_post_process.gdshader" id="1_tyf8w"]
-[ext_resource type="Texture2D" uid="uid://mgrm2ow0wuev" path="res://assets/graphic/characters/hero/sprite_sheets/idle/character_01_idle_sheet.png" id="2_7jxkd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mbmxm"]
 shader = ExtResource("1_tyf8w")
-shader_parameter/color1 = Color(0.0273438, 0.0273438, 0.0273438, 1)
-shader_parameter/color2 = Color(0.796875, 0.433594, 0.375, 1)
-shader_parameter/color3 = Color(0.777344, 0.628906, 0.601563, 1)
-shader_parameter/color4 = Color(0.933594, 0.902344, 0.859375, 1)
+shader_parameter/color1 = Color(0, 0, 0, 1)
+shader_parameter/color2 = Color(0.803922, 0.431373, 0.364706, 1)
+shader_parameter/color3 = Color(0.785156, 0.628906, 0.597656, 1)
+shader_parameter/color4 = Color(0.765625, 0.769531, 0.753906, 1)
+shader_parameter/simple_shading_mode = true
+shader_parameter/brightness_factor = 0.0
 
 [node name="color_4_post_process" type="CanvasLayer"]
 
@@ -19,7 +20,3 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(253, 70)
-texture = ExtResource("2_7jxkd")

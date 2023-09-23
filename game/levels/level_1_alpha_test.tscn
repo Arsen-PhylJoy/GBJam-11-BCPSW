@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://duivdh4a5que7"]
+[gd_scene load_steps=17 format=3 uid="uid://duivdh4a5que7"]
 
 [ext_resource type="Script" path="res://game/levels/level_1_alpha_test.gd" id="1_4novl"]
 [ext_resource type="PackedScene" uid="uid://ga08fi1u5kdl" path="res://Menu_System/Scenes/player.tscn" id="1_gcv57"]
@@ -12,12 +12,22 @@
 [ext_resource type="AudioStream" uid="uid://b5358xumoanqi" path="res://assets/audio/music/pause-menu/pause-menu.mp3" id="6_7fkxr"]
 [ext_resource type="AudioStream" uid="uid://o6v8xjv4sk33" path="res://assets/audio/music/environment/env_01/ambient/env_01_ambient.mp3" id="7_r3uri"]
 [ext_resource type="AudioStream" uid="uid://cl3i7svr4j82y" path="res://assets/audio/music/menu-actions/click.mp3" id="7_tpnfv"]
+[ext_resource type="Shader" path="res://scripts/postprocesses_layers/color_4_post_process.gdshader" id="13_3pygw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dnu3l"]
 size = Vector2(30, 44.898)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wauqm"]
 size = Vector2(11, 237)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mbmxm"]
+shader = ExtResource("13_3pygw")
+shader_parameter/color1 = Color(0, 0, 0, 1)
+shader_parameter/color2 = Color(0.803922, 0.431373, 0.364706, 1)
+shader_parameter/color3 = Color(0.785156, 0.628906, 0.597656, 1)
+shader_parameter/color4 = Color(0.765625, 0.769531, 0.753906, 1)
+shader_parameter/simple_shading_mode = true
+shader_parameter/brightness_factor = 0.0
 
 [node name="level_1_alpha_test" type="Node"]
 script = ExtResource("1_4novl")
@@ -111,5 +121,16 @@ position = Vector2(3048, 100)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Shelter"]
 scale = Vector2(0.1, 1)
 shape = SubResource("RectangleShape2D_wauqm")
+
+[node name="color_4_post_process" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="color_4_post_process"]
+material = SubResource("ShaderMaterial_mbmxm")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [connection signal="unpause" from="Pause Screen" to="." method="_on_pause_screen_unpause"]
