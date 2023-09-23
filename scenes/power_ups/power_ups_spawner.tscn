@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjm41aq733ya0"]
+
+[ext_resource type="Script" path="res://scripts/power_ups/power_up_spawner.gd" id="1_t6tky"]
+
+[node name="power_ups_spawner" type="Node2D"]
+script = ExtResource("1_t6tky")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.025, 0.025)

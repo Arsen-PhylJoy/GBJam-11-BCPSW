@@ -28,6 +28,9 @@ func _ready() -> void:
 	projectile_node.position.y = 0
 	projectile_node.connect("projectile_spawned", self._on_projectile_spawner_projectile_spawned)
 	
+	var power_ups_spawner = $power_ups_spawner
+	power_ups_spawner.connect("power_up_spawn", self._on_power_up_spawn)
+	
 	$Player/player_camera/score.position = Vector2(-60,-60)
 	var current_level_score_block = Global.score.get_level_block(Global.Level.LEVEL_1)
 	Global.score.set_current_level(current_level_score_block)
@@ -57,6 +60,11 @@ func _on_projectile_spawner_projectile_spawned(pos, init_speed, gravity_scale) -
 	meteor_instance.gravity_scale = gravity_scale
 	meteor_instance.connect("on_meteor_deleted", self._on_meteor_deleted)
 	
+func _on_power_up_spawn(power_up_index,power_up_pos_x)->void:
+	var hot_dog = $power_ups_spawner.place_holder.instantiate() as Sprite2D
+	add_child(hot_dog)
+	hot_dog.position.x = power_up_pos_x
+
 func on_pause_button_pressed() -> void:
 	if not Global.isDeafeated:
 		get_tree().paused = true
