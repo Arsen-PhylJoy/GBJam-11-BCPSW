@@ -12,7 +12,7 @@ var alive = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$hero_animations.play("hero")
+	$hero_animations.play("idle")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -23,15 +23,15 @@ func _process(delta):
 	
 	if alive:
 		if Input.is_action_pressed("dpad_right"):
-			$"hero_mesh".texture = run_right_tex
+			$hero_animations.play("run_right")
 			velocity.x += 1
 			update_position = true
 		elif Input.is_action_pressed("dpad_left"):
-			$"hero_mesh".texture = run_left_tex
+			$hero_animations.play("run_left")
 			velocity.x -= 1
 			update_position = true
 		else:
-			$"hero_mesh".texture = idle_tex
+			$hero_animations.play("idle")
 			player_run_sfx.stop()
 			
 	velocity = velocity.normalized() * speed
@@ -46,5 +46,6 @@ func _process(delta):
 func _on_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("Meteorite")):
 		alive = false
-		$"hero_mesh".texture = defeat_tex
+		$hero_animations.play("defeat")
+		await $hero_animations.animation_finished
 		emit_signal("defeated")

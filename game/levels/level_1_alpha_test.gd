@@ -86,7 +86,6 @@ func _on_defeat() -> void:
 	Global.isDeafeated = true
 	Global.score.set_score_by_level(Global.Level.LEVEL_1, true)
 	Global.score.set_current(0)
-	await get_tree().create_timer(2.0).timeout
 	emit_signal("defeat")
 	
 func _on_player_move(_position) -> void:
