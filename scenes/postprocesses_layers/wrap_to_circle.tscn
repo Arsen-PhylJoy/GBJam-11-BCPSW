@@ -1,6 +1,5 @@
-[gd_scene load_steps=6 format=3 uid="uid://bj08btic8c155"]
+[gd_scene load_steps=5 format=3 uid="uid://bj08btic8c155"]
 
-[ext_resource type="Texture2D" uid="uid://cf1ga27t3wa0c" path="res://scenes/postprocesses_layers/standard-grid.jpg" id="1_jda0g"]
 [ext_resource type="Shader" path="res://shaders/postprocess_shaders/warp_shader/flat_to_circular_1.gdshader" id="1_r5134"]
 
 [sub_resource type="Gradient" id="Gradient_ycnlp"]
@@ -21,17 +20,11 @@ shader = ExtResource("1_r5134")
 shader_parameter/translate_screen_uv = 0.9
 shader_parameter/stretch_screen_uv = 0.59
 shader_parameter/translate_position_grad_uv = -1.355
-shader_parameter/stretch_position_grad_uv = 0.145
+shader_parameter/stretch_position_grad_uv = 0.19
 shader_parameter/gradient = SubResource("GradientTexture2D_3ihxk")
 
 [node name="wrap_to_circle" type="CanvasLayer"]
 layer = -1
-
-[node name="Standard-grid" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(82, 73)
-scale = Vector2(0.14, 0.14)
-texture = ExtResource("1_jda0g")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_b0kpn")
