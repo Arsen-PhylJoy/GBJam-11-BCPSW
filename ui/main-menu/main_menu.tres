@@ -6,6 +6,7 @@
 
 [resource]
 default_font = ExtResource("1_oj1a3")
+Fonts/colors/font_color = Color(0.909804, 0.839216, 0.752941, 1)
 Fonts/fonts/medium = ExtResource("1_m6ovn")
 Fonts/fonts/normal = ExtResource("1_oj1a3")
 Fonts/fonts/small = ExtResource("2_n0c85")

@@ -24,9 +24,9 @@ size = Vector2(11, 237)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mbmxm"]
 shader = ExtResource("13_3pygw")
 shader_parameter/color1 = Color(0, 0, 0, 1)
-shader_parameter/color2 = Color(0.803922, 0.431373, 0.364706, 1)
-shader_parameter/color3 = Color(0.785156, 0.628906, 0.597656, 1)
-shader_parameter/color4 = Color(0.765625, 0.769531, 0.753906, 1)
+shader_parameter/color2 = Color(0.631373, 0.156863, 0.109804, 1)
+shader_parameter/color3 = Color(0.572549, 0.576471, 0.552941, 1)
+shader_parameter/color4 = Color(0.909804, 0.839216, 0.752941, 1)
 shader_parameter/simple_shading_mode = true
 shader_parameter/brightness_factor = 0.0
 
@@ -43,8 +43,10 @@ position = Vector2(0, -23)
 offset = Vector2(0, -17.835)
 
 [node name="score" parent="Player/player_camera" instance=ExtResource("3_8xfgu")]
+z_index = 1
 
 [node name="direction_distance" parent="Player/player_camera" instance=ExtResource("4_4ncjm")]
+z_index = 1
 
 [node name="projectile_spawner" parent="Player" instance=ExtResource("2_bvut5")]
 projectile = ExtResource("3_shdic")
@@ -66,6 +68,7 @@ shape = SubResource("RectangleShape2D_dnu3l")
 
 [node name="Pause Screen" parent="." instance=ExtResource("5_7att2")]
 visible = false
+z_index = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -136,5 +139,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+metadata/_edit_use_anchors_ = true
 
 [connection signal="unpause" from="Pause Screen" to="." method="_on_pause_screen_unpause"]
