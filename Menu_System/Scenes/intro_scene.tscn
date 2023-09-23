@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://c1n0exhontfwp"]
+[gd_scene load_steps=9 format=3 uid="uid://c1n0exhontfwp"]
 
 [ext_resource type="Script" path="res://Menu_System/Scripts/intro_scene.gd" id="1_5vhko"]
 [ext_resource type="Texture2D" uid="uid://mnfm8t54ub5m" path="res://assets/graphic/intro_animation/intro_animation_spritesheet.png" id="2_foxay"]
 [ext_resource type="Texture2D" uid="uid://c2nnqk32wefgo" path="res://assets/ui/game_logo.png" id="3_g560r"]
 [ext_resource type="Animation" uid="uid://b1yb5hf8hw5fp" path="res://scenes/ui/animations/title_animation.res" id="4_7iqfs"]
 [ext_resource type="AudioStream" uid="uid://depas4vjl8k8j" path="res://assets/audio/music/game-intro/intro.mp3" id="5_8ikoq"]
+[ext_resource type="PackedScene" uid="uid://c2xakack5y76v" path="res://scenes/postprocesses_layers/color_4_post_process.tscn" id="6_cypl3"]
 
 [sub_resource type="Animation" id="Animation_0gx4q"]
 length = 0.001
@@ -36,3 +37,5 @@ libraries = {
 
 [node name="intro-audio" type="AudioStreamPlayer" parent="intro_scene_animation"]
 stream = ExtResource("5_8ikoq")
+
+[node name="color_4_post_process" parent="." instance=ExtResource("6_cypl3")]
