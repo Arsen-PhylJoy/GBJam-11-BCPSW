@@ -6,7 +6,7 @@ uniform sampler2D gradient: source_color;
 uniform float translate_screen_uv = 0.9;
 uniform float stretch_screen_uv = 0.59;
 uniform float translate_position_grad_uv = -1.355;
-uniform float stretch_position_grad_uv = 0.145;
+uniform float stretch_position_grad_uv = 0.19;
 
 void fragment() {
 	vec2 iResolution = 1.0 / SCREEN_PIXEL_SIZE;
