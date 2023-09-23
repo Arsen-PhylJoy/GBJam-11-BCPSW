@@ -54,8 +54,6 @@ func set_defeat_animation(times) -> void:
 			var key = frame + (4 * time)
 			var seconds = float(key/10.0) + 0.1
 			defeat_animation.track_insert_key(track, seconds, frame)
-			print("seconds: ", seconds)
-			print("frame: ", frame)
 
 	var tex_track = defeat_animation.add_track(Animation.TYPE_VALUE, 1)
 	defeat_animation.track_set_enabled(tex_track, true)
