@@ -1,8 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://ga08fi1u5kdl"]
+[gd_scene load_steps=14 format=3 uid="uid://ga08fi1u5kdl"]
 
 [ext_resource type="TileSet" uid="uid://dwgrtmsbgrehe" path="res://Menu_System/Sprites/coins-chests.tres" id="1_kjjw3"]
 [ext_resource type="Script" path="res://Menu_System/Scripts/player.gd" id="1_umu53"]
 [ext_resource type="Texture2D" uid="uid://mgrm2ow0wuev" path="res://assets/graphic/characters/hero/sprite_sheets/idle/character_01_idle_sheet.png" id="3_ui3ae"]
+[ext_resource type="Texture2D" uid="uid://d37f4huqh56ak" path="res://assets/graphic/characters/hero/sprite_sheets/defeat/character_01_defeat_sheet.png" id="4_hygym"]
+[ext_resource type="Texture2D" uid="uid://dno0eyu4d7hcx" path="res://assets/graphic/characters/hero/sprite_sheets/run/character_01_run_right_sheet.png" id="4_mreiy"]
+[ext_resource type="Texture2D" uid="uid://dxrdppq50g7t7" path="res://assets/graphic/characters/hero/sprite_sheets/run/character_01_run_left_sheet.png" id="5_s65lp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4hh4j"]
 
@@ -20,9 +23,21 @@ tracks/0/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("hero_mesh:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
 
 [sub_resource type="Animation" id="Animation_4fci8"]
-resource_name = "hero"
+resource_name = "idle"
 length = 0.4
 loop_mode = 1
 tracks/0/type = "value"
@@ -37,11 +52,110 @@ tracks/0/keys = {
 "update": 1,
 "values": [0, 1, 2, 3]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("hero_mesh:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_ui3ae")]
+}
+
+[sub_resource type="Animation" id="Animation_xcsa6"]
+resource_name = "run_right"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("hero_mesh:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_mreiy")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("hero_mesh:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_jh67f"]
+resource_name = "run_left"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("hero_mesh:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_s65lp")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("hero_mesh:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_2kv13"]
+resource_name = "defeat"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("hero_mesh:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_hygym")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("hero_mesh:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kiitc"]
 _data = {
 "RESET": SubResource("Animation_gr4ww"),
-"hero": SubResource("Animation_4fci8")
+"defeat": SubResource("Animation_2kv13"),
+"idle": SubResource("Animation_4fci8"),
+"run_left": SubResource("Animation_jh67f"),
+"run_right": SubResource("Animation_xcsa6")
 }
 
 [node name="Player" type="Area2D" groups=["Player"]]
@@ -57,7 +171,6 @@ format = 2
 layer_0/tile_data = PackedInt32Array(-1, 65536, 1, 65535, 65536, 2, -65536, 65536, 1, 0, 65536, 2)
 
 [node name="hero_mesh" type="Sprite2D" parent="."]
-texture = ExtResource("3_ui3ae")
 hframes = 4
 
 [node name="hero_animations" type="AnimationPlayer" parent="."]

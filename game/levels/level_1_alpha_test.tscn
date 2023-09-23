@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://duivdh4a5que7"]
+[gd_scene load_steps=14 format=3 uid="uid://duivdh4a5que7"]
 
 [ext_resource type="Script" path="res://game/levels/level_1_alpha_test.gd" id="1_4novl"]
 [ext_resource type="PackedScene" uid="uid://ga08fi1u5kdl" path="res://Menu_System/Scenes/player.tscn" id="1_gcv57"]
@@ -48,7 +48,6 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ground"]
 position = Vector2(-5, 6)
 scale = Vector2(300, 0.98)
-
 shape = SubResource("RectangleShape2D_dnu3l")
 
 [node name="Pause Screen" parent="." instance=ExtResource("5_7att2")]

@@ -1,6 +1,5 @@
-[gd_scene load_steps=6 format=3 uid="uid://d1lio4aktlym0"]
+[gd_scene load_steps=5 format=3 uid="uid://d1lio4aktlym0"]
 
-[ext_resource type="Texture2D" uid="uid://bot888nwa5sin" path="res://assets/graphic/projectiles/temporary_meteorite.png" id="1_hxt8j"]
 [ext_resource type="Shader" path="res://shaders/postprocess_shaders/scanline_effect.gdshader" id="2_l4jcb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b80ar"]
@@ -13,11 +12,6 @@ shader = ExtResource("2_l4jcb")
 gradient = SubResource("Gradient_plbqw")
 
 [node name="test_level_shaders" type="Node2D"]
-
-[node name="meteor" type="Sprite2D" parent="."]
-position = Vector2(80, 67)
-scale = Vector2(0.143153, 0.120702)
-texture = ExtResource("1_hxt8j")
 
 [node name="postprocess_plane" type="CanvasLayer" parent="."]
 
