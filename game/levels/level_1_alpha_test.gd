@@ -33,7 +33,9 @@ func _ready() -> void:
 	Global.score.set_current_level(current_level_score_block)
 	Global.emit_current_score()
 	Global.emit_level_score(Global.Level.LEVEL_1)
-
+	
+	$Player/player_camera/direction_distance.position = $Player/player_camera/score.position + Vector2(40,-27);
+	
 func _process(_delta: float) -> void:
 	if $"Pause Timer".is_stopped() == true:
 		if Input.is_action_pressed("pause"):
@@ -90,6 +92,7 @@ func _on_defeat() -> void:
 	
 func _on_player_move(_position) -> void:
 	Global.update_score_by_move(_position.x)
+	$Player/player_camera/direction_distance.update_distance(str(int($Areas/Shelter.global_position.x - $Player.global_position.x)))
 	var offset = int((160.0/2.0)*1.05)
 	var to_delete: Array[MeteoriteBlock] = []
 	var to_preserve: Array[MeteoriteBlock] = []
