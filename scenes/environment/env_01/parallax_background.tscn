@@ -37,6 +37,7 @@ scale = Vector2(0.500391, 0.5)
 texture = ExtResource("1_friw1")
 
 [node name="Moon" type="ParallaxBackground" parent="."]
+layer = -99
 
 [node name="Moon2" type="Sprite2D" parent="Moon"]
 position = Vector2(136, 27)

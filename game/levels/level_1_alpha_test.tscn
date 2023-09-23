@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://duivdh4a5que7"]
+[gd_scene load_steps=18 format=3 uid="uid://duivdh4a5que7"]
 
 [ext_resource type="Script" path="res://game/levels/level_1_alpha_test.gd" id="1_4novl"]
 [ext_resource type="PackedScene" uid="uid://ga08fi1u5kdl" path="res://Menu_System/Scenes/player.tscn" id="1_gcv57"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://b5358xumoanqi" path="res://assets/audio/music/pause-menu/pause-menu.mp3" id="6_7fkxr"]
 [ext_resource type="AudioStream" uid="uid://o6v8xjv4sk33" path="res://assets/audio/music/environment/env_01/ambient/env_01_ambient.mp3" id="7_r3uri"]
 [ext_resource type="AudioStream" uid="uid://cl3i7svr4j82y" path="res://assets/audio/music/menu-actions/click.mp3" id="7_tpnfv"]
+[ext_resource type="PackedScene" uid="uid://bj08btic8c155" path="res://scenes/postprocesses_layers/wrap_to_circle.tscn" id="11_0jys7"]
 [ext_resource type="Shader" path="res://scripts/postprocesses_layers/color_4_post_process.gdshader" id="13_3pygw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dnu3l"]
@@ -82,6 +83,9 @@ stream = ExtResource("7_tpnfv")
 [node name="Pause Timer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="wrap_to_circle" parent="." instance=ExtResource("11_0jys7")]
+layer = -100
 
 [node name="parallax_background" parent="." instance=ExtResource("5_yo880")]
 
