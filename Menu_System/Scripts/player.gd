@@ -17,6 +17,8 @@ func _ready():
 	self.set_defeat_animation(4)
 
 func _process(delta):
+	if counter > 1000.0:
+		counter = 0.0
 	counter += delta
 	var active_speed = speed
 	var velocity = Vector2.ZERO
