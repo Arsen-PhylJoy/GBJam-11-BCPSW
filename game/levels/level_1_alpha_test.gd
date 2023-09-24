@@ -144,7 +144,9 @@ func _on_player_reach_difficlty_area_4(area: Area2D)->void:
 	if(area.is_in_group("Player")):
 		$Player/projectile_spawner.set_difficulty_level(4);
 
-func _on_player_win()->void:
+func _on_player_win(area: Area2D)->void:
+	$win.play()
+	await $win.finished
 	emit_signal("win")
 
 class MeteoriteBlock:

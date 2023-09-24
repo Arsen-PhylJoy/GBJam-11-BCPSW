@@ -80,10 +80,13 @@ func _process(delta):
 
 
 func _on_body_entered(body: Node2D) -> void:
-	if not Global.isDeafeated and body.is_in_group("Meteorite"):
+	if body.is_in_group("Meteorite"):
+		$meteorite_collision.play()
+	if not Global.isDeafeated and body.is_in_group("Meteorite"):	
 		if isMortal:
 			Global.isDeafeated = true
 			$hero_animations.play("defeat")
+			$death.play()
 			await $hero_animations.animation_finished
 			emit_signal("defeated")
 		else:

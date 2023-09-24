@@ -3,7 +3,6 @@
 [ext_resource type="Script" path="res://game/levels/level_1_alpha_test.gd" id="1_4novl"]
 [ext_resource type="PackedScene" uid="uid://ga08fi1u5kdl" path="res://Menu_System/Scenes/player.tscn" id="1_gcv57"]
 [ext_resource type="PackedScene" uid="uid://b65pojpx24hdm" path="res://scenes/projectiles/projectile_spawner.tscn" id="2_bvut5"]
-[ext_resource type="Texture2D" uid="uid://d37f4huqh56ak" path="res://assets/graphic/characters/hero/sprite_sheets/defeat/character_01_defeat_sheet.png" id="3_0b1s2"]
 [ext_resource type="PackedScene" uid="uid://cjpc5tisr4oq5" path="res://Menu_System/Scenes/score.tscn" id="3_8xfgu"]
 [ext_resource type="PackedScene" uid="uid://cubs0v07ul4y8" path="res://scenes/projectiles/meteorite/meteorite.tscn" id="3_shdic"]
 [ext_resource type="PackedScene" uid="uid://d0u0o1ie488ro" path="res://Menu_System/Scenes/direction_distance.tscn" id="4_4ncjm"]
@@ -16,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bjm41aq733ya0" path="res://scenes/power_up/power_ups_spawner.tscn" id="8_dyjmd"]
 [ext_resource type="PackedScene" uid="uid://bj08btic8c155" path="res://scenes/postprocesses_layers/wrap_to_circle.tscn" id="11_0jys7"]
 [ext_resource type="Shader" path="res://scripts/postprocesses_layers/color_4_post_process.gdshader" id="13_3pygw"]
+[ext_resource type="AudioStream" uid="uid://bmwg5x4ukpq7u" path="res://assets/audio/music/environment/env_01/outro/victory.wav" id="14_mfeyq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dnu3l"]
 size = Vector2(30, 44.898)
@@ -38,10 +38,7 @@ script = ExtResource("1_4novl")
 [node name="Player" parent="." instance=ExtResource("1_gcv57")]
 position = Vector2(54, 81)
 collision_mask = 6
-dash_offset = 0.1
-dash_speed = 400
 speed = 100
-defeat_tex = ExtResource("3_0b1s2")
 metadata/_edit_group_ = true
 
 [node name="player_camera" type="Camera2D" parent="Player"]
@@ -101,6 +98,9 @@ visible = false
 [node name="env_01_ambient" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_r3uri")
 autoplay = true
+
+[node name="win" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_mfeyq")
 
 [node name="Areas" type="Node2D" parent="."]
 
