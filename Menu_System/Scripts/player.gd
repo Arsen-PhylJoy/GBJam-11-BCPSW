@@ -8,6 +8,7 @@ signal player_update_position(position)
 @export var speed = 100
 @export var defeat_tex = preload("res://assets/graphic/characters/hero/sprite_sheets/defeat/character_01_defeat_sheet.png")
 
+var active_speed = speed
 var power_up: PowerUp = null
 var power_up_stash: PowerUp = null
 var counter = 0.0
@@ -20,32 +21,55 @@ func _ready():
 	self.set_defeat_animation(4)
 
 func _process(delta):
+	var power_up_context = null
+	if self.power_up != null and self.power_up.active:
+		if self.power_up.type != Global.PowerUp.SHIELD:
+			power_up_context = self.power_up.type
+		
+		
 	if counter > 1000.0:
 		counter = 0.0
 	counter += delta
-	var active_speed = speed
+	self.active_speed = speed
 	var velocity = Vector2.ZERO
 	var update_position = false
 	var player_run_sfx = $player_sfx as AudioStreamPlayer
-
-	active_speed = _dash_handler()
-	active_speed = _power_up_handler()
+	_power_up_handler()
+	_dash_handler()
 	
 	if not Global.isDeafeated:
 		if Input.is_action_pressed("dpad_right"):
-			$hero_animations.play("run_right")
+			if power_up_context == Global.PowerUp.BIG:
+				$hero_animations.play("run_right_BIG")
+			elif power_up_context == Global.PowerUp.SMALL:
+				$hero_animations.play("run_right_SMALL")
+			elif power_up_context == null:
+				$hero_animations.play("run_right")
+				
 			velocity.x += 1
 			update_position = true
 		elif Input.is_action_pressed("dpad_left"):
-			$hero_animations.play("run_left")
+			if power_up_context == Global.PowerUp.BIG:
+				$hero_animations.play("run_left_BIG")
+			elif power_up_context == Global.PowerUp.SMALL:
+				$hero_animations.play("run_left_SMALL")
+			elif power_up_context == null:
+				$hero_animations.play("run_left")
+			
 			velocity.x -= 1
 			update_position = true
 		else:
-			$hero_animations.play("idle")
+			if power_up_context == Global.PowerUp.BIG:
+				$hero_animations.play("idle_BIG")
+			elif power_up_context == Global.PowerUp.SMALL:
+				$hero_animations.play("idle_SMALL")
+			elif power_up_context == null:
+				$hero_animations.play("idle")
+				
 			player_run_sfx.stop()
 			isDashing = false
 			
-	velocity = velocity.normalized() * active_speed
+	velocity = velocity.normalized() * self.active_speed
 	position += velocity * delta
 	
 	if update_position:
@@ -66,45 +90,36 @@ func _on_body_entered(body: Node2D) -> void:
 			self.power_up.hits_left -= 1
 			
 
-func _dash_handler():
-	var _active_speed = speed
+func _dash_handler()-> void:
 	if power_up == null or not power_up.active:
 		if isDashing and counter >= delta_deadend:
-			_active_speed = speed
+			self.active_speed = speed
 			isDashing = false
 		elif isDashing and counter < delta_deadend:
-			_active_speed = dash_speed
+			self.active_speed = dash_speed
 		elif Input.is_action_just_pressed("a") and not isDashing:
-			_active_speed = dash_speed
+			self.active_speed = dash_speed
 			isDashing = true
 			delta_deadend = counter + dash_offset
-	return _active_speed
 
-func _power_up_handler():
-	var _active_speed = speed	
+func _power_up_handler()-> void:
 	if not isDashing and power_up != null:
 		if power_up.active:
 			if power_up.hasTimer:
 				if counter >= power_up.destroy_time:
-					_active_speed = speed
-					print("power up has gone: " + Global.PowerUpName[power_up.type])
+					self.active_speed = speed
 					get_stashed_power_up()
 					
 				elif counter < power_up.destroy_time:
-					_active_speed = speed * power_up.speed_factor
-					print("power up is active: " + Global.PowerUpName[power_up.type])
+					self.active_speed = speed * power_up.speed_factor
 			else:
 				if isMortal and power_up.hits_left > 0:
 					isMortal = false
-					print("power up is active: " + Global.PowerUpName[power_up.type])
 				elif power_up.hits_left <= 0:
 					isMortal = true
 					get_stashed_power_up()
-					print("power up has gone: " + Global.PowerUpName[power_up.type])
 		elif Input.is_action_just_pressed("b"):
 			power_up.activate_power(counter)
-			print("power up engaged: " + Global.PowerUpName[power_up.type])
-	return _active_speed
 
 func set_defeat_animation(times) -> void:
 	var defeat_animation = $hero_animations.get_animation("defeat") as Animation
