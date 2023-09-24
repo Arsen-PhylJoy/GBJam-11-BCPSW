@@ -2,6 +2,7 @@ extends Area2D
 
 signal defeated()
 signal player_update_position(position)
+signal on_meteor_deleted(meteor)
 
 @export var dash_offset = 0.1
 @export var dash_speed = 400
@@ -77,12 +78,10 @@ func _process(delta):
 		if not player_run_sfx.playing:
 			player_run_sfx.play()
 
-
-
 func _on_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Meteorite"):
+	if not Global.isDeafeated and body.is_in_group("Meteorite"):
 		$meteorite_collision.play()
-	if not Global.isDeafeated and body.is_in_group("Meteorite"):	
+		emit_signal("on_meteor_deleted", body)
 		if isMortal:
 			Global.isDeafeated = true
 			$hero_animations.play("defeat")
