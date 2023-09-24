@@ -1,13 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://updxlsecf8xr"]
+[gd_scene load_steps=12 format=3 uid="uid://updxlsecf8xr"]
 
 [ext_resource type="Script" path="res://Menu_System/Scripts/main_menu.gd" id="1_2fjw2"]
 [ext_resource type="Script" path="res://Menu_System/Scripts/play_button.gd" id="2_bqwm6"]
 [ext_resource type="Theme" uid="uid://g175br3gjr52" path="res://ui/main-menu/main_menu.tres" id="2_rsrfe"]
 [ext_resource type="Texture2D" uid="uid://mnfm8t54ub5m" path="res://assets/graphic/intro_animation/intro_animation_spritesheet.png" id="4_jx8uq"]
-[ext_resource type="StyleBox" uid="uid://cfiuypyo7lg7b" path="res://ui/main-menu/play_game_button_primary.tres" id="4_ljg0n"]
-[ext_resource type="StyleBox" uid="uid://bblbsdb62dxtm" path="res://ui/main-menu/play_game_button_secondary.tres" id="5_855qb"]
+[ext_resource type="StyleBox" path="res://ui/main-menu/play_game_button_primary.tres" id="4_ljg0n"]
+[ext_resource type="StyleBox" path="res://ui/main-menu/play_game_button_secondary.tres" id="5_855qb"]
 [ext_resource type="Shader" path="res://scripts/postprocesses_layers/color_4_post_process.gdshader" id="6_ekvbl"]
 [ext_resource type="AudioStream" uid="uid://ba13tw6pi0ktv" path="res://assets/audio/music/main-menu/main-menu.mp3" id="6_s3jd5"]
+[ext_resource type="AudioStream" uid="uid://cl3i7svr4j82y" path="res://assets/audio/music/menu-actions/click.mp3" id="9_ch556"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mbmxm"]
 shader = ExtResource("6_ekvbl")
@@ -88,6 +89,9 @@ frame = 63
 
 [node name="main-menu-music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_s3jd5")
+
+[node name="UI_click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_ch556")
 
 [node name="color_4_post_process2" type="CanvasLayer" parent="."]
 

@@ -13,4 +13,6 @@ func _input(event):
 		emit_signal("play_pressed")
 
 func _on_play_button_pressed() -> void:
+	$UI_click.play()
+	await $UI_click.finished
 	emit_signal("play_pressed")
