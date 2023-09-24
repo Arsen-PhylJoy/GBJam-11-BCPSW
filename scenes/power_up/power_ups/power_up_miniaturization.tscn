@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8fwyyldfh6k2"]
+
+[ext_resource type="Script" path="res://scripts/power_up/power_up_miniaturization.gd" id="1_pbh5j"]
+[ext_resource type="Texture2D" uid="uid://d23b5kvey1veo" path="res://_debug/graphic/power_up_mini_sprite_placeholder.png" id="2_kmmgx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4n2d2"]
+
+[node name="power_up_miniaturization" type="Area2D"]
+script = ExtResource("1_pbh5j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_4n2d2")
+
+[node name="power_up_miniaturization_sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_kmmgx")
