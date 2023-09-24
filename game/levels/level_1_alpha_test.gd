@@ -48,7 +48,7 @@ func _process(_delta: float) -> void:
 	
 	#Pause screen follows player to that it's always in the screen when the player pauses
 	#80 is the offset so that it stays in the center (half of 160, the screen size)
-	get_node("Pause Screen").position.x = get_node("Player").position.x - 80
+	get_node("Pause Screen").position.x = get_node("Player").position.x - 30
 
 
 func _on_projectile_spawner_projectile_spawned(pos, init_speed, gravity_scale) -> void:
@@ -107,11 +107,12 @@ func _on_defeat() -> void:
 func _on_player_move(_position) -> void:
 	Global.update_score_by_move(_position.x)
 	$Player/player_camera/direction_distance.update_distance(str(int($Areas/Shelter.global_position.x - $Player.global_position.x)))
-	var offset = int((160.0/2.0)*1.05)
+	var right_offset:int =  130 + 40
+	var left_offset:int = 30 + 10
 	var to_delete: Array[MeteoriteBlock] = []
 	var to_preserve: Array[MeteoriteBlock] = []
 	for met in meteorite_pool:
-		if (met.offset > _position.x + offset) or (met.offset < _position.x - offset):
+		if (met.offset > _position.x + right_offset) or (met.offset < _position.x - left_offset):
 			to_delete.push_back(met)
 		else:
 			to_preserve.push_back(met)

@@ -41,16 +41,21 @@ speed = 400
 metadata/_edit_group_ = true
 
 [node name="player_camera" type="Camera2D" parent="Player"]
-position = Vector2(0, -23)
+position = Vector2(50, -23)
 offset = Vector2(0, -17.835)
 
 [node name="score" parent="Player/player_camera" instance=ExtResource("3_8xfgu")]
 z_index = 1
+offset_left = -29.0
+offset_right = -29.0
 
 [node name="direction_distance" parent="Player/player_camera" instance=ExtResource("4_4ncjm")]
 z_index = 1
+offset_left = -10.0
+offset_right = -10.0
 
 [node name="projectile_spawner" parent="Player" instance=ExtResource("2_bvut5")]
+position = Vector2(50, 0)
 projectile = ExtResource("3_shdic")
 meteortirs_per_second = 0.0
 
@@ -71,7 +76,7 @@ shape = SubResource("RectangleShape2D_dnu3l")
 [node name="Pause Screen" parent="." instance=ExtResource("5_7att2")]
 visible = false
 z_index = 1
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_right = 0.0
