@@ -50,10 +50,10 @@ func load_scene(scene: SceneInfo)->void:
 	var scene_instace = scene.packed_scene.instantiate()
 	scene_instace.name = scene.name
 	add_child(scene_instace)
-	await fade(false)
+	await Global.fade(false)
 	
 func remove_scene(scene: SceneInfo)->void:
-	await fade(true)
+	await Global.fade(true)
 	get_node(scene.name).queue_free()
 
 func load_menu() ->void:
@@ -70,11 +70,3 @@ func load_level1()->void:
 	level_1_node.connect("defeat", self.load_menu)
 	level_1_node.connect("win", self.load_menu)
 	
-##If true->fade in else fade out
-func fade(fade_flag: bool) -> void:
-	var transition_screen = transition_pk.instantiate()
-	add_child(transition_screen)
-	if(fade_flag):
-		await transition_screen.start_fade_in()
-	else:
-		await transition_screen.start_fade_out()
