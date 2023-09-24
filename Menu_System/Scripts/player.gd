@@ -8,6 +8,7 @@ signal player_update_position(position)
 @export var speed = 100
 @export var defeat_tex = preload("res://assets/graphic/characters/hero/sprite_sheets/defeat/character_01_defeat_sheet.png")
 
+var power_up = null
 var counter = 0.0
 var delta_deadend = 0
 var isDashing = false
@@ -83,10 +84,33 @@ func set_defeat_animation(times) -> void:
 	defeat_animation.track_insert_key(tex_track, 0.0, defeat_tex)
 	
 func _on_picked_up_magnification(speed_mul,scale_mul)->void:
+	self.power_up = PowerUp.new(Global.PowerUp.BIG, 5.0)
 	print("Picked up magnification")
 	
 func _on_picked_up_miniaturization(speed_mul,scale_mul)->void:
+	self.power_up = PowerUp.new(Global.PowerUp.SMALL, 5.0)
 	print("Picked up miniaturization")
 	
 func _on_picked_up_shield(shield_time)->void:
+	self.power_up = PowerUp.new(Global.PowerUp.SHIELD, 2.0)
 	print("Picked up shield")
+
+class PowerUp:
+	var type: Global.PowerUp
+	var timer: float
+	var endurance: float = 0
+	var speed_factor: float = 1.0
+	var scale_factor: float = 1.0
+	
+	func _init(_type: Global.PowerUp, _charge: float = 1.0):
+		self.type = _type
+		if _type == Global.PowerUp.BIG:
+			self.speed_factor = 0.75
+			self.scale_factor = 2.25
+			self.timer = _charge
+		elif _type == Global.PowerUp.SMALL:
+			self.speed_factor = 1.5
+			self.scale_factor = 0.75
+			self.timer = _charge
+		elif _type == Global.PowerUp.SHIELD:
+			self.endurance = _charge
