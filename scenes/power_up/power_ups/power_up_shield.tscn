@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxhaqtvd7dtl7"]
+
+[ext_resource type="Script" path="res://scripts/power_up/power_ups/power_up_shield.gd" id="1_n125v"]
+[ext_resource type="Texture2D" uid="uid://by58g7kiyeth1" path="res://_debug/graphic/power_up_shield_sprite_placeholder.png" id="2_hseuw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tytsy"]
+
+[node name="power_up_shield" type="Area2D"]
+script = ExtResource("1_n125v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tytsy")
+
+[node name="power_up_shield_sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_hseuw")

@@ -59,3 +59,12 @@ func set_defeat_animation(times) -> void:
 	defeat_animation.track_set_enabled(tex_track, true)
 	defeat_animation.track_set_path(tex_track, "hero_mesh:texture")
 	defeat_animation.track_insert_key(tex_track, 0.0, defeat_tex)
+	
+func _on_picked_up_magnification(speed_mul,scale_mul)->void:
+	print("Picked up magnification")
+	
+func _on_picked_up_miniaturization(speed_mul,scale_mul)->void:
+	print("Picked up miniaturization")
+	
+func _on_picked_up_shield(shield_time)->void:
+	print("Picked up shield")
