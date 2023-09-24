@@ -53,7 +53,7 @@ z_index = 1
 
 [node name="projectile_spawner" parent="Player" instance=ExtResource("2_bvut5")]
 projectile = ExtResource("3_shdic")
-meteortirs_per_second = 0.0
+meteortirs_per_second = 4.0
 
 [node name="player_sfx" type="AudioStreamPlayer" parent="Player"]
 stream = ExtResource("5_xrsal")
@@ -100,7 +100,7 @@ visible = false
 stream = ExtResource("7_r3uri")
 autoplay = true
 
-[node name="win_sound" type="AudioStreamPlayer" parent="."]
+[node name="win" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_mfeyq")
 
 [node name="Areas" type="Node2D" parent="."]

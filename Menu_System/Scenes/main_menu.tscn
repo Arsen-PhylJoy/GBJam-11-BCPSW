@@ -7,7 +7,7 @@
 [ext_resource type="StyleBox" path="res://ui/main-menu/play_game_button_primary.tres" id="4_ljg0n"]
 [ext_resource type="StyleBox" path="res://ui/main-menu/play_game_button_secondary.tres" id="5_855qb"]
 [ext_resource type="Shader" path="res://scripts/postprocesses_layers/color_4_post_process.gdshader" id="6_ekvbl"]
-[ext_resource type="AudioStream" uid="uid://ba13tw6pi0ktv" path="res://assets/audio/music/main-menu/main-menu.mp3" id="6_s3jd5"]
+[ext_resource type="AudioStream" uid="uid://6glip6ylyj0w" path="res://assets/audio/music/main-menu/main_menu_theme.mp3" id="8_rbqbq"]
 [ext_resource type="AudioStream" uid="uid://cl3i7svr4j82y" path="res://assets/audio/music/menu-actions/click.mp3" id="9_ch556"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mbmxm"]
@@ -88,7 +88,7 @@ vframes = 8
 frame = 63
 
 [node name="main-menu-music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_s3jd5")
+stream = ExtResource("8_rbqbq")
 
 [node name="UI_click" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_ch556")

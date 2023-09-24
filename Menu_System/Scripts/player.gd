@@ -37,9 +37,12 @@ func _process(delta):
 			player_run_sfx.play()
 
 func _on_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Meteorite"):
+		$meteorite_collision.play()
 	if not Global.isDeafeated and body.is_in_group("Meteorite"):
 		Global.isDeafeated = true
 		$hero_animations.play("defeat")
+		$death.play()
 		await $hero_animations.animation_finished
 		emit_signal("defeated")
 
