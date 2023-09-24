@@ -6,6 +6,8 @@ signal win
 
 var meteorite_pool: Array[MeteoriteBlock] = []
 
+@export var win_screen: PackedScene
+
 func _ready() -> void:
 	Global.isDeafeated = false
 	
@@ -41,6 +43,7 @@ func _ready() -> void:
 	
 	$Player/player_camera/direction_distance.position = $Player/player_camera/score.position + Vector2(40,-27);
 	
+	
 func _process(_delta: float) -> void:
 	if $"Pause Timer".is_stopped() == true:
 		if Input.is_action_pressed("pause"):
@@ -49,7 +52,8 @@ func _process(_delta: float) -> void:
 	
 	#Pause screen follows player to that it's always in the screen when the player pauses
 	#80 is the offset so that it stays in the center (half of 160, the screen size)
-	get_node("Pause Screen").position.x = get_node("Player").position.x - 30
+	if(is_instance_valid(get_node("Pause Screen"))):
+		get_node("Pause Screen").position.x = get_node("Player").position.x - 30
 
 
 func _on_projectile_spawner_projectile_spawned(pos, init_speed, gravity_scale) -> void:
@@ -148,8 +152,12 @@ func _on_player_reach_difficlty_area_4(area: Area2D)->void:
 		$Player/projectile_spawner.set_difficulty_level(4);
 
 func _on_player_win(area: Area2D)->void:
-	$win.play()
-	await $win.finished
+	$"Pause Screen".set_process(false)
+	$Areas/Shelter/win_screen.set_score(Global.score.current_score)
+	$Areas/Shelter/win_screen.show()
+	$Player/player_camera/score.hide()
+	$Player/player_camera/direction_distance.hide()
+	await $Areas/Shelter/win_screen.exit
 	emit_signal("win")
 
 class MeteoriteBlock:

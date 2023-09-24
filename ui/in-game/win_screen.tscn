@@ -1,0 +1,78 @@
+[gd_scene load_steps=9 format=3 uid="uid://wam7yyo7p770"]
+
+[ext_resource type="Theme" uid="uid://g175br3gjr52" path="res://ui/main-menu/main_menu.tres" id="1_2y0c4"]
+[ext_resource type="Script" path="res://ui/in-game/win_screen_layer.gd" id="1_q0s0q"]
+[ext_resource type="StyleBox" uid="uid://bblbsdb62dxtm" path="res://ui/main-menu/play_game_button_secondary.tres" id="3_b0s5g"]
+[ext_resource type="AudioStream" path="res://assets/audio/music/environment/env_01/outro/victory.wav" id="3_whw2g"]
+[ext_resource type="AudioStream" uid="uid://cl3i7svr4j82y" path="res://assets/audio/music/menu-actions/click.mp3" id="4_38gjo"]
+[ext_resource type="StyleBox" uid="uid://cfiuypyo7lg7b" path="res://ui/main-menu/play_game_button_primary.tres" id="4_yannf"]
+[ext_resource type="Script" path="res://ui/in-game/Exit Button.gd" id="5_fr4bd"]
+[ext_resource type="FontFile" uid="uid://dhw7i80xrj4im" path="res://assets/ui/main-font.fnt" id="7_7li68"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_q0s0q")
+
+[node name="win_screen" type="Control" parent="."]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 82.0
+offset_top = 14.0
+offset_right = 82.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="your_score" type="Label" parent="win_screen"]
+layout_mode = 0
+offset_left = -62.0
+offset_top = 42.0
+offset_right = 78.0
+offset_bottom = 68.0
+theme = ExtResource("1_2y0c4")
+text = "Your score "
+
+[node name="score" type="Label" parent="win_screen"]
+layout_mode = 0
+offset_left = -31.0
+offset_top = 63.0
+offset_right = 29.0
+offset_bottom = 89.0
+theme = ExtResource("1_2y0c4")
+text = "12312"
+
+[node name="Exit Button" type="Button" parent="win_screen"]
+layout_mode = 0
+offset_left = -32.0
+offset_top = 85.0
+offset_right = 26.0
+offset_bottom = 107.0
+theme = ExtResource("1_2y0c4")
+theme_override_styles/normal = ExtResource("3_b0s5g")
+theme_override_styles/hover = ExtResource("4_yannf")
+theme_override_styles/pressed = ExtResource("4_yannf")
+theme_override_styles/focus = ExtResource("4_yannf")
+text = "exit"
+script = ExtResource("5_fr4bd")
+
+[node name="win" type="AudioStreamPlayer" parent="win_screen"]
+stream = ExtResource("3_whw2g")
+
+[node name="click" type="AudioStreamPlayer" parent="win_screen"]
+stream = ExtResource("4_38gjo")
+
+[node name="Label" type="Label" parent="win_screen"]
+layout_mode = 0
+offset_left = -37.0
+offset_top = 9.0
+offset_right = 13.0
+offset_bottom = 32.0
+scale = Vector2(1.52874, 2.03046)
+theme = ExtResource("1_2y0c4")
+theme_override_fonts/font = ExtResource("7_7li68")
+text = "WIN!"
+
+[connection signal="button_down" from="win_screen/Exit Button" to="." method="_on_exit_button_button_down"]
