@@ -3,17 +3,38 @@ extends Area2D
 signal defeated()
 signal player_update_position(position)
 
+@export var dash_offset = 0.1
+@export var dash_speed = 400
 @export var speed = 100
 @export var defeat_tex = preload("res://assets/graphic/characters/hero/sprite_sheets/defeat/character_01_defeat_sheet.png")
+
+var counter = 0.0
+var delta_deadend = 0
+var isDashing = false
 
 func _ready():
 	$hero_animations.play("idle")
 	self.set_defeat_animation(4)
-	
+
 func _process(delta):
+	if counter > 1000.0:
+		counter = 0.0
+	counter += delta
+	var active_speed = speed
 	var velocity = Vector2.ZERO
 	var update_position = false
-	var player_run_sfx = $player_sfx as AudioStreamPlayer	
+	var player_run_sfx = $player_sfx as AudioStreamPlayer
+	
+	if isDashing and counter >= delta_deadend:
+		active_speed = speed
+		isDashing = false
+	elif isDashing and counter < delta_deadend:
+		active_speed = dash_speed
+	elif Input.is_action_just_pressed("a") and not isDashing:
+		active_speed = dash_speed
+		isDashing = true
+		delta_deadend = counter + dash_offset
+
 	
 	if not Global.isDeafeated:
 		if Input.is_action_pressed("dpad_right"):
@@ -27,8 +48,9 @@ func _process(delta):
 		else:
 			$hero_animations.play("idle")
 			player_run_sfx.stop()
+			isDashing = false
 			
-	velocity = velocity.normalized() * speed
+	velocity = velocity.normalized() * active_speed
 	position += velocity * delta
 	
 	if update_position:
