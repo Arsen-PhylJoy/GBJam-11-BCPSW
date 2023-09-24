@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dxrdppq50g7t7" path="res://assets/graphic/characters/hero/sprite_sheets/run/character_01_run_left_sheet.png" id="5_s65lp"]
 [ext_resource type="AudioStream" uid="uid://bgssspwek15cf" path="res://assets/audio/sfx/collisions/meteorite-collision.mp3" id="5_skxcx"]
 [ext_resource type="Texture2D" uid="uid://dj0eh6oka5fk2" path="res://assets/graphic/characters/hero_power_up_big/sprite_sheets/run/character_01_big_run_right_sheet.png" id="5_u2v2l"]
-[ext_resource type="AudioStream" uid="uid://drnjxbj1olbqk" path="res://assets/audio/sfx/defeat/death.wav" id="6_h6yxv"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/defeat/death.wav" id="6_h6yxv"]
 [ext_resource type="Texture2D" uid="uid://cgvd4f8l0ytrp" path="res://assets/graphic/characters/hero_power_up_small/sprite_sheets/run/character_01_small_run_right_sheet.png" id="6_v5lrq"]
 [ext_resource type="Texture2D" uid="uid://cbysijowlcb67" path="res://assets/graphic/characters/hero_power_up_big/sprite_sheets/run/character_01_big_run_left_sheet.png" id="7_j2paq"]
 [ext_resource type="Texture2D" uid="uid://cvd5kq38orc6k" path="res://assets/graphic/characters/hero_power_up_small/sprite_sheets/run/character_01_small_run_left_sheet.png" id="8_42h5f"]

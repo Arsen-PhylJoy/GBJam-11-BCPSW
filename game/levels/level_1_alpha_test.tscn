@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://game/levels/level_1_alpha_test.gd" id="1_4novl"]
 [ext_resource type="PackedScene" uid="uid://ga08fi1u5kdl" path="res://Menu_System/Scenes/player.tscn" id="1_gcv57"]
 [ext_resource type="PackedScene" uid="uid://b65pojpx24hdm" path="res://scenes/projectiles/projectile_spawner.tscn" id="2_bvut5"]
+[ext_resource type="PackedScene" uid="uid://wam7yyo7p770" path="res://ui/in-game/win_screen.tscn" id="2_ehymt"]
 [ext_resource type="PackedScene" uid="uid://cjpc5tisr4oq5" path="res://Menu_System/Scenes/score.tscn" id="3_8xfgu"]
 [ext_resource type="PackedScene" uid="uid://cubs0v07ul4y8" path="res://scenes/projectiles/meteorite/meteorite.tscn" id="3_shdic"]
 [ext_resource type="PackedScene" uid="uid://d0u0o1ie488ro" path="res://Menu_System/Scenes/direction_distance.tscn" id="4_4ncjm"]
@@ -15,7 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://bjm41aq733ya0" path="res://scenes/power_up/power_ups_spawner.tscn" id="8_dyjmd"]
 [ext_resource type="PackedScene" uid="uid://bj08btic8c155" path="res://scenes/postprocesses_layers/wrap_to_circle.tscn" id="11_0jys7"]
 [ext_resource type="Shader" path="res://scripts/postprocesses_layers/color_4_post_process.gdshader" id="13_3pygw"]
-[ext_resource type="AudioStream" uid="uid://bmwg5x4ukpq7u" path="res://assets/audio/music/environment/env_01/outro/victory.wav" id="14_mfeyq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dnu3l"]
 size = Vector2(30, 44.898)
@@ -34,10 +34,12 @@ shader_parameter/brightness_factor = 0.0
 
 [node name="level_1_alpha_test" type="Node"]
 script = ExtResource("1_4novl")
+win_screen = ExtResource("2_ehymt")
 
 [node name="Player" parent="." instance=ExtResource("1_gcv57")]
 position = Vector2(54, 81)
 collision_mask = 6
+dash_speed = 1200
 speed = 100
 metadata/_edit_group_ = true
 
@@ -104,13 +106,10 @@ visible = false
 stream = ExtResource("7_r3uri")
 autoplay = true
 
-[node name="win" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("14_mfeyq")
-
 [node name="Areas" type="Node2D" parent="."]
 
 [node name="Threshhold_1_easy" type="Area2D" parent="Areas"]
-position = Vector2(505, 93)
+position = Vector2(511, 80)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Threshhold_1_easy"]
 shape = SubResource("RectangleShape2D_wauqm")
@@ -135,10 +134,14 @@ shape = SubResource("RectangleShape2D_wauqm")
 
 [node name="Shelter" type="Area2D" parent="Areas"]
 position = Vector2(3048, 100)
+scale = Vector2(0.113953, -5.43519)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Shelter"]
 scale = Vector2(0.1, 1)
 shape = SubResource("RectangleShape2D_wauqm")
+
+[node name="win_screen" parent="Areas/Shelter" instance=ExtResource("2_ehymt")]
+visible = false
 
 [node name="color_4_post_process" type="CanvasLayer" parent="."]
 
