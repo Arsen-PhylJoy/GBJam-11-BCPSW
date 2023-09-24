@@ -82,10 +82,14 @@ var LevelName = {
 	Level.LEVEL_1: "LEVEL_1",
 }
 
-enum Tag {
-	Score
+enum PowerUp {
+	BIG,
+	SMALL,
+	SHIELD
 }
 
-var TagName = {
-	Tag.Score: "Score"
+var PowerUpName = {
+	PowerUp.BIG: "BIG",
+	PowerUp.SMALL: "SMALL",
+	PowerUp.SHIELD: "SHIELD"
 }
