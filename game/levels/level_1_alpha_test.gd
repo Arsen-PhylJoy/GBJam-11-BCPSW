@@ -153,10 +153,9 @@ func _on_player_reach_difficlty_area_4(area: Area2D)->void:
 
 func _on_player_win(area: Area2D)->void:
 	$"Pause Screen".set_process(false)
+	await Global.fade(true)
 	$Areas/Shelter/win_screen.set_score(Global.score.current_score)
 	$Areas/Shelter/win_screen.show()
-	$Player/player_camera/score.hide()
-	$Player/player_camera/direction_distance.hide()
 	await $Areas/Shelter/win_screen.exit
 	emit_signal("win")
 
