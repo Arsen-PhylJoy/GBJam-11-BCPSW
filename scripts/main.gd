@@ -68,7 +68,8 @@ func load_level1()->void:
 	var level_1_node = get_node(level_1_scene.name)
 	level_1_node.connect("exit_game", self.load_menu)
 	level_1_node.connect("defeat", self.load_menu)
-
+	level_1_node.connect("win", self.load_menu)
+	
 ##If true->fade in else fade out
 func fade(fade_flag: bool) -> void:
 	var transition_screen = transition_pk.instantiate()

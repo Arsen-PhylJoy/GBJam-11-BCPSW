@@ -6,6 +6,8 @@ signal win
 
 var meteorite_pool: Array[MeteoriteBlock] = []
 
+@export var win_screen: PackedScene
+
 func _ready() -> void:
 	Global.isDeafeated = false
 	
@@ -40,6 +42,7 @@ func _ready() -> void:
 	Global.emit_level_score(Global.Level.LEVEL_1)
 	
 	$Player/player_camera/direction_distance.position = $Player/player_camera/score.position + Vector2(40,-27);
+	
 	
 func _process(_delta: float) -> void:
 	if $"Pause Timer".is_stopped() == true:
@@ -149,6 +152,9 @@ func _on_player_reach_difficlty_area_4(area: Area2D)->void:
 
 func _on_player_win(area: Area2D)->void:
 	$win.play()
+	var win_screen_instance = win_screen.instantiate() as Control
+	win_screen_instance.global_position = $Player/player_camera.position
+	add_child(win_screen_instance)
 	await $win.finished
 	emit_signal("win")
 
