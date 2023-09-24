@@ -1,9 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://ga08fi1u5kdl"]
+[gd_scene load_steps=24 format=3 uid="uid://ga08fi1u5kdl"]
 
 [ext_resource type="Script" path="res://Menu_System/Scripts/player.gd" id="1_umu53"]
 [ext_resource type="Texture2D" uid="uid://mgrm2ow0wuev" path="res://assets/graphic/characters/hero/sprite_sheets/idle/character_01_idle_sheet.png" id="3_ui3ae"]
 [ext_resource type="Texture2D" uid="uid://dno0eyu4d7hcx" path="res://assets/graphic/characters/hero/sprite_sheets/run/character_01_run_right_sheet.png" id="4_mreiy"]
 [ext_resource type="Texture2D" uid="uid://dxrdppq50g7t7" path="res://assets/graphic/characters/hero/sprite_sheets/run/character_01_run_left_sheet.png" id="5_s65lp"]
+[ext_resource type="Texture2D" uid="uid://dj0eh6oka5fk2" path="res://assets/graphic/characters/hero_power_up_big/sprite_sheets/run/character_01_big_run_right_sheet.png" id="5_u2v2l"]
+[ext_resource type="Texture2D" uid="uid://cgvd4f8l0ytrp" path="res://assets/graphic/characters/hero_power_up_small/sprite_sheets/run/character_01_small_run_right_sheet.png" id="6_v5lrq"]
+[ext_resource type="Texture2D" uid="uid://cbysijowlcb67" path="res://assets/graphic/characters/hero_power_up_big/sprite_sheets/run/character_01_big_run_left_sheet.png" id="7_j2paq"]
+[ext_resource type="Texture2D" uid="uid://cvd5kq38orc6k" path="res://assets/graphic/characters/hero_power_up_small/sprite_sheets/run/character_01_small_run_left_sheet.png" id="8_42h5f"]
+[ext_resource type="Texture2D" uid="uid://djh80j2ln3yk2" path="res://assets/graphic/characters/hero_power_up_big/sprite_sheets/idle/character_01_big_idle_sheet.png" id="9_rddxp"]
+[ext_resource type="Texture2D" uid="uid://cxyhd8td7dvtv" path="res://assets/graphic/characters/hero_power_up_small/sprite_sheets/idle/character_01_small_idle_sheet.png" id="10_u3q4y"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4hh4j"]
 
@@ -55,6 +61,64 @@ tracks/1/keys = {
 "values": [ExtResource("3_ui3ae")]
 }
 
+[sub_resource type="Animation" id="Animation_i8wfd"]
+resource_name = "idle_BIG"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("hero_mesh:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("hero_mesh:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("9_rddxp")]
+}
+
+[sub_resource type="Animation" id="Animation_suq6n"]
+resource_name = "idle_SMALL"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("hero_mesh:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("hero_mesh:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("10_u3q4y")]
+}
+
 [sub_resource type="Animation" id="Animation_jh67f"]
 resource_name = "run_left"
 length = 0.4
@@ -81,6 +145,62 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [ExtResource("5_s65lp")]
+}
+
+[sub_resource type="Animation" id="Animation_e0kxt"]
+resource_name = "run_left_BIG"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("hero_mesh:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("hero_mesh:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_j2paq")]
+}
+
+[sub_resource type="Animation" id="Animation_uqenf"]
+resource_name = "run_left_SMALL"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("hero_mesh:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("hero_mesh:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("8_42h5f")]
 }
 
 [sub_resource type="Animation" id="Animation_xcsa6"]
@@ -111,13 +231,75 @@ tracks/1/keys = {
 "values": [ExtResource("4_mreiy")]
 }
 
+[sub_resource type="Animation" id="Animation_scskn"]
+resource_name = "run_right_BIG"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("hero_mesh:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("hero_mesh:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_u2v2l")]
+}
+
+[sub_resource type="Animation" id="Animation_6e0ph"]
+resource_name = "run_right_SMALL"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("hero_mesh:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("hero_mesh:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_v5lrq")]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kiitc"]
 _data = {
 "RESET": SubResource("Animation_gr4ww"),
 "defeat": SubResource("Animation_2kv13"),
 "idle": SubResource("Animation_4fci8"),
+"idle_BIG": SubResource("Animation_i8wfd"),
+"idle_SMALL": SubResource("Animation_suq6n"),
 "run_left": SubResource("Animation_jh67f"),
-"run_right": SubResource("Animation_xcsa6")
+"run_left_BIG": SubResource("Animation_e0kxt"),
+"run_left_SMALL": SubResource("Animation_uqenf"),
+"run_right": SubResource("Animation_xcsa6"),
+"run_right_BIG": SubResource("Animation_scskn"),
+"run_right_SMALL": SubResource("Animation_6e0ph")
 }
 
 [node name="Player" type="Area2D" groups=["Player"]]

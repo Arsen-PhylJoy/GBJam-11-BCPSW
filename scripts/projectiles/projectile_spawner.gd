@@ -7,7 +7,7 @@ signal projectile_spawned(pos,init_speed,gravity_scale)
 @export var spawner_width: float = 100
 @export var meteortirs_per_second: float  = 1
 ##Default is 9.8.
-@export var gravity_scale: float = 0.002
+@export var gravity_scale: float = 0.004
 
 @export_group("random spawning ranges")
 @export_subgroup("Initial speed")
@@ -21,7 +21,10 @@ var rand: RandomNumberGenerator = RandomNumberGenerator.new()
 
 func _ready() -> void:
 	randomize()
-
+	
+func _process(_delta) -> void:
+	pass
+	
 func _physics_process(_delta: float) -> void:
 	$Timer.wait_time = 1/meteortirs_per_second
 
