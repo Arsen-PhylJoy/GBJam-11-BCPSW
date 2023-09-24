@@ -52,7 +52,8 @@ func _process(_delta: float) -> void:
 	
 	#Pause screen follows player to that it's always in the screen when the player pauses
 	#80 is the offset so that it stays in the center (half of 160, the screen size)
-	get_node("Pause Screen").position.x = get_node("Player").position.x - 30
+	if(is_instance_valid(get_node("Pause Screen"))):
+		get_node("Pause Screen").position.x = get_node("Player").position.x - 30
 
 
 func _on_projectile_spawner_projectile_spawned(pos, init_speed, gravity_scale) -> void:
@@ -151,11 +152,12 @@ func _on_player_reach_difficlty_area_4(area: Area2D)->void:
 		$Player/projectile_spawner.set_difficulty_level(4);
 
 func _on_player_win(area: Area2D)->void:
-	$win.play()
-	var win_screen_instance = win_screen.instantiate() as Control
-	win_screen_instance.global_position = $Player/player_camera.position
-	add_child(win_screen_instance)
-	await $win.finished
+	$"Pause Screen".set_process(false)
+	$Areas/Shelter/win_screen.set_score(Global.score.current_score)
+	$Areas/Shelter/win_screen.show()
+	$Player/player_camera/score.hide()
+	$Player/player_camera/direction_distance.hide()
+	await $Areas/Shelter/win_screen.exit
 	emit_signal("win")
 
 class MeteoriteBlock:
