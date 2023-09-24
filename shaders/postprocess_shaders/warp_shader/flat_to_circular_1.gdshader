@@ -20,6 +20,7 @@ void fragment() {
 	grad_color*=stretch_position_grad_uv;
 	vec4 dist_color = texture(screen,vec2(_uv.x,_uv.y+grad_color.x));
 	COLOR = texture(screen,vec2(_uv.x,_uv.y+grad_color.x));
-	
+	if(((dist_color.r + dist_color.g +dist_color.b))/3.0<0.18)
+		COLOR = vec4(0.0,0.0,0.0,1.0);
 }
 
