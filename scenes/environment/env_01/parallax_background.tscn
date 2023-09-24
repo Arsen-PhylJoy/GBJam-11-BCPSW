@@ -17,7 +17,7 @@ scroll_base_offset = Vector2(0, -104.975)
 scroll_base_scale = Vector2(3.5, 3.5)
 
 [node name="PlanetLayer" type="ParallaxLayer" parent="Planet"]
-motion_scale = Vector2(0.12, 0.12)
+motion_scale = Vector2(0.275, 0.275)
 motion_mirroring = Vector2(1280, 0)
 
 [node name="Planet" type="Sprite2D" parent="Planet/PlanetLayer"]
