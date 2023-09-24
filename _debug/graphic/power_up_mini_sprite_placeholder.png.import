@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpolsvp5vpeqg"
-path="res://.godot/imported/HotDog-1_placeholder.png-0a7379f2434a23e6edaf7df588f2d151.ctex"
+uid="uid://d23b5kvey1veo"
+path="res://.godot/imported/power_up_mini_sprite_placeholder.png-3fc10d6ca19bb8d638aaed948fd722e4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://_debug/graphic/HotDog-1_placeholder.png"
-dest_files=["res://.godot/imported/HotDog-1_placeholder.png-0a7379f2434a23e6edaf7df588f2d151.ctex"]
+source_file="res://_debug/graphic/power_up_mini_sprite_placeholder.png"
+dest_files=["res://.godot/imported/power_up_mini_sprite_placeholder.png-3fc10d6ca19bb8d638aaed948fd722e4.ctex"]
 
 [params]
 

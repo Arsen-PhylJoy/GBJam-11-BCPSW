@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjm41aq733ya0"]
+
+[ext_resource type="Script" path="res://scripts/power_up/power_up_spawner.gd" id="1_otckf"]
+[ext_resource type="PackedScene" uid="uid://dxhaqtvd7dtl7" path="res://scenes/power_up/power_ups/power_up_shield.tscn" id="2_cn3c3"]
+[ext_resource type="PackedScene" uid="uid://bkwol1ly1jr3" path="res://scenes/power_up/power_ups/power_up_magnification.tscn" id="3_fetee"]
+[ext_resource type="PackedScene" uid="uid://b8fwyyldfh6k2" path="res://scenes/power_up/power_ups/power_up_miniaturization.tscn" id="4_a7tok"]
+
+[node name="power_ups_spawner" type="Node2D" node_paths=PackedStringArray("Player")]
+script = ExtResource("1_otckf")
+try_spawn_power_up_per_second = 8.0
+power_ups_pks = Array[PackedScene]([ExtResource("2_cn3c3"), ExtResource("3_fetee"), ExtResource("4_a7tok")])
+Player = NodePath("")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true

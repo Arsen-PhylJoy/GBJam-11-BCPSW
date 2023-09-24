@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dn80mj37e3fd1"]
-
-[ext_resource type="Texture2D" uid="uid://dpolsvp5vpeqg" path="res://_debug/graphic/HotDog-1_placeholder.png" id="1_6fhrk"]
-
-[node name="hot_dog" type="Sprite2D"]
-texture = ExtResource("1_6fhrk")

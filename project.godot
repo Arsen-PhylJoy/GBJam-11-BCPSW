@@ -22,7 +22,10 @@ Global="*res://scripts/global.gd"
 
 window/size/viewport_width=160
 window/size/viewport_height=144
-window/stretch/mode="canvas_items"
+window/size/always_on_top=true
+window/stretch/mode="viewport"
+window/dpi/allow_hidpi=false
+window/vsync/vsync_mode=0
 
 [dotnet]
 

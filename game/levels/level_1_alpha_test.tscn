@@ -12,7 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://b5358xumoanqi" path="res://assets/audio/music/pause-menu/pause-menu.mp3" id="6_7fkxr"]
 [ext_resource type="AudioStream" uid="uid://o6v8xjv4sk33" path="res://assets/audio/music/environment/env_01/ambient/env_01_ambient.mp3" id="7_r3uri"]
 [ext_resource type="AudioStream" uid="uid://cl3i7svr4j82y" path="res://assets/audio/music/menu-actions/click.mp3" id="7_tpnfv"]
-[ext_resource type="PackedScene" uid="uid://bjm41aq733ya0" path="res://scenes/power_ups/power_ups_spawner.tscn" id="8_dyjmd"]
+[ext_resource type="PackedScene" uid="uid://bjm41aq733ya0" path="res://scenes/power_up/power_ups_spawner.tscn" id="8_dyjmd"]
 [ext_resource type="PackedScene" uid="uid://bj08btic8c155" path="res://scenes/postprocesses_layers/wrap_to_circle.tscn" id="11_0jys7"]
 [ext_resource type="Shader" path="res://scripts/postprocesses_layers/color_4_post_process.gdshader" id="13_3pygw"]
 
@@ -25,9 +25,9 @@ size = Vector2(11, 237)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mbmxm"]
 shader = ExtResource("13_3pygw")
 shader_parameter/color1 = Color(0, 0, 0, 1)
-shader_parameter/color2 = Color(0.803922, 0.431373, 0.364706, 1)
-shader_parameter/color3 = Color(0.785156, 0.628906, 0.597656, 1)
-shader_parameter/color4 = Color(0.765625, 0.769531, 0.753906, 1)
+shader_parameter/color2 = Color(0.631373, 0.156863, 0.109804, 1)
+shader_parameter/color3 = Color(0.572549, 0.576471, 0.552941, 1)
+shader_parameter/color4 = Color(0.909804, 0.839216, 0.752941, 1)
 shader_parameter/simple_shading_mode = true
 shader_parameter/brightness_factor = 0.0
 
@@ -37,20 +37,22 @@ script = ExtResource("1_4novl")
 [node name="Player" parent="." instance=ExtResource("1_gcv57")]
 position = Vector2(54, 81)
 collision_mask = 6
+speed = 400
 metadata/_edit_group_ = true
 
 [node name="player_camera" type="Camera2D" parent="Player"]
 position = Vector2(0, -23)
 offset = Vector2(0, -17.835)
-zoom = Vector2(0.2, 0.2)
 
 [node name="score" parent="Player/player_camera" instance=ExtResource("3_8xfgu")]
+z_index = 1
 
 [node name="direction_distance" parent="Player/player_camera" instance=ExtResource("4_4ncjm")]
+z_index = 1
 
 [node name="projectile_spawner" parent="Player" instance=ExtResource("2_bvut5")]
 projectile = ExtResource("3_shdic")
-meteortirs_per_second = 140.0
+meteortirs_per_second = 0.0
 
 [node name="player_sfx" type="AudioStreamPlayer" parent="Player"]
 stream = ExtResource("5_xrsal")
@@ -68,6 +70,7 @@ shape = SubResource("RectangleShape2D_dnu3l")
 
 [node name="Pause Screen" parent="." instance=ExtResource("5_7att2")]
 visible = false
+z_index = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -139,9 +142,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="power_ups_spawner" parent="." node_paths=PackedStringArray("Player") instance=ExtResource("8_dyjmd")]
-position = Vector2(0, 115)
+position = Vector2(0, 81)
 Player = NodePath("../Player")
 
 [connection signal="unpause" from="Pause Screen" to="." method="_on_pause_screen_unpause"]

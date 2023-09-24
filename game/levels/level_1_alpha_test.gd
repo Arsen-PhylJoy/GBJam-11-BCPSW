@@ -61,9 +61,11 @@ func _on_projectile_spawner_projectile_spawned(pos, init_speed, gravity_scale) -
 	meteor_instance.connect("on_meteor_deleted", self._on_meteor_deleted)
 	
 func _on_power_up_spawn(power_up_index,power_up_pos_x)->void:
-	var hot_dog = $power_ups_spawner.place_holder.instantiate() as Sprite2D
-	add_child(hot_dog)
-	hot_dog.position.x = power_up_pos_x
+	var power_up_instance: Area2D = $power_ups_spawner.power_ups_pks[power_up_index].instantiate()
+	$power_ups_spawner.power_ups.append(power_up_instance)
+	add_child(power_up_instance)
+	power_up_instance.connect("deleted",$power_ups_spawner._on_power_up_deleted)
+	power_up_instance.global_position = Vector2(power_up_pos_x,$power_ups_spawner.global_position.y)
 
 func on_pause_button_pressed() -> void:
 	if not Global.isDeafeated:
