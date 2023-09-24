@@ -122,6 +122,7 @@ _data = {
 
 [node name="Player" type="Area2D" groups=["Player"]]
 script = ExtResource("1_umu53")
+speed = 400
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_4hh4j")
