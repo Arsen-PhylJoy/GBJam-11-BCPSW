@@ -1,6 +1,6 @@
 extends Area2D
 
-signal picked_up(speed_mul,scale_mul)
+signal picked_up_miniaturization(speed_mul,scale_mul)
 signal deleted(pos)
 
 @export var speed_mul: float = 1.6
@@ -12,7 +12,7 @@ func _ready() -> void:
 
 func _on_play_enter(area: Area2D) -> void:
 	if(area.is_in_group("Player")):
-		emit_signal("picked_up",speed_mul,scale_mul)
+		emit_signal("picked_up_miniaturization",speed_mul,scale_mul)
 		emit_signal("deleted",self.position)
 		self.queue_free()
 

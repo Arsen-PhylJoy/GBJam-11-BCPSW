@@ -62,9 +62,14 @@ func _on_projectile_spawner_projectile_spawned(pos, init_speed, gravity_scale) -
 	
 func _on_power_up_spawn(power_up_index,power_up_pos_x)->void:
 	var power_up_instance: Area2D = $power_ups_spawner.power_ups_pks[power_up_index].instantiate()
-	$power_ups_spawner.power_ups.append(power_up_instance)
 	add_child(power_up_instance)
 	power_up_instance.connect("deleted",$power_ups_spawner._on_power_up_deleted)
+	if(power_up_instance.has_signal("picked_up_magnification")):
+		power_up_instance.connect("picked_up_magnification",$Player._on_picked_up_magnification)
+	elif(power_up_instance.has_signal("picked_up_miniaturization")):
+		power_up_instance.connect("picked_up_miniaturization",$Player._on_picked_up_miniaturization)
+	elif(power_up_instance.has_signal("picked_up_shield")):
+		power_up_instance.connect("picked_up_shield",$Player._on_picked_up_shield)
 	power_up_instance.global_position = Vector2(power_up_pos_x,$power_ups_spawner.global_position.y)
 
 func on_pause_button_pressed() -> void:

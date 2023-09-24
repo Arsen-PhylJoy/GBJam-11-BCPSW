@@ -7,7 +7,6 @@
 
 [node name="power_ups_spawner" type="Node2D" node_paths=PackedStringArray("Player")]
 script = ExtResource("1_otckf")
-try_spawn_power_up_per_second = 8.0
 power_ups_pks = Array[PackedScene]([ExtResource("2_cn3c3"), ExtResource("3_fetee"), ExtResource("4_a7tok")])
 Player = NodePath("")
 

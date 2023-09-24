@@ -1,6 +1,6 @@
 extends Area2D
 
-signal picked_up(shield_time)
+signal picked_up_shield(shield_time)
 signal deleted(pos)
 
 @export var shield_time: float = 10.0
@@ -11,7 +11,7 @@ func _ready() -> void:
 
 func _on_play_enter(area: Area2D) -> void:
 	if(area.is_in_group("Player")):
-		emit_signal("picked_up",shield_time)
+		emit_signal("picked_up_shield",shield_time)
 		emit_signal("deleted",self.position)
 		self.queue_free()
 
