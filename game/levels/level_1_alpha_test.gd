@@ -107,11 +107,12 @@ func _on_defeat() -> void:
 func _on_player_move(_position) -> void:
 	Global.update_score_by_move(_position.x)
 	$Player/player_camera/direction_distance.update_distance(str(int($Areas/Shelter.global_position.x - $Player.global_position.x)))
-	var offset = int((160.0/2.0)*1.05)
 	var to_delete: Array[MeteoriteBlock] = []
 	var to_preserve: Array[MeteoriteBlock] = []
+	var right_offset = $Player/player_camera.position.x/2.0 + $Player/player_camera.offset.x + 40
+	var left_offset = $Player/player_camera.position.x/2.0 - $Player/player_camera.offset.x
 	for met in meteorite_pool:
-		if (met.offset > _position.x + offset) or (met.offset < _position.x - offset):
+		if (met.offset > _position.x + right_offset) or (met.offset < _position.x - left_offset):
 			to_delete.push_back(met)
 		else:
 			to_preserve.push_back(met)
