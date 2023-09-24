@@ -146,8 +146,8 @@ func _on_player_reach_difficlty_area_4(area: Area2D)->void:
 		$Player/projectile_spawner.set_difficulty_level(4);
 
 func _on_player_win(area: Area2D)->void:
-	$win_sound.play()
-	await $win_sound.finished
+	$win.play()
+	await $win.finished
 	emit_signal("win")
 
 class MeteoriteBlock:
