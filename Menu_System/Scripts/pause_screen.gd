@@ -4,6 +4,8 @@ signal unpause
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+	$"Resume Button".connect("button_down",self._on_button_down)
+	$"Exit Button".connect("button_down",self._on_button_down)
 	
 func _process(_delta):
 	if not Global.isDeafeated:
@@ -19,3 +21,7 @@ func play_resume_audio():
 	
 func play_pause_audio():
 	$"pause-button-audio".play()
+	
+func _on_button_down()->void:
+	$pause_menu_click.play()
+	await $pause_menu_click.finished

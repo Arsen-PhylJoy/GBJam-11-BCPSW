@@ -43,7 +43,6 @@ func _process(_delta: float) -> void:
 	if $"Pause Timer".is_stopped() == true:
 		if Input.is_action_pressed("pause"):
 			print("P pressed during unpaused")
-			Global.print_score_data()
 			on_pause_button_pressed()
 	
 	#Pause screen follows player to that it's always in the screen when the player pauses
@@ -146,7 +145,9 @@ func _on_player_reach_difficlty_area_4(area: Area2D)->void:
 	if(area.is_in_group("Player")):
 		$Player/projectile_spawner.set_difficulty_level(4);
 
-func _on_player_win()->void:
+func _on_player_win(area: Area2D)->void:
+	$win.play()
+	await $win.finished
 	emit_signal("win")
 
 class MeteoriteBlock:

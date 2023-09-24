@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://b6en1kjbe11nn"]
+[gd_scene load_steps=7 format=3 uid="uid://b6en1kjbe11nn"]
 
 [ext_resource type="Script" path="res://Menu_System/Scripts/pause_screen.gd" id="1_u1atu"]
 [ext_resource type="Script" path="res://Menu_System/Scripts/resume_button.gd" id="2_a27d5"]
 [ext_resource type="Theme" uid="uid://g175br3gjr52" path="res://ui/main-menu/main_menu.tres" id="2_w3fyu"]
 [ext_resource type="StyleBox" uid="uid://cfiuypyo7lg7b" path="res://ui/main-menu/play_game_button_primary.tres" id="3_fdjt5"]
 [ext_resource type="StyleBox" uid="uid://bblbsdb62dxtm" path="res://ui/main-menu/play_game_button_secondary.tres" id="4_0xdf8"]
+[ext_resource type="AudioStream" uid="uid://cl3i7svr4j82y" path="res://assets/audio/music/menu-actions/click.mp3" id="6_2byk0"]
 
 [node name="Pause Screen" type="Control"]
 layout_mode = 3
@@ -43,3 +44,6 @@ text = "EXIT"
 [node name="PauseTimer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="pause_menu_click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_2byk0")
