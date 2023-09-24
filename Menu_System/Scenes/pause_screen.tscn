@@ -21,10 +21,10 @@ offset_top = 32.0
 offset_right = 112.0
 offset_bottom = 64.0
 theme = ExtResource("2_w3fyu")
-theme_override_styles/normal = ExtResource("3_fdjt5")
-theme_override_styles/hover = ExtResource("4_0xdf8")
-theme_override_styles/pressed = ExtResource("4_0xdf8")
-theme_override_styles/focus = ExtResource("4_0xdf8")
+theme_override_styles/normal = ExtResource("4_0xdf8")
+theme_override_styles/hover = ExtResource("3_fdjt5")
+theme_override_styles/pressed = ExtResource("3_fdjt5")
+theme_override_styles/focus = ExtResource("3_fdjt5")
 text = "GO"
 script = ExtResource("2_a27d5")
 
@@ -35,10 +35,10 @@ offset_top = 84.0
 offset_right = 112.0
 offset_bottom = 116.0
 theme = ExtResource("2_w3fyu")
-theme_override_styles/normal = ExtResource("3_fdjt5")
-theme_override_styles/hover = ExtResource("4_0xdf8")
-theme_override_styles/pressed = ExtResource("4_0xdf8")
-theme_override_styles/focus = ExtResource("4_0xdf8")
+theme_override_styles/normal = ExtResource("4_0xdf8")
+theme_override_styles/hover = ExtResource("3_fdjt5")
+theme_override_styles/pressed = ExtResource("3_fdjt5")
+theme_override_styles/focus = ExtResource("3_fdjt5")
 text = "EXIT"
 
 [node name="PauseTimer" type="Timer" parent="."]
