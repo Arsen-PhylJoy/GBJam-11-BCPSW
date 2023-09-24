@@ -7,7 +7,7 @@
 [ext_resource type="StyleBox" uid="uid://cfiuypyo7lg7b" path="res://ui/main-menu/play_game_button_primary.tres" id="4_ljg0n"]
 [ext_resource type="StyleBox" uid="uid://bblbsdb62dxtm" path="res://ui/main-menu/play_game_button_secondary.tres" id="5_855qb"]
 [ext_resource type="Shader" path="res://scripts/postprocesses_layers/color_4_post_process.gdshader" id="6_ekvbl"]
-[ext_resource type="AudioStream" path="res://assets/audio/music/main-menu/main_menu_theme.mp3" id="8_rbqbq"]
+[ext_resource type="AudioStream" uid="uid://6glip6ylyj0w" path="res://assets/audio/music/main-menu/main_menu_theme.mp3" id="8_rbqbq"]
 [ext_resource type="AudioStream" uid="uid://cl3i7svr4j82y" path="res://assets/audio/music/menu-actions/click.mp3" id="9_ch556"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mbmxm"]

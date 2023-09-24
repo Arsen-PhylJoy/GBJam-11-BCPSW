@@ -2,6 +2,9 @@ extends Node
 
 signal score_update
 signal level_score_update
+signal finished()
+
+var transition_pk: PackedScene = preload("res://scenes/postprocesses_layers/transitions/transition_scanline.tscn")
 
 var score: PlayerScoreControl
 var isDeafeated = false
@@ -35,6 +38,19 @@ func emit_level_score(_level: Global.Level) -> void:
 func reset_current_level_score() -> void:
 	self.score.set_score_by_level(self.score.current_level.level, false, 0)
 	self.score.set_current_level(null)
+
+##If true->fade in else fade out
+func fade(fade_flag: bool):
+	var transition_screen = transition_pk.instantiate()
+	add_child(transition_screen)
+
+	if(fade_flag):
+		await transition_screen.start_fade_in()
+	else:
+		await transition_screen.start_fade_out()
+		
+	emit_signal("finished")
+	return finished
 
 enum Scene {
 	INTRO,
