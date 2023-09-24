@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b8fwyyldfh6k2"]
 
 [ext_resource type="Script" path="res://scripts/power_up/power_up_miniaturization.gd" id="1_pbh5j"]
-[ext_resource type="Texture2D" uid="uid://d23b5kvey1veo" path="res://_debug/graphic/power_up_mini_sprite_placeholder.png" id="2_kmmgx"]
+[ext_resource type="Texture2D" uid="uid://b3cco05yokour" path="res://assets/graphic/environment/env_01/foreground/objects/icons/small_power_up_icon.png" id="2_hdndv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4n2d2"]
 
@@ -12,4 +12,4 @@ script = ExtResource("1_pbh5j")
 shape = SubResource("RectangleShape2D_4n2d2")
 
 [node name="power_up_miniaturization_sprite" type="Sprite2D" parent="."]
-texture = ExtResource("2_kmmgx")
+texture = ExtResource("2_hdndv")
