@@ -17,12 +17,14 @@ func _ready() -> void:
 	
 	$Player.connect("defeated", self._on_defeat)
 	$Player.connect("player_update_position", self._on_player_move)
+	$Player.connect("on_meteor_deleted", self._on_meteor_deleted)	
 	$Areas/Threshhold_1_easy.connect("area_entered",self._on_player_reach_difficlty_area_1)
 	$Areas/Threshhold_2_medium.connect("area_entered",self._on_player_reach_difficlty_area_2)
 	$Areas/Threshhold_3_hard.connect("area_entered",self._on_player_reach_difficlty_area_3)
 	$Areas/Threshhold_4_very_hard.connect("area_entered",self._on_player_reach_difficlty_area_4)
 	$Areas/Shelter.connect("area_entered",self._on_player_win)
 	$Player.position.x = 0
+	
 	var projectile_node = $Player/projectile_spawner
 	projectile_node.position.x = 0
 	projectile_node.position.y = 0
