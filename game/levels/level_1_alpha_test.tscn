@@ -39,7 +39,7 @@ win_screen = ExtResource("2_ehymt")
 [node name="Player" parent="." instance=ExtResource("1_gcv57")]
 position = Vector2(54, 81)
 collision_mask = 6
-dash_speed = 50
+dash_speed = 300
 speed = 90
 metadata/_edit_group_ = true
 
@@ -115,6 +115,7 @@ layer = -100
 
 [node name="env_01_ambient" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_r3uri")
+volume_db = -10.0
 autoplay = true
 
 [node name="Areas" type="Node2D" parent="."]
