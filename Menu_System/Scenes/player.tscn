@@ -334,6 +334,7 @@ script = ExtResource("1_umu53")
 speed = 400
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.759999, 1)
 shape = SubResource("CapsuleShape2D_4hh4j")
 
 [node name="hero_mesh" type="Sprite2D" parent="."]

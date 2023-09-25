@@ -39,8 +39,8 @@ win_screen = ExtResource("2_ehymt")
 [node name="Player" parent="." instance=ExtResource("1_gcv57")]
 position = Vector2(54, 81)
 collision_mask = 6
-dash_speed = 1200
-speed = 100
+dash_speed = 50
+speed = 90
 metadata/_edit_group_ = true
 
 [node name="player_camera" type="Camera2D" parent="Player"]
@@ -60,6 +60,18 @@ offset_right = -10.0
 [node name="projectile_spawner" parent="Player" instance=ExtResource("2_bvut5")]
 position = Vector2(50, 0)
 projectile = ExtResource("3_shdic")
+meteortirs_per_second_0 = 2
+meteortirs_per_second_1 = 4
+min_initial_speed_1 = 30.0
+max_initial_speed_1 = 45.0
+meteortirs_per_second_2 = 5
+min_initial_speed_2 = 40.0
+max_initial_speed_2 = 75.0
+meteortirs_per_second_3 = 8
+max_initial_speed_3 = 80.0
+meteortirs_per_second_4 = 12
+min_initial_speed_4 = 50.0
+max_initial_speed_4 = 100.0
 
 [node name="player_sfx" type="AudioStreamPlayer" parent="Player"]
 stream = ExtResource("5_xrsal")
@@ -98,7 +110,6 @@ one_shot = true
 
 [node name="wrap_to_circle" parent="." instance=ExtResource("11_0jys7")]
 layer = -100
-visible = false
 
 [node name="parallax_background" parent="." instance=ExtResource("5_yo880")]
 
@@ -109,7 +120,7 @@ autoplay = true
 [node name="Areas" type="Node2D" parent="."]
 
 [node name="Threshhold_1_easy" type="Area2D" parent="Areas"]
-position = Vector2(511, 80)
+position = Vector2(500, 80)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Threshhold_1_easy"]
 shape = SubResource("RectangleShape2D_wauqm")
@@ -121,19 +132,19 @@ position = Vector2(1400, 93)
 shape = SubResource("RectangleShape2D_wauqm")
 
 [node name="Threshhold_3_hard" type="Area2D" parent="Areas"]
-position = Vector2(2110, 90)
+position = Vector2(3000, 90)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Threshhold_3_hard"]
 shape = SubResource("RectangleShape2D_wauqm")
 
 [node name="Threshhold_4_very_hard" type="Area2D" parent="Areas"]
-position = Vector2(2625, 93)
+position = Vector2(3800, 93)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Threshhold_4_very_hard"]
 shape = SubResource("RectangleShape2D_wauqm")
 
 [node name="Shelter" type="Area2D" parent="Areas"]
-position = Vector2(3048, 100)
+position = Vector2(4200, 100)
 scale = Vector2(0.113953, -5.43519)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Shelter"]
@@ -157,6 +168,9 @@ metadata/_edit_use_anchors_ = true
 
 [node name="power_ups_spawner" parent="." node_paths=PackedStringArray("Player") instance=ExtResource("8_dyjmd")]
 position = Vector2(0, 81)
+min_spacing = 100
+max_spacing = 200
+spawner_width = 4200
 Player = NodePath("../Player")
 
 [connection signal="unpause" from="Pause Screen" to="." method="_on_pause_screen_unpause"]
