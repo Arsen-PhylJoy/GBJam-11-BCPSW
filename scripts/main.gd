@@ -23,7 +23,7 @@ func _create_scenes_info() -> void:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_main_preprocesses()
-	get_tree().root.size = Vector2(160,144)
+	get_tree().root.size = Vector2(640,576)
 	
 	var intro_scene = self.scenes.get_scene_by_name(Global.SceneName[Global.Scene.INTRO])
 	await load_scene(intro_scene)

@@ -77,7 +77,9 @@ func _process(delta):
 		emit_signal("player_update_position", $".".global_position)
 		if not player_run_sfx.playing:
 			player_run_sfx.play()
-
+	if Input.is_action_just_pressed("dpad_down"):
+		swap_power_ups()
+		
 func _on_body_entered(body: Node2D) -> void:
 	if not Global.isDeafeated and body.is_in_group("Meteorite"):
 		$meteorite_collision.play()
@@ -172,7 +174,13 @@ func set_stashed_power_up(_power_up):
 		self.power_up = _power_up
 	else:
 		self.power_up_stash = _power_up
-
+		
+func swap_power_ups()->void:
+	if self.power_up != null and self.power_up_stash != null and not self.power_up.active:
+		var tmp: PowerUp = self.power_up
+		self.power_up = self.power_up_stash
+		self.power_up_stash = tmp
+		
 class PowerUp:
 	var active: bool = false
 	var type: Global.PowerUp
