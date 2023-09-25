@@ -5,6 +5,7 @@ signal player_update_position(position)
 signal on_meteor_deleted(meteor)
 
 @export var dash_offset = 0.1
+@export var dash_cooldown = 1.5
 @export var dash_speed = 400
 @export var speed = 100
 @export var defeat_tex = preload("res://assets/graphic/characters/hero/sprite_sheets/defeat/character_01_defeat_sheet.png")
@@ -16,8 +17,11 @@ var counter = 0.0
 var delta_deadend = 0
 var isDashing = false
 var isMortal = true
+var dash_timer: Timer
 
 func _ready():
+	self.dash_timer = $hero_mesh/dash_timer
+	self.dash_timer.wait_time = dash_cooldown
 	$hero_animations.play("idle")
 	self.set_defeat_animation(4)
 
@@ -68,7 +72,7 @@ func _process(delta):
 				$hero_animations.play("idle")
 				
 			player_run_sfx.stop()
-			isDashing = false
+#			isDashing = false
 			
 	velocity = velocity.normalized() * self.active_speed
 	position += velocity * delta
@@ -97,11 +101,12 @@ func _on_body_entered(body: Node2D) -> void:
 func _dash_handler()-> void:
 	if power_up == null or not power_up.active:
 		if isDashing and counter >= delta_deadend:
-			self.active_speed = speed
+			self.active_speed = speed 
 			isDashing = false
 		elif isDashing and counter < delta_deadend:
 			self.active_speed = dash_speed
-		elif Input.is_action_just_pressed("a") and not isDashing:
+		elif Input.is_action_just_pressed("a") and not isDashing and dash_timer.is_stopped():
+			dash_timer.start()
 			self.active_speed = dash_speed
 			isDashing = true
 			delta_deadend = counter + dash_offset

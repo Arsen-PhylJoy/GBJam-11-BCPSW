@@ -12,13 +12,6 @@ var isDeafeated = false
 func init_score_data() -> void:
 	score = PlayerScoreControl.new("player_one")
 
-func print_score_data() -> void:
-	print("player: " + score.player)
-	print("current_score: " + str(score.current_score))
-	print("display_score: " + str(score.display_score))
-	print("level: " + LevelName[score.levels[0].level])
-	print("level_score: " + str(score.levels[0].score))
-
 func update_score_by_move(_score: int) -> void:
 	if self.score.current_score < _score:
 		self.score.set_current(_score)
