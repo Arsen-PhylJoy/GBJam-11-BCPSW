@@ -157,6 +157,7 @@ func _on_player_win(area: Area2D)->void:
 	$Areas/Shelter/win_screen.set_score(Global.score.current_score)
 	$Areas/Shelter/win_screen.show()
 	await $Areas/Shelter/win_screen.exit
+	Global.reset_current_level_score()
 	emit_signal("win")
 
 class MeteoriteBlock:

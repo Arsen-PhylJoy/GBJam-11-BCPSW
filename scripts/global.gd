@@ -38,6 +38,7 @@ func emit_level_score(_level: Global.Level) -> void:
 func reset_current_level_score() -> void:
 	self.score.set_score_by_level(self.score.current_level.level, false, 0)
 	self.score.set_current_level(null)
+	self.score.current_score = 0
 
 ##If true->fade in else fade out
 func fade(fade_flag: bool):
