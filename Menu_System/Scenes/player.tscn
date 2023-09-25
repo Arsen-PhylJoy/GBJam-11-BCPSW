@@ -334,6 +334,9 @@ shape = SubResource("CapsuleShape2D_4hh4j")
 texture = ExtResource("4_mreiy")
 hframes = 4
 
+[node name="dash_timer" type="Timer" parent="hero_mesh"]
+one_shot = true
+
 [node name="hero_animations" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_kiitc")

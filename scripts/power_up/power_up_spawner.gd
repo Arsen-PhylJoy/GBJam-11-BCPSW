@@ -33,7 +33,7 @@ func _ready() -> void:
 		is_spawner_available.append(true)
 		spawners[i].position.x = rand.randi_range(min_spacing,max_spacing) + prev_position
 		prev_position = spawners[i].position.x
-		print(spawners[i].position.x)
+		
 	randomize()
 	$Timer.wait_time = 1/try_spawn_power_up_per_second
 	$Timer.connect("timeout",self._on_try_spawn_power_up)
