@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://duivdh4a5que7"]
+[gd_scene load_steps=21 format=3 uid="uid://duivdh4a5que7"]
 
 [ext_resource type="Script" path="res://game/levels/level_1_alpha_test.gd" id="1_4novl"]
 [ext_resource type="PackedScene" uid="uid://ga08fi1u5kdl" path="res://Menu_System/Scenes/player.tscn" id="1_gcv57"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://wycpmwt87okm" path="res://assets/audio/sfx/characters/hero/sounds/run/run.mp3" id="5_xrsal"]
 [ext_resource type="PackedScene" uid="uid://curqbovuaop8h" path="res://scenes/environment/env_01/parallax_background.tscn" id="5_yo880"]
 [ext_resource type="AudioStream" uid="uid://b5358xumoanqi" path="res://assets/audio/music/pause-menu/pause-menu.mp3" id="6_7fkxr"]
+[ext_resource type="PackedScene" uid="uid://dvbvxh27r7nqu" path="res://scenes/power_up/power_up_ui/power_up_ui.tscn" id="6_ombdm"]
 [ext_resource type="AudioStream" uid="uid://o6v8xjv4sk33" path="res://assets/audio/music/environment/env_01/ambient/env_01_ambient.mp3" id="7_r3uri"]
 [ext_resource type="AudioStream" uid="uid://cl3i7svr4j82y" path="res://assets/audio/music/menu-actions/click.mp3" id="7_tpnfv"]
 [ext_resource type="PackedScene" uid="uid://bjm41aq733ya0" path="res://scenes/power_up/power_ups_spawner.tscn" id="8_dyjmd"]
@@ -56,6 +57,13 @@ offset_right = -29.0
 z_index = 1
 offset_left = -10.0
 offset_right = -10.0
+
+[node name="power_up_ui" parent="Player/player_camera" node_paths=PackedStringArray("player") instance=ExtResource("6_ombdm")]
+offset_left = -80.0
+offset_top = 34.0
+offset_right = -80.0
+offset_bottom = 34.0
+player = NodePath("../..")
 
 [node name="projectile_spawner" parent="Player" instance=ExtResource("2_bvut5")]
 position = Vector2(50, 0)
