@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://ga08fi1u5kdl"]
+[gd_scene load_steps=30 format=3 uid="uid://ga08fi1u5kdl"]
 
 [ext_resource type="Script" path="res://Menu_System/Scripts/player.gd" id="1_umu53"]
 [ext_resource type="Texture2D" uid="uid://mgrm2ow0wuev" path="res://assets/graphic/characters/hero/sprite_sheets/idle/character_01_idle_sheet.png" id="3_ui3ae"]
@@ -12,6 +12,10 @@
 [ext_resource type="Texture2D" uid="uid://cvd5kq38orc6k" path="res://assets/graphic/characters/hero_power_up_small/sprite_sheets/run/character_01_small_run_left_sheet.png" id="8_42h5f"]
 [ext_resource type="Texture2D" uid="uid://djh80j2ln3yk2" path="res://assets/graphic/characters/hero_power_up_big/sprite_sheets/idle/character_01_big_idle_sheet.png" id="9_rddxp"]
 [ext_resource type="Texture2D" uid="uid://cxyhd8td7dvtv" path="res://assets/graphic/characters/hero_power_up_small/sprite_sheets/idle/character_01_small_idle_sheet.png" id="10_u3q4y"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/power_ups/big.wav" id="13_h751m"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/power_ups/small.wav" id="14_c68rj"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/power_ups/shield_up.wav" id="15_mqdi7"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/power_ups/shield_down.wav" id="16_p58ac"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4hh4j"]
 
@@ -28,18 +32,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [ExtResource("4_mreiy")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("meteorite_collision:volume_db")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [18.0]
 }
 
 [sub_resource type="Animation" id="Animation_2kv13"]
@@ -331,7 +323,7 @@ _data = {
 
 [node name="Player" type="Area2D" groups=["Player"]]
 script = ExtResource("1_umu53")
-speed = 400
+speed = 90
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.759999, 1)
@@ -348,9 +340,20 @@ libraries = {
 
 [node name="meteorite_collision" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_skxcx")
-volume_db = 18.0
 
 [node name="death" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_h6yxv")
+
+[node name="big_power_up_use" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_h751m")
+
+[node name="small_power_up_use" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_c68rj")
+
+[node name="shield_up" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_mqdi7")
+
+[node name="shield_down" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_p58ac")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
