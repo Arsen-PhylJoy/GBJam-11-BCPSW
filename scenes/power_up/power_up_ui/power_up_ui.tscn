@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvbvxh27r7nqu"]
+
+[ext_resource type="Script" path="res://power_up_ui.gd" id="1_6jikv"]
+[ext_resource type="Texture2D" uid="uid://cwt7nrdxvnr7y" path="res://assets/graphic/environment/env_01/foreground/objects/icons/big_power_up_icon.png" id="2_w7l7f"]
+[ext_resource type="Texture2D" uid="uid://bt2hy1e64453q" path="res://assets/graphic/environment/env_01/foreground/objects/icons/shield_power_up_icon.png" id="3_bsa7h"]
+[ext_resource type="Texture2D" uid="uid://b3cco05yokour" path="res://assets/graphic/environment/env_01/foreground/objects/icons/small_power_up_icon.png" id="4_mo07u"]
+
+[node name="power_up_ui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = -7.0
+offset_right = 3.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6jikv")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.5, 0.5)
+color = Color(0, 0, 0, 1)
+
+[node name="BigPowerUpIconNext" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(14.1, 14.7)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_w7l7f")
+
+[node name="ShieldPowerUpIconNext" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(15.1, 14.7)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_bsa7h")
+
+[node name="SmallPowerUpIconNext" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(14.1, 14.7)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_mo07u")
+
+[node name="BigPowerUpIconCurrent" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(7.8, 8.6)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_w7l7f")
+
+[node name="ShieldPowerUpIconCurrent" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(8.8, 8.6)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_bsa7h")
+
+[node name="SmallPowerUpIconCurrent" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(7.8, 8.6)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_mo07u")
