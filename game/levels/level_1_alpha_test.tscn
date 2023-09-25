@@ -73,22 +73,22 @@ player = NodePath("../..")
 [node name="projectile_spawner" parent="Player" instance=ExtResource("2_bvut5")]
 position = Vector2(50, 0)
 projectile = ExtResource("3_shdic")
-meteortirs_per_second_0 = 2
+meteortirs_per_second_0 = 4
 meteortirs_per_second_1 = 5
 min_initial_speed_1 = 30.0
 max_initial_speed_1 = 45.0
 chance_to_spawn_fast_projectile_1 = 23
 meteortirs_per_second_2 = 6
 min_initial_speed_2 = 45.0
-max_initial_speed_2 = 70.0
-chance_to_spawn_fast_projectile_2 = 17
+max_initial_speed_2 = 60.0
+chance_to_spawn_fast_projectile_2 = 10
 meteortirs_per_second_3 = 8
 max_initial_speed_3 = 70.0
 chance_to_spawn_fast_projectile_3 = 7
-meteortirs_per_second_4 = 2
-min_initial_speed_4 = 70.0
-max_initial_speed_4 = 90.0
-chance_to_spawn_fast_projectile_4 = 3
+meteortirs_per_second_4 = 8
+min_initial_speed_4 = 50.0
+max_initial_speed_4 = 80.0
+chance_to_spawn_fast_projectile_4 = 25
 
 [node name="player_sfx" type="AudioStreamPlayer" parent="Player"]
 stream = ExtResource("5_xrsal")
@@ -186,9 +186,11 @@ metadata/_edit_use_anchors_ = true
 
 [node name="power_ups_spawner" parent="." node_paths=PackedStringArray("Player") instance=ExtResource("8_dyjmd")]
 position = Vector2(0, 81)
-min_spacing = 100
-max_spacing = 200
+power_ups_amount = 28
+min_spacing = 130
+max_spacing = 190
 spawner_width = 4200
+spawning_range = 150
 Player = NodePath("../Player")
 
 [connection signal="unpause" from="Pause Screen" to="." method="_on_pause_screen_unpause"]
