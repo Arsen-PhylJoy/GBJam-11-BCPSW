@@ -40,8 +40,7 @@ win_screen = ExtResource("2_ehymt")
 [node name="Player" parent="." instance=ExtResource("1_gcv57")]
 position = Vector2(54, 81)
 collision_mask = 6
-dash_speed = 300
-speed = 90
+dash_speed = 225
 metadata/_edit_group_ = true
 
 [node name="player_camera" type="Camera2D" parent="Player"]
@@ -80,10 +79,10 @@ chance_to_spawn_fast_projectile_2 = 17
 meteortirs_per_second_3 = 8
 max_initial_speed_3 = 70.0
 chance_to_spawn_fast_projectile_3 = 7
-meteortirs_per_second_4 = 12
-min_initial_speed_4 = 30.0
-max_initial_speed_4 = 80.0
-chance_to_spawn_fast_projectile_4 = 5
+meteortirs_per_second_4 = 2
+min_initial_speed_4 = 70.0
+max_initial_speed_4 = 90.0
+chance_to_spawn_fast_projectile_4 = 3
 
 [node name="player_sfx" type="AudioStreamPlayer" parent="Player"]
 stream = ExtResource("5_xrsal")
