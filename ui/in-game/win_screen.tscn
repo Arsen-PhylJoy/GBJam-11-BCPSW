@@ -61,6 +61,7 @@ script = ExtResource("5_fr4bd")
 
 [node name="win" type="AudioStreamPlayer" parent="win_screen"]
 stream = ExtResource("3_whw2g")
+volume_db = -6.0
 
 [node name="click" type="AudioStreamPlayer" parent="win_screen"]
 stream = ExtResource("4_38gjo")

@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://dvbvxh27r7nqu"]
 
 [ext_resource type="Script" path="res://power_up_ui.gd" id="1_6jikv"]
-[ext_resource type="Texture2D" uid="uid://cwt7nrdxvnr7y" path="res://assets/graphic/environment/env_01/foreground/objects/icons/big_power_up_icon.png" id="2_w7l7f"]
-[ext_resource type="Texture2D" uid="uid://bt2hy1e64453q" path="res://assets/graphic/environment/env_01/foreground/objects/icons/shield_power_up_icon.png" id="3_bsa7h"]
-[ext_resource type="Texture2D" uid="uid://b3cco05yokour" path="res://assets/graphic/environment/env_01/foreground/objects/icons/small_power_up_icon.png" id="4_mo07u"]
+[ext_resource type="Texture2D" uid="uid://ci1q4ad3xdn2h" path="res://assets/graphic/environment/env_01/foreground/objects/icons/big_power_up_icon_shadowed.png" id="2_fv3h2"]
+[ext_resource type="Texture2D" uid="uid://b1hg458afx8wb" path="res://assets/graphic/environment/env_01/foreground/objects/icons/shield_power_up_icon_shadowed.png" id="3_gdljs"]
+[ext_resource type="Texture2D" uid="uid://cyve2fm36hc5u" path="res://assets/graphic/environment/env_01/foreground/objects/icons/small_power_up_icon_shadowed.png" id="4_ttt08"]
 
 [node name="power_up_ui" type="Control"]
 layout_mode = 3
@@ -19,6 +19,7 @@ grow_vertical = 2
 script = ExtResource("1_6jikv")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -26,37 +27,31 @@ scale = Vector2(0.5, 0.5)
 color = Color(0, 0, 0, 1)
 
 [node name="BigPowerUpIconNext" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(14.1, 14.7)
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("2_w7l7f")
+position = Vector2(24.1, 12.7)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_fv3h2")
 
 [node name="ShieldPowerUpIconNext" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(15.1, 14.7)
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("3_bsa7h")
+position = Vector2(25.1, 12.7)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_gdljs")
 
 [node name="SmallPowerUpIconNext" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(14.1, 14.7)
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("4_mo07u")
+position = Vector2(24.1, 12.7)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_ttt08")
 
 [node name="BigPowerUpIconCurrent" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(7.8, 8.6)
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("2_w7l7f")
+position = Vector2(10.8, 3.6)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("2_fv3h2")
 
 [node name="ShieldPowerUpIconCurrent" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(8.8, 8.6)
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("3_bsa7h")
+position = Vector2(11.8, 3.6)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("3_gdljs")
 
 [node name="SmallPowerUpIconCurrent" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(7.8, 8.6)
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("4_mo07u")
+position = Vector2(10.8, 3.6)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("4_ttt08")

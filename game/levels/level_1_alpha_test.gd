@@ -35,13 +35,10 @@ func _ready() -> void:
 	var power_ups_spawner = $power_ups_spawner
 	power_ups_spawner.connect("power_up_spawn", self._on_power_up_spawn)
 	
-	$Player/player_camera/score.position = Vector2(-60,-60)
 	var current_level_score_block = Global.score.get_level_block(Global.Level.LEVEL_1)
 	Global.score.set_current_level(current_level_score_block)
 	Global.emit_current_score()
 	Global.emit_level_score(Global.Level.LEVEL_1)
-	
-	$Player/player_camera/direction_distance.position = $Player/player_camera/score.position + Vector2(40,-27);
 	
 	
 func _process(_delta: float) -> void:

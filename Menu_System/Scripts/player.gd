@@ -77,7 +77,9 @@ func _process(delta):
 		emit_signal("player_update_position", $".".global_position)
 		if not player_run_sfx.playing:
 			player_run_sfx.play()
-
+	if Input.is_action_just_pressed("dpad_down"):
+		swap_power_ups()
+		
 func _on_body_entered(body: Node2D) -> void:
 	if not Global.isDeafeated and body.is_in_group("Meteorite"):
 		$meteorite_collision.play()
@@ -149,14 +151,17 @@ func set_defeat_animation(times) -> void:
 	defeat_animation.track_insert_key(tex_track, 0.0, defeat_tex)
 	
 func _on_picked_up_magnification(speed_mul,scale_mul)->void:
+	$power_up_picked_up.play()
 	var _power_up = PowerUp.new(Global.PowerUp.BIG, 5.0)
-	set_stashed_power_up(_power_up)
+	set_stashed_power_up(_power_up)	
 	
 func _on_picked_up_miniaturization(speed_mul,scale_mul)->void:
+	$power_up_picked_up.play()
 	var _power_up = PowerUp.new(Global.PowerUp.SMALL, 2.0)
 	set_stashed_power_up(_power_up)
 	
 func _on_picked_up_shield(shield_time)->void:
+	$power_up_picked_up.play()
 	var _power_up = PowerUp.new(Global.PowerUp.SHIELD, 2.0)
 	set_stashed_power_up(_power_up)
 
@@ -172,7 +177,13 @@ func set_stashed_power_up(_power_up):
 		self.power_up = _power_up
 	else:
 		self.power_up_stash = _power_up
-
+		
+func swap_power_ups()->void:
+	if self.power_up != null and self.power_up_stash != null and not self.power_up.active:
+		var tmp: PowerUp = self.power_up
+		self.power_up = self.power_up_stash
+		self.power_up_stash = tmp
+		
 class PowerUp:
 	var active: bool = false
 	var type: Global.PowerUp
