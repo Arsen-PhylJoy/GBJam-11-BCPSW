@@ -46,6 +46,7 @@ libraries = {
 
 [node name="intro-audio" type="AudioStreamPlayer" parent="intro_scene_animation"]
 stream = ExtResource("5_tbr18")
+volume_db = -18.0
 
 [node name="color_4_post_process" type="CanvasLayer" parent="."]
 
