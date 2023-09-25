@@ -89,7 +89,7 @@ func _on_body_entered(body: Node2D) -> void:
 			await $hero_animations.animation_finished
 			emit_signal("defeated")
 		else:
-			self.power_up.hits_left -= 1
+			self.power_up.charge -= 1
 			
 
 func _dash_handler()-> void:
@@ -110,14 +110,15 @@ func _power_up_handler()-> void:
 			if power_up.hasTimer:
 				if counter >= power_up.destroy_time:
 					self.active_speed = speed
+					isMortal = true
 					get_stashed_power_up()
-					
 				elif counter < power_up.destroy_time:
 					self.active_speed = speed * power_up.speed_factor
+					isMortal = !power_up.immortality
 			else:
-				if isMortal and power_up.hits_left > 0:
+				if isMortal and power_up.charge > 0:
 					isMortal = false
-				elif power_up.hits_left <= 0:
+				elif power_up.charge <= 0:
 					isMortal = true
 					get_stashed_power_up()
 		elif Input.is_action_just_pressed("b"):
@@ -143,17 +144,14 @@ func set_defeat_animation(times) -> void:
 func _on_picked_up_magnification(speed_mul,scale_mul)->void:
 	var _power_up = PowerUp.new(Global.PowerUp.BIG, 5.0)
 	set_stashed_power_up(_power_up)
-	print("Picked up magnification")
 	
 func _on_picked_up_miniaturization(speed_mul,scale_mul)->void:
 	var _power_up = PowerUp.new(Global.PowerUp.SMALL, 5.0)
 	set_stashed_power_up(_power_up)
-	print("Picked up miniaturization")
 	
 func _on_picked_up_shield(shield_time)->void:
 	var _power_up = PowerUp.new(Global.PowerUp.SHIELD, 2.0)
 	set_stashed_power_up(_power_up)
-	print("Picked up shield")
 
 func get_stashed_power_up():
 	if self.power_up_stash != null:
@@ -173,28 +171,28 @@ class PowerUp:
 	var type: Global.PowerUp
 	var hasTimer: bool = true
 	var destroy_time: float
-	var hits_left: int = 0
-	var endurance: float = 0
+	var charge: float = 0
 	var speed_factor: float = 1.0
 	var scale_factor: float = 1.0
+	var immortality: bool = false
 	
 	func _init(_type: Global.PowerUp, _charge: float = 1.0):
 		self.type = _type
-		self.endurance = _charge
+		self.charge = _charge
 		if _type == Global.PowerUp.BIG:
 			self.speed_factor = 0.5
 			self.scale_factor = 2.25
+			self.immortality = true
 		elif _type == Global.PowerUp.SMALL:
 			self.speed_factor = 2
 			self.scale_factor = 0.75
 		elif _type == Global.PowerUp.SHIELD:
 			self.hasTimer = false
+			self.immortality = true
 			
 	func activate_power(_counter):
 		self.active = true
-		if self.type == Global.PowerUp.SHIELD:
-			self.hits_left = int(self.endurance)
-		else:
-			self.destroy_time = _counter + endurance
+		if not self.type == Global.PowerUp.SHIELD:
+			self.destroy_time = _counter + self.charge
 		# PLAY TRANSFORM ANIMATION
 
