@@ -41,7 +41,6 @@ win_screen = ExtResource("2_ehymt")
 position = Vector2(54, 81)
 collision_mask = 6
 dash_speed = 300
-speed = 90
 metadata/_edit_group_ = true
 
 [node name="player_camera" type="Camera2D" parent="Player"]
@@ -50,13 +49,19 @@ offset = Vector2(0, -17.835)
 
 [node name="score" parent="Player/player_camera" instance=ExtResource("3_8xfgu")]
 z_index = 1
-offset_left = -29.0
-offset_right = -29.0
+offset_left = -65.0
+offset_top = -58.0
+offset_right = -65.0
+offset_bottom = -58.0
+scale = Vector2(0.681024, 0.649294)
 
 [node name="direction_distance" parent="Player/player_camera" instance=ExtResource("4_4ncjm")]
 z_index = 1
-offset_left = -10.0
-offset_right = -10.0
+offset_left = -79.0
+offset_top = -102.0
+offset_right = -79.0
+offset_bottom = -102.0
+scale = Vector2(0.928758, 1.08775)
 
 [node name="power_up_ui" parent="Player/player_camera" node_paths=PackedStringArray("player") instance=ExtResource("6_ombdm")]
 offset_left = -80.0
