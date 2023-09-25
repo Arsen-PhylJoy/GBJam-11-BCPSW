@@ -119,10 +119,17 @@ func _power_up_handler()-> void:
 				if isMortal and power_up.charge > 0:
 					isMortal = false
 				elif power_up.charge <= 0:
+					$shield_down.play()
 					isMortal = true
 					get_stashed_power_up()
 		elif Input.is_action_just_pressed("b"):
 			power_up.activate_power(counter)
+			if(power_up.type == Global.PowerUp.BIG):
+				$big_power_up_use.play()
+			elif(power_up.type == Global.PowerUp.SMALL):
+				$small_power_up_use.play()
+			else:
+				$shield_up.play()
 
 func set_defeat_animation(times) -> void:
 	var defeat_animation = $hero_animations.get_animation("defeat") as Animation

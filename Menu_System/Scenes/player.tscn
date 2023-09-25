@@ -12,10 +12,10 @@
 [ext_resource type="Texture2D" uid="uid://cvd5kq38orc6k" path="res://assets/graphic/characters/hero_power_up_small/sprite_sheets/run/character_01_small_run_left_sheet.png" id="8_42h5f"]
 [ext_resource type="Texture2D" uid="uid://djh80j2ln3yk2" path="res://assets/graphic/characters/hero_power_up_big/sprite_sheets/idle/character_01_big_idle_sheet.png" id="9_rddxp"]
 [ext_resource type="Texture2D" uid="uid://cxyhd8td7dvtv" path="res://assets/graphic/characters/hero_power_up_small/sprite_sheets/idle/character_01_small_idle_sheet.png" id="10_u3q4y"]
-[ext_resource type="AudioStream" path="res://assets/audio/sfx/power_ups/big.wav" id="13_h751m"]
-[ext_resource type="AudioStream" path="res://assets/audio/sfx/power_ups/small.wav" id="14_c68rj"]
-[ext_resource type="AudioStream" path="res://assets/audio/sfx/power_ups/shield_up.wav" id="15_mqdi7"]
-[ext_resource type="AudioStream" path="res://assets/audio/sfx/power_ups/shield_down.wav" id="16_p58ac"]
+[ext_resource type="AudioStream" uid="uid://cocwxmqg883" path="res://assets/audio/sfx/power_ups/big.wav" id="13_h751m"]
+[ext_resource type="AudioStream" uid="uid://t7qdjan36qc1" path="res://assets/audio/sfx/power_ups/small.wav" id="14_c68rj"]
+[ext_resource type="AudioStream" uid="uid://bue0c1dtfmqy" path="res://assets/audio/sfx/power_ups/shield_up.wav" id="15_mqdi7"]
+[ext_resource type="AudioStream" uid="uid://ohlwibuug8qn" path="res://assets/audio/sfx/power_ups/shield_down.wav" id="16_p58ac"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4hh4j"]
 
