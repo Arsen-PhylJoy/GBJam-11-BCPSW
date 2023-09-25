@@ -151,14 +151,17 @@ func set_defeat_animation(times) -> void:
 	defeat_animation.track_insert_key(tex_track, 0.0, defeat_tex)
 	
 func _on_picked_up_magnification(speed_mul,scale_mul)->void:
+	$power_up_picked_up.play()
 	var _power_up = PowerUp.new(Global.PowerUp.BIG, 5.0)
-	set_stashed_power_up(_power_up)
+	set_stashed_power_up(_power_up)	
 	
 func _on_picked_up_miniaturization(speed_mul,scale_mul)->void:
+	$power_up_picked_up.play()
 	var _power_up = PowerUp.new(Global.PowerUp.SMALL, 2.0)
 	set_stashed_power_up(_power_up)
 	
 func _on_picked_up_shield(shield_time)->void:
+	$power_up_picked_up.play()
 	var _power_up = PowerUp.new(Global.PowerUp.SHIELD, 2.0)
 	set_stashed_power_up(_power_up)
 
