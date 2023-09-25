@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cubs0v07ul4y8"]
+[gd_scene load_steps=9 format=3 uid="uid://cubs0v07ul4y8"]
 
 [ext_resource type="Script" path="res://scripts/projectiles/meteorite/meteorite.gd" id="1_r1rqi"]
 [ext_resource type="Texture2D" uid="uid://8jl7wasoufda" path="res://assets/graphic/environment/env_01/foreground/objects/sprite_sheets/env_01_meteor_01_fall_spritesheet.png" id="2_csldx"]
+[ext_resource type="Shader" path="res://scripts/postprocesses_layers/color_4_post_process.gdshader" id="3_sn2gk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8uvon"]
 radius = 22.0227
@@ -44,6 +45,15 @@ _data = {
 "meteorite": SubResource("Animation_xeuf1")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oamk4"]
+shader = ExtResource("3_sn2gk")
+shader_parameter/color1 = Color(0, 0, 0, 1)
+shader_parameter/color2 = Color(0.631373, 0.156863, 0.109804, 1)
+shader_parameter/color3 = Color(0.572549, 0.576471, 0.552941, 1)
+shader_parameter/color4 = Color(0.909804, 0.839216, 0.752941, 1)
+shader_parameter/simple_shading_mode = true
+shader_parameter/brightness_factor = 0.0
+
 [node name="Meteorite" type="RigidBody2D" groups=["Meteorite"]]
 collision_layer = 2
 collision_mask = 5
@@ -65,5 +75,17 @@ shape = SubResource("CircleShape2D_8uvon")
 libraries = {
 "": SubResource("AnimationLibrary_su1q1")
 }
+
+[node name="color_4_post_process" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="color_4_post_process"]
+material = SubResource("ShaderMaterial_oamk4")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

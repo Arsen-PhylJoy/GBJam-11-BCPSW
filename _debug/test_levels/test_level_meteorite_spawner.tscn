@@ -10,10 +10,6 @@ script = ExtResource("1_pkjml")
 [node name="projectile_spawner" parent="." instance=ExtResource("1_d1uwf")]
 projectile = ExtResource("3_k8le2")
 spawner_width = 300.0
-meteortirs_per_second = 4.0
-gravity_scale = 0.1
-min_initial_speed = 1.0
-max_initial_speed = 1.0
 
 [node name="test_camera" type="Camera2D" parent="."]
 position = Vector2(107, 35)
