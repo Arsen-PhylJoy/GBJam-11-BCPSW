@@ -146,7 +146,7 @@ func _on_picked_up_magnification(speed_mul,scale_mul)->void:
 	print("Picked up magnification")
 	
 func _on_picked_up_miniaturization(speed_mul,scale_mul)->void:
-	var _power_up = PowerUp.new(Global.PowerUp.SMALL, 5.0)
+	var _power_up = PowerUp.new(Global.PowerUp.SMALL, 2.0)
 	set_stashed_power_up(_power_up)
 	print("Picked up miniaturization")
 	
