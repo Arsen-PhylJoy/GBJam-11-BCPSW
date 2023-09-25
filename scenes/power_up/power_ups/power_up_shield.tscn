@@ -1,9 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://dxhaqtvd7dtl7"]
+[gd_scene load_steps=6 format=3 uid="uid://dxhaqtvd7dtl7"]
 
 [ext_resource type="Script" path="res://scripts/power_up/power_ups/power_up_shield.gd" id="1_n125v"]
 [ext_resource type="Texture2D" uid="uid://bt2hy1e64453q" path="res://assets/graphic/environment/env_01/foreground/objects/icons/shield_power_up_icon.png" id="2_6f8iu"]
+[ext_resource type="Shader" path="res://scripts/postprocesses_layers/color_4_post_process.gdshader" id="3_7teug"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tytsy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t2wsn"]
+shader = ExtResource("3_7teug")
+shader_parameter/color1 = Color(0, 0, 0, 1)
+shader_parameter/color2 = Color(0.631373, 0.156863, 0.109804, 1)
+shader_parameter/color3 = Color(0.572549, 0.576471, 0.552941, 1)
+shader_parameter/color4 = Color(0.909804, 0.839216, 0.752941, 1)
+shader_parameter/simple_shading_mode = true
+shader_parameter/brightness_factor = 0.0
 
 [node name="power_up_shield" type="Area2D"]
 script = ExtResource("1_n125v")
@@ -13,3 +23,15 @@ shape = SubResource("RectangleShape2D_tytsy")
 
 [node name="power_up_shield_sprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_6f8iu")
+
+[node name="color_4_post_process" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="color_4_post_process"]
+material = SubResource("ShaderMaterial_t2wsn")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
