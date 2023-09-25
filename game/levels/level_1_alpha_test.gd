@@ -55,6 +55,9 @@ func _process(_delta: float) -> void:
 	if(is_instance_valid(get_node("Pause Screen"))):
 		get_node("Pause Screen").position.x = get_node("Player").position.x - 30
 
+func _physics_process(delta: float) -> void:
+	if Global.isDeafeated:
+		$env_01_ambient.stop()
 
 func _on_projectile_spawner_projectile_spawned(pos, init_speed, gravity_scale) -> void:
 	var meteor_instance: RigidBody2D =  $Player/projectile_spawner.projectile.instantiate() as RigidBody2D
