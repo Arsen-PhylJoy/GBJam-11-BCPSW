@@ -1,0 +1,196 @@
+[gd_scene load_steps=21 format=3 uid="uid://duivdh4a5que7"]
+
+[ext_resource type="Script" path="res://scenes/_game/levels/level_1.gd" id="1_725pq"]
+[ext_resource type="PackedScene" uid="uid://wam7yyo7p770" path="res://scenes/ui/game_hud/win_screen/win_screen.tscn" id="2_e10dl"]
+[ext_resource type="PackedScene" uid="uid://ga08fi1u5kdl" path="res://scenes/player/player.tscn" id="3_d0vns"]
+[ext_resource type="PackedScene" uid="uid://cjpc5tisr4oq5" path="res://scenes/ui/game_hud/score/score.tscn" id="4_8excy"]
+[ext_resource type="PackedScene" uid="uid://d0u0o1ie488ro" path="res://scenes/ui/game_hud/score/direction_distance.tscn" id="5_5c2jw"]
+[ext_resource type="PackedScene" uid="uid://dvbvxh27r7nqu" path="res://scenes/ui/game_hud/power_up/power_up.tscn" id="6_d2hom"]
+[ext_resource type="PackedScene" uid="uid://b65pojpx24hdm" path="res://scenes/projectiles/projectile_spawner.tscn" id="7_s0j2j"]
+[ext_resource type="PackedScene" uid="uid://cubs0v07ul4y8" path="res://scenes/projectiles/meteorite/meteorite.tscn" id="8_54e1x"]
+[ext_resource type="AudioStream" uid="uid://wycpmwt87okm" path="res://assets/audio/sfx/characters/hero/sounds/run/run.mp3" id="9_wgpv6"]
+[ext_resource type="PackedScene" uid="uid://b6en1kjbe11nn" path="res://scenes/ui/game_hud/pause_screen/pause_screen.tscn" id="10_fce6j"]
+[ext_resource type="AudioStream" uid="uid://b5358xumoanqi" path="res://assets/audio/music/pause-menu/pause-menu.mp3" id="11_1dsol"]
+[ext_resource type="AudioStream" uid="uid://cl3i7svr4j82y" path="res://assets/audio/music/menu-actions/click.mp3" id="12_dfbot"]
+[ext_resource type="PackedScene" uid="uid://bj08btic8c155" path="res://scenes/postprocesses_layers/wrapping/wrap_to_circle.tscn" id="13_pon78"]
+[ext_resource type="PackedScene" uid="uid://curqbovuaop8h" path="res://scenes/environment/parallax_background.tscn" id="14_f0p8x"]
+[ext_resource type="AudioStream" uid="uid://o6v8xjv4sk33" path="res://assets/audio/music/environment/env_01/ambient/env_01_ambient.mp3" id="15_0bj0j"]
+[ext_resource type="Shader" path="res://shaders/postprocess_shaders/color_4_post_process/color_4_post_process.gdshader" id="16_ar2hu"]
+[ext_resource type="PackedScene" uid="uid://bjm41aq733ya0" path="res://scenes/power_up/power_up_spawner/power_ups_spawner.tscn" id="17_nqrtv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dnu3l"]
+size = Vector2(30, 44.898)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wauqm"]
+size = Vector2(11, 237)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mbmxm"]
+shader = ExtResource("16_ar2hu")
+shader_parameter/color1 = Color(0, 0, 0, 1)
+shader_parameter/color2 = Color(0.631373, 0.156863, 0.109804, 1)
+shader_parameter/color3 = Color(0.572549, 0.576471, 0.552941, 1)
+shader_parameter/color4 = Color(0.909804, 0.839216, 0.752941, 1)
+shader_parameter/simple_shading_mode = true
+shader_parameter/brightness_factor = 0.0
+
+[node name="level_1_alpha_test" type="Node"]
+script = ExtResource("1_725pq")
+win_screen = ExtResource("2_e10dl")
+
+[node name="Player" parent="." instance=ExtResource("3_d0vns")]
+position = Vector2(54, 81)
+collision_mask = 6
+dash_speed = 300
+metadata/_edit_group_ = true
+
+[node name="player_camera" type="Camera2D" parent="Player"]
+position = Vector2(50, -23)
+offset = Vector2(0, -17.835)
+
+[node name="score" parent="Player/player_camera" instance=ExtResource("4_8excy")]
+z_index = 1
+offset_left = -65.0
+offset_top = -58.0
+offset_right = -65.0
+offset_bottom = -58.0
+scale = Vector2(0.681024, 0.649294)
+
+[node name="direction_distance" parent="Player/player_camera" instance=ExtResource("5_5c2jw")]
+z_index = 1
+offset_left = -79.0
+offset_top = -102.0
+offset_right = -79.0
+offset_bottom = -102.0
+scale = Vector2(0.928758, 1.08775)
+
+[node name="power_up_ui" parent="Player/player_camera" node_paths=PackedStringArray("player") instance=ExtResource("6_d2hom")]
+offset_left = -80.0
+offset_top = 34.0
+offset_right = -80.0
+offset_bottom = 34.0
+player = NodePath("../..")
+
+[node name="projectile_spawner" parent="Player" instance=ExtResource("7_s0j2j")]
+position = Vector2(50, 0)
+projectile = ExtResource("8_54e1x")
+meteortirs_per_second_0 = 4
+meteortirs_per_second_1 = 5
+min_initial_speed_1 = 30.0
+max_initial_speed_1 = 45.0
+chance_to_spawn_fast_projectile_1 = 23
+meteortirs_per_second_2 = 6
+min_initial_speed_2 = 45.0
+max_initial_speed_2 = 60.0
+chance_to_spawn_fast_projectile_2 = 10
+meteortirs_per_second_3 = 8
+max_initial_speed_3 = 70.0
+chance_to_spawn_fast_projectile_3 = 7
+meteortirs_per_second_4 = 8
+min_initial_speed_4 = 50.0
+max_initial_speed_4 = 80.0
+chance_to_spawn_fast_projectile_4 = 25
+
+[node name="player_sfx" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource("9_wgpv6")
+
+[node name="ground" type="StaticBody2D" parent="." groups=["Ground"]]
+position = Vector2(84, 115)
+scale = Vector2(28.185, 1)
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground"]
+position = Vector2(-5, 6)
+scale = Vector2(300, 0.98)
+shape = SubResource("RectangleShape2D_dnu3l")
+
+[node name="Pause Screen" parent="." instance=ExtResource("10_fce6j")]
+visible = false
+z_index = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="pause-button-audio" type="AudioStreamPlayer" parent="Pause Screen"]
+stream = ExtResource("11_1dsol")
+
+[node name="resume-button-audio" type="AudioStreamPlayer" parent="Pause Screen"]
+stream = ExtResource("12_dfbot")
+
+[node name="Pause Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="wrap_to_circle" parent="." instance=ExtResource("13_pon78")]
+layer = -100
+
+[node name="parallax_background" parent="." instance=ExtResource("14_f0p8x")]
+
+[node name="env_01_ambient" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_0bj0j")
+volume_db = -10.0
+autoplay = true
+
+[node name="Areas" type="Node2D" parent="."]
+
+[node name="Threshhold_1_easy" type="Area2D" parent="Areas"]
+position = Vector2(500, 80)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Threshhold_1_easy"]
+shape = SubResource("RectangleShape2D_wauqm")
+
+[node name="Threshhold_2_medium" type="Area2D" parent="Areas"]
+position = Vector2(1400, 93)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Threshhold_2_medium"]
+shape = SubResource("RectangleShape2D_wauqm")
+
+[node name="Threshhold_3_hard" type="Area2D" parent="Areas"]
+position = Vector2(3000, 90)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Threshhold_3_hard"]
+shape = SubResource("RectangleShape2D_wauqm")
+
+[node name="Threshhold_4_very_hard" type="Area2D" parent="Areas"]
+position = Vector2(3800, 93)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Threshhold_4_very_hard"]
+shape = SubResource("RectangleShape2D_wauqm")
+
+[node name="Shelter" type="Area2D" parent="Areas"]
+position = Vector2(4200, 100)
+scale = Vector2(0.113953, -5.43519)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Shelter"]
+scale = Vector2(0.1, 1)
+shape = SubResource("RectangleShape2D_wauqm")
+
+[node name="win_screen" parent="Areas/Shelter" instance=ExtResource("2_e10dl")]
+visible = false
+
+[node name="color_4_post_process" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="color_4_post_process"]
+material = SubResource("ShaderMaterial_mbmxm")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="power_ups_spawner" parent="." node_paths=PackedStringArray("Player") instance=ExtResource("17_nqrtv")]
+position = Vector2(0, 81)
+power_ups_amount = 28
+min_spacing = 130
+max_spacing = 190
+spawner_width = 4200
+spawning_range = 150
+Player = NodePath("../Player")
+
+[connection signal="unpause" from="Pause Screen" to="." method="_on_pause_screen_unpause"]

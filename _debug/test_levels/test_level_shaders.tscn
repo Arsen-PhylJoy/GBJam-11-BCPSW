@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://d1lio4aktlym0"]
 
-[ext_resource type="Shader" path="res://shaders/postprocess_shaders/scanline_effect.gdshader" id="2_l4jcb"]
+[ext_resource type="Shader" path="res://shaders/postprocess_shaders/scanline_effect/scanline_effect.gdshader" id="2_l4jcb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b80ar"]
 render_priority = 0

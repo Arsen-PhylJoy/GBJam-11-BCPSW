@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvbvxh27r7nqu"]
+
+[ext_resource type="Script" path="res://scenes/ui/game_hud/power_up/power_up_ui.gd" id="1_w236x"]
+[ext_resource type="Texture2D" uid="uid://ci1q4ad3xdn2h" path="res://assets/graphic/environment/foreground/objects/icons/big_power_up_icon_shadowed.png" id="2_75d80"]
+[ext_resource type="Texture2D" uid="uid://b1hg458afx8wb" path="res://assets/graphic/environment/foreground/objects/icons/shield_power_up_icon_shadowed.png" id="3_x56un"]
+[ext_resource type="Texture2D" uid="uid://cyve2fm36hc5u" path="res://assets/graphic/environment/foreground/objects/icons/small_power_up_icon_shadowed.png" id="4_fmg2e"]
+
+[node name="power_up_ui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = -7.0
+offset_right = 3.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w236x")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.5, 0.5)
+color = Color(0, 0, 0, 1)
+
+[node name="BigPowerUpIconNext" type="Sprite2D" parent="."]
+position = Vector2(24.1, 12.7)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_75d80")
+
+[node name="ShieldPowerUpIconNext" type="Sprite2D" parent="."]
+position = Vector2(25.1, 12.7)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_x56un")
+
+[node name="SmallPowerUpIconNext" type="Sprite2D" parent="."]
+position = Vector2(24.1, 12.7)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_fmg2e")
+
+[node name="BigPowerUpIconCurrent" type="Sprite2D" parent="."]
+position = Vector2(10.8, 3.6)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("2_75d80")
+
+[node name="ShieldPowerUpIconCurrent" type="Sprite2D" parent="."]
+position = Vector2(11.8, 3.6)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("3_x56un")
+
+[node name="SmallPowerUpIconCurrent" type="Sprite2D" parent="."]
+position = Vector2(10.8, 3.6)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("4_fmg2e")

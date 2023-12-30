@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://bkwol1ly1jr3"]
+
+[ext_resource type="Script" path="res://scenes/power_up/magnification/power_up_magnification.gd" id="1_liimf"]
+[ext_resource type="Texture2D" uid="uid://cwt7nrdxvnr7y" path="res://assets/graphic/environment/foreground/objects/icons/big_power_up_icon.png" id="2_0qjvs"]
+[ext_resource type="Shader" path="res://shaders/postprocess_shaders/color_4_post_process/color_4_post_process.gdshader" id="3_6we8d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fa31s"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f2pk7"]
+shader = ExtResource("3_6we8d")
+shader_parameter/color1 = Color(0, 0, 0, 1)
+shader_parameter/color2 = Color(0.631373, 0.156863, 0.109804, 1)
+shader_parameter/color3 = Color(0.572549, 0.576471, 0.552941, 1)
+shader_parameter/color4 = Color(0.909804, 0.839216, 0.752941, 1)
+shader_parameter/simple_shading_mode = true
+shader_parameter/brightness_factor = 0.0
+
+[node name="power_up_magnification" type="Area2D"]
+script = ExtResource("1_liimf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_fa31s")
+
+[node name="power_up_magnification_sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_0qjvs")
+
+[node name="color_4_post_process" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="color_4_post_process"]
+material = SubResource("ShaderMaterial_f2pk7")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true

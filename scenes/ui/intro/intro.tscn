@@ -1,0 +1,61 @@
+[gd_scene load_steps=10 format=3 uid="uid://c1n0exhontfwp"]
+
+[ext_resource type="Script" path="res://scenes/ui/intro/intro.gd" id="1_kvw3m"]
+[ext_resource type="Texture2D" uid="uid://mnfm8t54ub5m" path="res://assets/graphic/intro_animation/intro_animation_spritesheet.png" id="2_foxay"]
+[ext_resource type="Texture2D" uid="uid://c2nnqk32wefgo" path="res://assets/ui/game_hud/game_logo.png" id="3_g560r"]
+[ext_resource type="Animation" uid="uid://b1yb5hf8hw5fp" path="res://scenes/ui/intro/title_animation.res" id="4_k1fvs"]
+[ext_resource type="AudioStream" uid="uid://bm4o5v6sqkrf6" path="res://assets/audio/music/game-intro/intro_meteorite.mp3" id="5_tbr18"]
+[ext_resource type="Shader" path="res://shaders/postprocess_shaders/color_4_post_process/color_4_post_process.gdshader" id="6_bojs7"]
+
+[sub_resource type="Animation" id="Animation_0gx4q"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0xeec"]
+_data = {
+"RESET": SubResource("Animation_0gx4q"),
+"title_animation": ExtResource("4_k1fvs")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_va2qb"]
+shader = ExtResource("6_bojs7")
+shader_parameter/color1 = Color(0, 0, 0, 1)
+shader_parameter/color2 = Color(0.631373, 0.156863, 0.109804, 1)
+shader_parameter/color3 = Color(0.572549, 0.576471, 0.552941, 1)
+shader_parameter/color4 = Color(0.909804, 0.839216, 0.752941, 1)
+shader_parameter/simple_shading_mode = true
+shader_parameter/brightness_factor = 0.0
+
+[node name="Intro Scene" type="Node2D"]
+script = ExtResource("1_kvw3m")
+
+[node name="intro_scene_sprite" type="Sprite2D" parent="."]
+position = Vector2(80, 72)
+texture = ExtResource("2_foxay")
+hframes = 8
+vframes = 8
+
+[node name="game_logo_sprite" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(80, 72)
+texture = ExtResource("3_g560r")
+
+[node name="intro_scene_animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0xeec")
+}
+
+[node name="intro-audio" type="AudioStreamPlayer" parent="intro_scene_animation"]
+stream = ExtResource("5_tbr18")
+volume_db = -18.0
+
+[node name="color_4_post_process" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="color_4_post_process"]
+material = SubResource("ShaderMaterial_va2qb")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true

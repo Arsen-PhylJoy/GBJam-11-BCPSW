@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://cubs0v07ul4y8"]
 
-[ext_resource type="Script" path="res://scripts/projectiles/meteorite/meteorite.gd" id="1_r1rqi"]
-[ext_resource type="Texture2D" uid="uid://8jl7wasoufda" path="res://assets/graphic/environment/env_01/foreground/objects/sprite_sheets/env_01_meteor_01_fall_spritesheet.png" id="2_csldx"]
+[ext_resource type="Script" path="res://scenes/projectiles/meteorite/meteorite.gd" id="1_r1rqi"]
+[ext_resource type="Texture2D" uid="uid://8jl7wasoufda" path="res://assets/graphic/environment/foreground/objects/sprite_sheets/env_01_meteor_01_fall_spritesheet.png" id="2_csldx"]
 [ext_resource type="Shader" path="res://scripts/postprocesses_layers/color_4_post_process.gdshader" id="3_sn2gk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8uvon"]

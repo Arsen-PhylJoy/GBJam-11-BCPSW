@@ -1,6 +1,0 @@
-[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://irscd2nhiruy"]
-
-[ext_resource type="FontFile" uid="uid://b0ufnsvy3dnrq" path="res://assets/ui/main-font_medium.fnt" id="1_vsndp"]
-
-[resource]
-font = ExtResource("1_vsndp")

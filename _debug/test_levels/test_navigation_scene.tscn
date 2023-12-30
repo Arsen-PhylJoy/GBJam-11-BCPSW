@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cen5irmx0v5j1"]
+
+[ext_resource type="PackedScene" uid="uid://updxlsecf8xr" path="res://scenes/ui/main_menu/main_menu.tscn" id="1_qaydb"]
+
+[node name="Test Navigation Scene" type="Node"]
+
+[node name="Main Menu" parent="." instance=ExtResource("1_qaydb")]
